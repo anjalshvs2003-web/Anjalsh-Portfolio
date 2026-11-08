@@ -5,78 +5,68 @@ import { Volume2, VolumeX } from "lucide-react";
 
 export default function AudioController() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioCtxRef = useRef<AudioContext | null>(null);
-  const gainNodeRef = useRef<GainNode | null>(null);
-  const osc1Ref = useRef<OscillatorNode | null>(null);
-  const osc2Ref = useRef<OscillatorNode | null>(null);
-
-  const toggleAudio = () => {
-    try {
-      if (!audioCtxRef.current) {
-        const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-        audioCtxRef.current = new AudioContextClass();
-
-        // Create gain node for gentle fade in/out
-        const gain = audioCtxRef.current.createGain();
-        gain.gain.setValueAtTime(0, audioCtxRef.current.currentTime);
-        gain.connect(audioCtxRef.current.destination);
-        gainNodeRef.current = gain;
-
-        // Sub low frequency cinematic harmonic tone (55Hz A1 & 110Hz A2)
-        const osc1 = audioCtxRef.current.createOscillator();
-        osc1.type = "sine";
-        osc1.frequency.setValueAtTime(55, audioCtxRef.current.currentTime);
-        osc1.connect(gain);
-        osc1.start();
-        osc1Ref.current = osc1;
-
-        const osc2 = audioCtxRef.current.createOscillator();
-        osc2.type = "triangle";
-        osc2.frequency.setValueAtTime(110, audioCtxRef.current.currentTime);
-        osc2.connect(gain);
-        osc2.start();
-        osc2Ref.current = osc2;
-      }
-
-      if (audioCtxRef.current.state === "suspended") {
-        audioCtxRef.current.resume();
-      }
-
-      if (!isPlaying) {
-        // Fade in
-        gainNodeRef.current?.gain.cancelScheduledValues(audioCtxRef.current.currentTime);
-        gainNodeRef.current?.gain.setValueAtTime(0.001, audioCtxRef.current.currentTime);
-        gainNodeRef.current?.gain.exponentialRampToValueAtTime(0.035, audioCtxRef.current.currentTime + 1.2);
-        setIsPlaying(true);
-      } else {
-        // Fade out
-        gainNodeRef.current?.gain.cancelScheduledValues(audioCtxRef.current.currentTime);
-        gainNodeRef.current?.gain.setValueAtTime(gainNodeRef.current.gain.value, audioCtxRef.current.currentTime);
-        gainNodeRef.current?.gain.exponentialRampToValueAtTime(0.0001, audioCtxRef.current.currentTime + 0.8);
-        setIsPlaying(false);
-      }
-    } catch {
-      // Audio not permitted or supported
-      setIsPlaying(false);
-    }
-  };
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const fadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    const audio = new Audio("/assets/audio/ambient.mp3");
+    audio.loop = true;
+    audio.preload = "auto";
+    audio.volume = 0;
+    audioRef.current = audio;
+
     return () => {
-      try {
-        osc1Ref.current?.stop();
-        osc2Ref.current?.stop();
-        audioCtxRef.current?.close();
-      } catch {
-        // Clean up
-      }
+      if (fadeIntervalRef.current) clearInterval(fadeIntervalRef.current);
+      audio.pause();
+      audio.src = "";
     };
   }, []);
+
+  const toggleAudio = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (fadeIntervalRef.current) {
+      clearInterval(fadeIntervalRef.current);
+      fadeIntervalRef.current = null;
+    }
+
+    if (!isPlaying) {
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+          // Smooth fade in to 0.45 volume
+          fadeIntervalRef.current = setInterval(() => {
+            if (audio.volume < 0.45) {
+              audio.volume = Math.min(0.45, Number((audio.volume + 0.05).toFixed(2)));
+            } else {
+              if (fadeIntervalRef.current) clearInterval(fadeIntervalRef.current);
+            }
+          }, 40);
+        })
+        .catch((err) => {
+          console.warn("Audio playback blocked by browser:", err);
+        });
+    } else {
+      // Smooth fade out
+      fadeIntervalRef.current = setInterval(() => {
+        if (audio.volume > 0.05) {
+          audio.volume = Math.max(0, Number((audio.volume - 0.05).toFixed(2)));
+        } else {
+          audio.volume = 0;
+          audio.pause();
+          setIsPlaying(false);
+          if (fadeIntervalRef.current) clearInterval(fadeIntervalRef.current);
+        }
+      }, 40);
+    }
+  };
 
   return (
     <button
       onClick={toggleAudio}
-      aria-label={isPlaying ? "Mute ambient cinema sound" : "Enable ambient cinema sound"}
+      aria-label={isPlaying ? "Mute ambient music" : "Play ambient music"}
       className="group flex items-center space-x-2 text-[11px] font-mono tracking-widest text-zinc-400 hover:text-white transition-colors duration-200"
     >
       <div className="flex items-center space-x-1 h-3">
@@ -89,7 +79,7 @@ export default function AudioController() {
                 : "bg-zinc-600 group-hover:bg-zinc-400"
             }`}
             style={{
-              height: isPlaying ? `${6 + (bar * 3)}px` : "4px",
+              height: isPlaying ? `${6 + bar * 3}px` : "4px",
               animationDelay: `${bar * 150}ms`,
             }}
           />
