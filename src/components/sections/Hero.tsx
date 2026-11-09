@@ -167,22 +167,22 @@ export default function Hero() {
                 </div>
 
                 {/* Bottom Frame Label */}
-                <div className="absolute bottom-5 left-5 right-5">
-                  <span className="text-[10px] font-mono tracking-widest text-accent uppercase block">
+                <div className="absolute bottom-5 left-5 right-24 sm:right-28">
+                  <span className="text-[10px] font-mono tracking-widest text-accent uppercase block font-semibold">
                     ANJALSH V.S.
                   </span>
-                  <span className="font-heading text-lg font-bold text-white block mt-0.5">
+                  <span className="font-heading text-base sm:text-lg font-bold text-white block mt-0.5 leading-snug">
                     Creative Director & Filmmaker
                   </span>
                 </div>
               </div>
 
-              {/* Overlapping Secondary Frame (Cinema Frame Grab) */}
+              {/* Overlapping Secondary Frame (Cinema Frame Grab) positioned to avoid blocking label */}
               <motion.div
-                initial={{ opacity: 0, x: 25, y: 25 }}
+                initial={{ opacity: 0, x: 20, y: 20 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute -bottom-8 -left-8 sm:-left-12 w-48 sm:w-56 aspect-[16/9] rounded-xl overflow-hidden bg-[#191417] border border-accent/40 shadow-2xl hidden sm:block group"
+                className="absolute -bottom-7 -right-6 sm:-right-8 w-44 sm:w-52 aspect-[16/9] rounded-xl overflow-hidden bg-[#191417] border border-accent/40 shadow-2xl hidden sm:block group"
               >
                 <Image
                   src="/images/ai-films/the-forgotten-smile.jpg"
