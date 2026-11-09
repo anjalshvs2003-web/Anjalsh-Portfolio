@@ -42,7 +42,7 @@ export default function Preloader() {
             y: "-100%",
             transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] },
           }}
-          className="fixed inset-0 z-[10000] flex flex-col justify-between bg-[#080808] p-8 md:p-14 text-white"
+          className="fixed inset-0 z-[10000] flex flex-col justify-between bg-[#100D0F] p-8 md:p-14 text-white"
         >
           {/* Top metadata */}
           <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 uppercase tracking-ultra">

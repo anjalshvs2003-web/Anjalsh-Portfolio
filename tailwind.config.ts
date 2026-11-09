@@ -11,40 +11,45 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          DEFAULT: "#080808",
-          secondary: "#111111",
-          elevated: "#161616",
-          tertiary: "#1C1C1C",
+          DEFAULT: "#100D0F",
+          secondary: "#191417",
+          card: "#211A1D",
+          elevated: "#211A1D",
+          tertiary: "#2A2125",
         },
         surface: {
-          50: "#18181B",
-          100: "#141416",
-          200: "#101012",
-          300: "#0D0D0E",
-          DEFAULT: "#111111",
+          50: "#2A2125",
+          100: "#211A1D",
+          200: "#191417",
+          300: "#100D0F",
+          DEFAULT: "#211A1D",
         },
         border: {
-          subtle: "rgba(255, 255, 255, 0.07)",
-          medium: "rgba(255, 255, 255, 0.14)",
-          bold: "rgba(255, 255, 255, 0.28)",
-          lime: "rgba(212, 255, 0, 0.35)",
+          subtle: "#33292C",
+          medium: "#483A3F",
+          bold: "#604E55",
+          orange: "rgba(240, 120, 61, 0.4)",
         },
         accent: {
-          DEFAULT: "#D4FF00", // Subtle electric lime
-          hover: "#E4FF4D",
-          dim: "#A6C700",
-          muted: "rgba(212, 255, 0, 0.12)",
-          glow: "rgba(212, 255, 0, 0.25)",
+          DEFAULT: "#F0783D", // Signature Accent Orange
+          hover: "#FF9157",
+          dim: "#D4642C",
+          muted: "rgba(240, 120, 61, 0.12)",
+          glow: "rgba(240, 120, 61, 0.25)",
+        },
+        primary: {
+          DEFAULT: "#F5F2F0",
         },
         muted: {
-          DEFAULT: "#929292",
-          light: "#B5B5B5",
-          dark: "#5A5A5A",
+          DEFAULT: "#999194",
+          light: "#B8B1B4",
+          dark: "#6B6366",
         },
       },
       fontFamily: {
         heading: ["var(--font-space)", "sans-serif"],
         body: ["var(--font-inter)", "sans-serif"],
+        serif: ["var(--font-serif)", "Playfair Display", "Georgia", "serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       letterSpacing: {

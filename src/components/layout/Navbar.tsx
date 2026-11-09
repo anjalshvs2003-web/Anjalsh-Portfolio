@@ -80,7 +80,7 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
       {/* Scroll Progress Reading Line */}
       <div className="fixed top-0 left-0 w-full h-[2px] z-[60] bg-transparent">
         <div
-          className="h-full bg-accent transition-all duration-150 ease-out shadow-[0_0_10px_rgba(212,255,0,0.6)]"
+          className="h-full bg-accent transition-all duration-150 ease-out shadow-[0_0_10px_rgba(240,120,61,0.7)]"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -88,7 +88,7 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#080808]/85 backdrop-blur-xl border-b border-white/[0.06] py-3.5"
+            ? "bg-[#100D0F]/90 backdrop-blur-xl border-b border-[#33292C] py-3.5"
             : "bg-transparent py-6"
         }`}
       >

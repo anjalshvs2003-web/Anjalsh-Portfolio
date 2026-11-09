@@ -69,10 +69,10 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-28 sm:py-36 px-6 sm:px-8 lg:px-12 bg-[#080808] border-t border-white/[0.06]">
+    <section id="contact" className="relative py-28 sm:py-36 px-6 sm:px-8 lg:px-12 bg-[#100D0F] border-t border-[#33292C] text-[#F5F2F0]">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
-          number="06"
+          number="05"
           tag="GET IN TOUCH"
           title="INITIATE A COLLABORATION"
           description="Ready to discuss an upcoming film, commercial campaign, or color grading project? Send a brief message below."
@@ -82,71 +82,71 @@ export default function ContactSection() {
           {/* Left Column: Direct Info & Editorial Headline */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <span className="text-[10px] font-mono tracking-ultra text-zinc-500 uppercase">
+              <span className="text-[10px] font-mono tracking-ultra text-accent uppercase font-medium">
                 INQUIRY & DISPATCH
               </span>
-              <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.05]">
+              <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F2F0] tracking-tight leading-[1.05]">
                 HAVE A PROJECT IN MIND? <br />
                 <span className="text-accent">LET&apos;S CREATE SOMETHING MEANINGFUL.</span>
               </h3>
-              <p className="text-muted text-sm font-light leading-relaxed">
+              <p className="text-[#999194] text-sm font-light leading-relaxed">
                 Whether you have a fully formed storyboard, a rough concept deck, or a set of RAW video reels requiring color timing in DaVinci Resolve, Anjalsh collaborates with agencies, production houses, and visionary creators worldwide.
               </p>
             </div>
 
             {/* Quick Contact Cards */}
             <div className="space-y-3 font-mono text-xs">
-              <div className="p-4 rounded-xl bg-[#111111] border border-white/[0.06] flex items-center space-x-3">
+              <div className="p-4 rounded-xl bg-[#211A1D] border border-[#33292C] flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-accent shrink-0" />
                 <div>
-                  <span className="text-zinc-500 text-[10px] block">DIRECT DISPATCH</span>
+                  <span className="text-[#999194] text-[10px] block">DIRECT DISPATCH</span>
                   <a
                     href={`mailto:${siteConfig.contact.email}`}
-                    className="text-white hover:text-accent transition-colors"
+                    className="text-[#F5F2F0] hover:text-accent transition-colors"
                   >
                     {siteConfig.contact.email}
                   </a>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#111111] border border-white/[0.06] flex items-center space-x-3">
+              <div className="p-4 rounded-xl bg-[#211A1D] border border-[#33292C] flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-accent shrink-0" />
                 <div>
-                  <span className="text-zinc-500 text-[10px] block">BASE LOCATION</span>
-                  <span className="text-zinc-300">{siteConfig.location}</span>
+                  <span className="text-[#999194] text-[10px] block">BASE LOCATION</span>
+                  <span className="text-[#F5F2F0]/80">{siteConfig.location}</span>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#111111] border border-white/[0.06] flex items-center space-x-3">
+              <div className="p-4 rounded-xl bg-[#211A1D] border border-[#33292C] flex items-center space-x-3">
                 <Instagram className="w-4 h-4 text-accent shrink-0" />
                 <div>
-                  <span className="text-zinc-500 text-[10px] block">INSTAGRAM DIRECT MESSAGE</span>
+                  <span className="text-[#999194] text-[10px] block">INSTAGRAM DIRECT MESSAGE</span>
                   <a
                     href="https://www.instagram.com/anjalsh_/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-accent transition-colors flex items-center space-x-1"
+                    className="text-[#F5F2F0] hover:text-accent transition-colors flex items-center space-x-1"
                   >
                     <span>@anjalsh_</span>
-                    <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                    <ArrowUpRight className="w-3 h-3 text-[#999194]" />
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#111111]/50 border border-white/[0.04] text-[11px] font-mono text-zinc-500">
+            <div className="p-4 rounded-xl bg-[#211A1D]/60 border border-[#33292C] text-[11px] font-mono text-[#999194]">
               ⚡ {siteConfig.contact.note}
             </div>
           </div>
 
           {/* Right Column: Functional Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-2xl bg-[#111111] border border-white/10 shadow-2xl relative">
+            <div className="p-8 sm:p-10 rounded-2xl bg-[#211A1D] border border-[#33292C] shadow-2xl relative">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name */}
                   <div className="space-y-2">
-                    <label htmlFor="name" className="block text-xs font-mono tracking-wider text-zinc-400 uppercase">
+                    <label htmlFor="name" className="block text-xs font-mono tracking-wider text-[#999194] uppercase font-medium">
                       Your Name *
                     </label>
                     <input
@@ -157,13 +157,13 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="e.g. Elena Rostova"
-                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-accent font-mono text-xs transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-[#100D0F] border border-[#33292C] text-[#F5F2F0] placeholder-[#999194]/40 focus:outline-none focus:border-accent font-mono text-xs transition-colors"
                     />
                   </div>
 
                   {/* Email */}
                   <div className="space-y-2">
-                    <label htmlFor="email" className="block text-xs font-mono tracking-wider text-zinc-400 uppercase">
+                    <label htmlFor="email" className="block text-xs font-mono tracking-wider text-[#999194] uppercase font-medium">
                       Email Address *
                     </label>
                     <input
@@ -174,7 +174,7 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="e.g. elena@production.com"
-                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-accent font-mono text-xs transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-[#100D0F] border border-[#33292C] text-[#F5F2F0] placeholder-[#999194]/40 focus:outline-none focus:border-accent font-mono text-xs transition-colors"
                     />
                   </div>
                 </div>
@@ -182,7 +182,7 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Project Type */}
                   <div className="space-y-2">
-                    <label htmlFor="projectType" className="block text-xs font-mono tracking-wider text-zinc-400 uppercase">
+                    <label htmlFor="projectType" className="block text-xs font-mono tracking-wider text-[#999194] uppercase font-medium">
                       Project Discipline
                     </label>
                     <select
@@ -190,7 +190,7 @@ export default function ContactSection() {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white focus:outline-none focus:border-accent font-mono text-xs transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-[#100D0F] border border-[#33292C] text-[#F5F2F0] focus:outline-none focus:border-accent font-mono text-xs transition-colors"
                     >
                       {siteConfig.services.map((s) => (
                         <option key={s.id} value={s.title}>
@@ -205,7 +205,7 @@ export default function ContactSection() {
 
                   {/* Estimated Scope / Budget */}
                   <div className="space-y-2">
-                    <label htmlFor="budget" className="block text-xs font-mono tracking-wider text-zinc-400 uppercase">
+                    <label htmlFor="budget" className="block text-xs font-mono tracking-wider text-[#999194] uppercase font-medium">
                       Estimated Scope / Budget
                     </label>
                     <select
@@ -213,7 +213,7 @@ export default function ContactSection() {
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white focus:outline-none focus:border-accent font-mono text-xs transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-[#100D0F] border border-[#33292C] text-[#F5F2F0] focus:outline-none focus:border-accent font-mono text-xs transition-colors"
                     >
                       <option value="Under $2,000">Under $2,000 / &lt; ₹1.5L</option>
                       <option value="$2,000 – $5,000">$2,000 – $5,000 / ₹1.5L – ₹4L</option>
@@ -226,7 +226,7 @@ export default function ContactSection() {
 
                 {/* Message */}
                 <div className="space-y-2">
-                  <label htmlFor="message" className="block text-xs font-mono tracking-wider text-zinc-400 uppercase">
+                  <label htmlFor="message" className="block text-xs font-mono tracking-wider text-[#999194] uppercase font-medium">
                     Project Brief & Vision *
                   </label>
                   <textarea
@@ -237,7 +237,7 @@ export default function ContactSection() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Describe your project, shooting timeline, camera requirements, or visual goals..."
-                    className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-accent font-mono text-xs transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-[#100D0F] border border-[#33292C] text-[#F5F2F0] placeholder-[#999194]/40 focus:outline-none focus:border-accent font-mono text-xs transition-colors resize-none"
                   />
                 </div>
 
@@ -245,7 +245,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="w-full py-4 rounded-xl bg-accent text-black font-semibold text-xs font-mono tracking-widest uppercase hover:bg-accent-hover transition-all duration-300 flex items-center justify-center space-x-2 shadow-[0_0_25px_rgba(212,255,0,0.3)] disabled:opacity-50"
+                  className="w-full py-4 rounded-xl bg-accent text-black font-semibold text-xs font-mono tracking-widest uppercase hover:bg-accent-hover transition-all duration-300 flex items-center justify-center space-x-2 shadow-[0_0_30px_rgba(240,120,61,0.35)] disabled:opacity-50"
                 >
                   {status === "submitting" ? (
                     <>
@@ -278,7 +278,7 @@ export default function ContactSection() {
                     <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
                     <div>
                       <span className="font-semibold block uppercase">BACKEND ENVIRONMENT STATUS</span>
-                      <p className="text-zinc-300 mt-1 leading-relaxed">
+                      <p className="text-[#999194] mt-1 leading-relaxed">
                         {responseMessage}
                       </p>
                     </div>

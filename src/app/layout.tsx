@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/siteConfig";
 import CustomCursor from "@/components/layout/CustomCursor";
@@ -18,6 +18,13 @@ const inter = Inter({
   display: "swap",
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+  style: ["normal", "italic"],
+});
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -25,7 +32,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#100D0F",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -98,23 +105,35 @@ export default function RootLayout({
         "@id": `${siteConfig.seo.siteUrl}/#person`,
         "name": siteConfig.author,
         "alternateName": "ANJALSH®️",
-        "url": siteConfig.seo.siteUrl,
-        "image": `${siteConfig.seo.siteUrl}/assets/profile/anjalsh.jpg`,
         "jobTitle": siteConfig.profession,
-        "description": siteConfig.bio.hero,
+        "url": siteConfig.seo.siteUrl,
         "sameAs": [
-          "https://www.instagram.com/anjalsh_/",
-          siteConfig.socialLinks.find((s) => s.platform === "LinkedIn")?.url,
-          siteConfig.socialLinks.find((s) => s.platform === "Vimeo")?.url,
-        ].filter(Boolean),
+          siteConfig.socialLinks.find((s) => s.platform === "Instagram")?.url || "https://www.instagram.com/anjalsh_/",
+        ],
+        "knowsAbout": [
+          "Cinematography",
+          "Color Grading",
+          "DaVinci Resolve Studio",
+          "Graphic Design",
+          "AI Filmmaking",
+          "Creative Direction",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.seo.siteUrl}/#website`,
+        "url": siteConfig.seo.siteUrl,
+        "name": siteConfig.name,
+        "description": siteConfig.seo.description,
+        "publisher": {
+          "@id": `${siteConfig.seo.siteUrl}/#person`,
+        },
       },
       {
         "@type": "ProfessionalService",
         "@id": `${siteConfig.seo.siteUrl}/#service`,
-        "name": "ANJALSH®️ Creative Studio",
-        "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200",
-        "url": siteConfig.seo.siteUrl,
-        "priceRange": "$$",
+        "name": "ANJALSH Studio",
+        "description": siteConfig.bio.mission,
         "address": {
           "@type": "PostalAddress",
           "addressRegion": "Kerala",
@@ -132,7 +151,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} dark`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} dark`}
     >
       <head>
         {/* Structured Data JSON-LD */}
@@ -163,7 +182,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className="font-body bg-[#0a0a0a] text-zinc-100 selection:bg-accent/30 selection:text-white antialiased">
+      <body className="font-body bg-[#100D0F] text-[#F5F2F0] selection:bg-accent/30 selection:text-white antialiased overflow-x-hidden">
         {/* Subtle Film Grain */}
         <div className="film-grain" />
 

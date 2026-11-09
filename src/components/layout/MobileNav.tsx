@@ -27,7 +27,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-50 bg-[#080808]/98 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 pt-28 md:hidden"
+          className="fixed inset-0 z-50 bg-[#100D0F]/98 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 pt-28 md:hidden"
         >
           {/* Close button inside top */}
           <div className="absolute top-6 right-6">

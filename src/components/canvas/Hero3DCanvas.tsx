@@ -35,7 +35,7 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
 
     // Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x080808, 0.035);
+    scene.fog = new THREE.FogExp2(0x100D0F, 0.038);
 
     const width = container.clientWidth || window.innerWidth;
     const height = container.clientHeight || window.innerHeight;
@@ -51,34 +51,34 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
+    renderer.toneMappingExposure = 1.15;
 
     container.appendChild(renderer.domElement);
 
     // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    const ambientLight = new THREE.AmbientLight(0xf5f2f0, 0.65);
     scene.add(ambientLight);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    const dirLight = new THREE.DirectionalLight(0xffeedd, 1.1);
     dirLight.position.set(5, 8, 7);
     scene.add(dirLight);
 
-    // Electric Lime Accent Light that moves with mouse
-    const limePointLight = new THREE.PointLight(0xd4ff00, 2.5, 20);
-    limePointLight.position.set(0, 0, 5);
-    scene.add(limePointLight);
+    // Signature Accent Orange Point Light moving with mouse
+    const orangePointLight = new THREE.PointLight(0xf0783d, 3.2, 22);
+    orangePointLight.position.set(0, 0, 5);
+    scene.add(orangePointLight);
 
     // Texture Loader
     const textureLoader = new THREE.TextureLoader();
 
-    // Photographic frames data
+    // Photographic frames data (incorporating authentic user portrait & film stills)
     const frameImages = [
+      "/images/photography/anjalsh-portrait.jpg",
       "/images/ai-films/the-forgotten-smile.jpg",
       "/images/photography/im-vijayan-cover.jpg",
       "/images/ai-films/the-unseen-vision.jpg",
       "/images/photography/editorial-portrait-cover.jpg",
       "/images/graphic-design/luxe-gold-01.jpg",
-      "/images/ai-films/the-last-letter-out.jpg",
     ];
 
     const planesGroup = new THREE.Group();
@@ -100,7 +100,6 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
       const imgUrl = frameImages[index % frameImages.length];
       const geom = new THREE.PlaneGeometry(layout.scale[0], layout.scale[1], 16, 16);
 
-      // Create material with texture and sleek metallic sheen
       textureLoader.load(
         imgUrl,
         (texture) => {
@@ -118,12 +117,12 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
           mesh.position.set(layout.pos[0], layout.pos[1], layout.pos[2]);
           mesh.rotation.set(layout.rot[0], layout.rot[1], layout.rot[2]);
 
-          // Subtle electric lime wireframe border
+          // Subtle accent orange and dark border wireframe
           const borderGeom = new THREE.EdgesGeometry(geom);
           const borderMat = new THREE.LineBasicMaterial({
-            color: index % 2 === 0 ? 0xd4ff00 : 0x444444,
+            color: index % 2 === 0 ? 0xf0783d : 0x33292c,
             transparent: true,
-            opacity: index % 2 === 0 ? 0.45 : 0.25,
+            opacity: index % 2 === 0 ? 0.45 : 0.35,
           });
           const border = new THREE.LineSegments(borderGeom, borderMat);
           mesh.add(border);
@@ -133,9 +132,8 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
         },
         undefined,
         () => {
-          // Fallback simple dark frame if image fails
           const fallbackMat = new THREE.MeshStandardMaterial({
-            color: 0x1a1a1a,
+            color: 0x211a1d,
             roughness: 0.4,
           });
           const mesh = new THREE.Mesh(geom, fallbackMat);
@@ -157,11 +155,11 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
       positions[i + 1] = (Math.random() - 0.5) * 16;
       positions[i + 2] = (Math.random() - 0.5) * 14;
 
-      // Color alternating between white, muted silver, and electric lime
-      const isLime = Math.random() > 0.8;
-      colors[i] = isLime ? 0.83 : 0.8;
-      colors[i + 1] = isLime ? 1.0 : 0.8;
-      colors[i + 2] = isLime ? 0.0 : 0.8;
+      // Color alternating between warm white and signature orange (#F0783D)
+      const isOrange = Math.random() > 0.75;
+      colors[i] = isOrange ? 0.94 : 0.85;
+      colors[i + 1] = isOrange ? 0.47 : 0.82;
+      colors[i + 2] = isOrange ? 0.24 : 0.8;
     }
 
     particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
@@ -171,7 +169,7 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
       size: 0.045,
       vertexColors: true,
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.55,
     });
 
     const particles = new THREE.Points(particleGeometry, particleMaterial);
@@ -207,7 +205,7 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
 
     // Animation Loop
     let animationFrameId: number;
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
@@ -225,9 +223,9 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
       camera.position.z = 10 - scrollFactor * 4.0;
       camera.lookAt(0, -scrollFactor * 1.5, 0);
 
-      // Move lime point light
-      limePointLight.position.x = mouse.x * 5;
-      limePointLight.position.y = mouse.y * 4;
+      // Move orange point light with mouse
+      orangePointLight.position.x = mouse.x * 5;
+      orangePointLight.position.y = mouse.y * 4;
 
       // Floating gentle motion for planes
       meshes.forEach((mesh, idx) => {
