@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
-import Image from "next/image";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projectsData, projectCategories } from "@/data/projects";
 import { Project, ProjectCategory } from "@/types";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectModal from "@/components/ui/ProjectModal";
-import { Filter, ArrowDown, ArrowUpDown, Sparkles, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import CurvedExhibitionArc from "@/components/ui/CurvedExhibitionArc";
+import { Filter, ArrowDown, ArrowUpDown } from "lucide-react";
 
 type SortOption = "featured" | "newest" | "oldest";
 
@@ -18,13 +18,6 @@ export default function SelectedWork() {
   const [visibleCount, setVisibleCount] = useState<number>(18);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const horizontalScrollRef = useRef<HTMLDivElement | null>(null);
-
-  // Horizontal strip curated projects (AI Films, Photography, Design highlights)
-  const horizontalHighlights = useMemo(() => {
-    return projectsData.filter((p) => p.featured).slice(0, 10);
-  }, []);
 
   // Filter & Sort Logic
   const filteredAndSortedProjects = useMemo(() => {
@@ -71,12 +64,6 @@ export default function SelectedWork() {
     setVisibleCount(18); // Reset page count on filter switch
   };
 
-  const scrollHorizontal = (direction: "left" | "right") => {
-    if (!horizontalScrollRef.current) return;
-    const offset = direction === "left" ? -450 : 450;
-    horizontalScrollRef.current.scrollBy({ left: offset, behavior: "smooth" });
-  };
-
   // Discipline description mapping for editorial context
   const disciplineDescriptions: Record<string, string> = {
     "Photography": "A dense visual archive: High-contrast chiaroscuro portraiture, natural shadow falloff, and tactile still framing captured on Sony Cinema Line & medium format optics.",
@@ -112,99 +99,22 @@ export default function SelectedWork() {
         </div>
 
         {/* ============================================================== */}
-        {/* HORIZONTAL IMAGE COLLECTION STRIP (Reference 02 Inspired) */}
+        {/* 3D CURVED CONCAVE EXHIBITION ARC (Reference Image Matched) */}
         {/* ============================================================== */}
         <div className="mb-16 pb-12 border-b border-[#33292C]">
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center space-x-2 text-xs font-mono">
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-accent uppercase font-semibold tracking-wider">
-                CURATED HORIZONTAL EXHIBITION STRIP
-              </span>
-              <span className="text-[#33292C]">/</span>
-              <span className="text-[#999194] text-[11px] hidden sm:inline">
-                SCROLLABLE VISUAL REEL
-              </span>
-            </div>
-
-            {/* Horizontal scroll navigation controls */}
-            <div className="flex items-center space-x-2">
-              <button
-                onClick={() => scrollHorizontal("left")}
-                className="p-2 rounded-full bg-[#211A1D] border border-[#33292C] text-[#999194] hover:text-white hover:border-accent transition-colors"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => scrollHorizontal("right")}
-                className="p-2 rounded-full bg-[#211A1D] border border-[#33292C] text-[#999194] hover:text-white hover:border-accent transition-colors"
-                aria-label="Scroll right"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-          {/* Horizontal Drag/Scroll Container */}
-          <div
-            ref={horizontalScrollRef}
-            className="flex items-stretch space-x-5 overflow-x-auto pb-4 scrollbar-none snap-x"
-            style={{ scrollbarWidth: "none" }}
-          >
-            {horizontalHighlights.map((project) => (
-              <div
-                key={project.id}
-                onClick={() => handleOpenProject(project)}
-                className="relative flex-none w-[280px] sm:w-[360px] group cursor-pointer rounded-2xl overflow-hidden bg-[#211A1D] border border-[#33292C] hover:border-accent/70 transition-all duration-500 shadow-xl snap-start"
-              >
-                {/* Visual Thumbnail */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
-                  <Image
-                    src={project.coverImage}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    sizes="360px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#100D0F] via-transparent to-transparent opacity-80" />
-
-                  {/* Top Category Badge */}
-                  <div className="absolute top-3 left-3 flex items-center space-x-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#100D0F]/80 backdrop-blur-md border border-[#33292C] text-[9px] font-mono tracking-widest text-[#F5F2F0] uppercase">
-                      {project.category}
-                    </span>
-                    {project.videoUrl && (
-                      <span className="px-2 py-0.5 rounded-full bg-accent text-black text-[9px] font-mono font-bold flex items-center space-x-1">
-                        <Play className="w-2 h-2 fill-black" />
-                        <span>REEL</span>
-                      </span>
-                    )}
-                  </div>
-
-                  <span className="absolute top-3 right-3 text-[10px] font-mono text-[#999194] bg-[#100D0F]/70 px-2 py-0.5 rounded backdrop-blur-sm">
-                    {project.year}
-                  </span>
-                </div>
-
-                {/* Info Bar */}
-                <div className="p-4 space-y-1">
-                  <h4 className="font-heading text-sm font-bold text-[#F5F2F0] group-hover:text-accent transition-colors truncate">
-                    {project.title}
-                  </h4>
-                  <p className="text-[11px] font-mono text-[#999194] truncate">
-                    {project.role}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <CurvedExhibitionArc
+            projects={projectsData}
+            onSelectProject={handleOpenProject}
+          />
         </div>
 
         {/* ============================================================== */}
         {/* FILTER PILLS & SORTING BAR */}
         {/* ============================================================== */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-[#33292C]">
+        <div
+          id="gallery-grid"
+          className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-[#33292C]"
+        >
           {/* Category Filter Pills (Horizontal scroll on mobile) */}
           <div className="overflow-x-auto pb-2 -mx-2 px-2 scrollbar-none">
             <div className="flex items-center space-x-2 min-w-max">
