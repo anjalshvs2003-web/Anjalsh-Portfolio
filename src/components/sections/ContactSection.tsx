@@ -40,7 +40,6 @@ export default function ContactSection() {
 
       if (res.ok) {
         if (data.configured === false) {
-          // Backend is not configured yet - honest transparent notice
           setStatus("unconfigured");
           setResponseMessage(data.message);
           const mailSubject = encodeURIComponent(`[Portfolio Inquiry] ${formData.projectType} - ${formData.name}`);
@@ -49,7 +48,6 @@ export default function ContactSection() {
           );
           setMailToLink(`mailto:${siteConfig.contact.email}?subject=${mailSubject}&body=${mailBody}`);
         } else {
-          // Live sent
           setStatus("success");
           setResponseMessage(data.message || "Message successfully sent.");
           setFormData({
@@ -71,7 +69,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32 px-6 sm:px-8 lg:px-12 bg-[#09090b] border-t border-white/[0.06]">
+    <section id="contact" className="relative py-28 sm:py-36 px-6 sm:px-8 lg:px-12 bg-[#080808] border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           number="06"
@@ -81,26 +79,27 @@ export default function ContactSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Direct Info & Guidelines */}
+          {/* Left Column: Direct Info & Editorial Headline */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <span className="text-xs font-mono tracking-widest text-zinc-500 uppercase">
-                INQUIRY GUIDELINES
+              <span className="text-[10px] font-mono tracking-ultra text-zinc-500 uppercase">
+                INQUIRY & DISPATCH
               </span>
-              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Let&apos;s build something resonant.
+              <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.05]">
+                HAVE A PROJECT IN MIND? <br />
+                <span className="text-accent">LET&apos;S CREATE SOMETHING MEANINGFUL.</span>
               </h3>
-              <p className="text-zinc-400 text-sm font-light leading-relaxed">
-                Whether you have a fully formed storyboard, a rough concept deck, or a set of RAW video reels requiring color timing in DaVinci Resolve, Anjalsh collaborates with agencies, production houses, and visionary creators.
+              <p className="text-muted text-sm font-light leading-relaxed">
+                Whether you have a fully formed storyboard, a rough concept deck, or a set of RAW video reels requiring color timing in DaVinci Resolve, Anjalsh collaborates with agencies, production houses, and visionary creators worldwide.
               </p>
             </div>
 
             {/* Quick Contact Cards */}
             <div className="space-y-3 font-mono text-xs">
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center space-x-3">
+              <div className="p-4 rounded-xl bg-[#111111] border border-white/[0.06] flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-accent shrink-0" />
                 <div>
-                  <span className="text-zinc-500 text-[10px] block">DIRECT EMAIL</span>
+                  <span className="text-zinc-500 text-[10px] block">DIRECT DISPATCH</span>
                   <a
                     href={`mailto:${siteConfig.contact.email}`}
                     className="text-white hover:text-accent transition-colors"
@@ -110,7 +109,7 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center space-x-3">
+              <div className="p-4 rounded-xl bg-[#111111] border border-white/[0.06] flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-accent shrink-0" />
                 <div>
                   <span className="text-zinc-500 text-[10px] block">BASE LOCATION</span>
@@ -118,7 +117,7 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center space-x-3">
+              <div className="p-4 rounded-xl bg-[#111111] border border-white/[0.06] flex items-center space-x-3">
                 <Instagram className="w-4 h-4 text-accent shrink-0" />
                 <div>
                   <span className="text-zinc-500 text-[10px] block">INSTAGRAM DIRECT MESSAGE</span>
@@ -135,14 +134,14 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-white/[0.01] border border-white/[0.04] text-[11px] font-mono text-zinc-500">
+            <div className="p-4 rounded-xl bg-[#111111]/50 border border-white/[0.04] text-[11px] font-mono text-zinc-500">
               ⚡ {siteConfig.contact.note}
             </div>
           </div>
 
           {/* Right Column: Functional Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-2xl bg-[#0c0c0e] border border-white/10 shadow-2xl relative">
+            <div className="p-8 sm:p-10 rounded-2xl bg-[#111111] border border-white/10 shadow-2xl relative">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name */}
@@ -158,7 +157,7 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="e.g. Elena Rostova"
-                      className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-accent font-mono text-xs transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-accent font-mono text-xs transition-colors"
                     />
                   </div>
 
@@ -175,7 +174,7 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="e.g. elena@production.com"
-                      className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-accent font-mono text-xs transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-accent font-mono text-xs transition-colors"
                     />
                   </div>
                 </div>
@@ -191,7 +190,7 @@ export default function ContactSection() {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-[#141416] border border-white/10 text-white focus:outline-none focus:border-accent font-mono text-xs transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white focus:outline-none focus:border-accent font-mono text-xs transition-colors"
                     >
                       {siteConfig.services.map((s) => (
                         <option key={s.id} value={s.title}>
@@ -214,7 +213,7 @@ export default function ContactSection() {
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-[#141416] border border-white/10 text-white focus:outline-none focus:border-accent font-mono text-xs transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white focus:outline-none focus:border-accent font-mono text-xs transition-colors"
                     >
                       <option value="Under $2,000">Under $2,000 / &lt; ₹1.5L</option>
                       <option value="$2,000 – $5,000">$2,000 – $5,000 / ₹1.5L – ₹4L</option>
@@ -238,7 +237,7 @@ export default function ContactSection() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Describe your project, shooting timeline, camera requirements, or visual goals..."
-                    className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-accent font-mono text-xs transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-accent font-mono text-xs transition-colors resize-none"
                   />
                 </div>
 
@@ -246,7 +245,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="w-full py-4 rounded-xl bg-accent text-black font-semibold text-xs font-mono tracking-widest uppercase hover:bg-accent-hover transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg shadow-accent/20 disabled:opacity-50"
+                  className="w-full py-4 rounded-xl bg-accent text-black font-semibold text-xs font-mono tracking-widest uppercase hover:bg-accent-hover transition-all duration-300 flex items-center justify-center space-x-2 shadow-[0_0_25px_rgba(212,255,0,0.3)] disabled:opacity-50"
                 >
                   {status === "submitting" ? (
                     <>

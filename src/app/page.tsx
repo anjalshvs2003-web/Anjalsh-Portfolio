@@ -17,7 +17,7 @@ export default function HomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative bg-[#0a0a0a] min-h-screen text-white">
+    <div className="relative bg-[#080808] min-h-screen text-white">
       {/* Navigation */}
       <Navbar
         isMobileMenuOpen={isMobileMenuOpen}

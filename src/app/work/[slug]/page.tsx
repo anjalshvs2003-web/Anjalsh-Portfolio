@@ -46,7 +46,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const nextProject = currentIndex < projectsData.length - 1 ? projectsData[currentIndex + 1] : projectsData[0];
 
   return (
-    <div className="bg-[#0a0a0a] min-h-screen text-white">
+    <div className="bg-[#080808] min-h-screen text-white">
       <Navbar />
 
       <main className="pt-28 pb-24 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto">

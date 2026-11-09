@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="bg-[#0a0a0a] min-h-screen text-white pt-16">
+    <div className="bg-[#080808] min-h-screen text-white pt-16">
       <Navbar />
       <SelectedWork />
       <Footer />

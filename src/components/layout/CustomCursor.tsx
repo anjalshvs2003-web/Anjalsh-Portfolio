@@ -29,7 +29,6 @@ export default function CustomCursor() {
       mouseY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
 
-      // Check hovered element
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
@@ -77,24 +76,24 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          width: cursorText ? 84 : isPointer ? 48 : 28,
-          height: cursorText ? 84 : isPointer ? 48 : 28,
+          width: cursorText ? 88 : isPointer ? 48 : 30,
+          height: cursorText ? 88 : isPointer ? 48 : 30,
           backgroundColor: cursorText
-            ? "rgba(10, 10, 10, 0.9)"
+            ? "rgba(8, 8, 8, 0.92)"
             : isPointer
-            ? "rgba(229, 169, 60, 0.15)"
+            ? "rgba(212, 255, 0, 0.12)"
             : "transparent",
           borderColor: cursorText
-            ? "rgba(229, 169, 60, 0.8)"
+            ? "rgba(212, 255, 0, 0.85)"
             : isPointer
-            ? "rgba(229, 169, 60, 0.6)"
+            ? "rgba(212, 255, 0, 0.6)"
             : "rgba(255, 255, 255, 0.25)",
           borderWidth: "1px",
         }}
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
       >
         {cursorText ? (
-          <span className="text-[10px] font-mono tracking-widest text-accent uppercase font-medium">
+          <span className="text-[10px] font-mono tracking-widest text-accent uppercase font-semibold">
             {cursorText}
           </span>
         ) : null}
@@ -102,7 +101,7 @@ export default function CustomCursor() {
 
       {/* Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-accent pointer-events-none"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-accent pointer-events-none shadow-[0_0_8px_rgba(212,255,0,0.8)]"
         style={{
           x: mouseX,
           y: mouseY,
@@ -110,7 +109,7 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          scale: cursorText ? 0 : isPointer ? 1.5 : 1,
+          scale: cursorText ? 0 : isPointer ? 1.4 : 1,
           opacity: isVisible ? 1 : 0,
         }}
         transition={{ duration: 0.15 }}

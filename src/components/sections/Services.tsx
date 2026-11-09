@@ -14,16 +14,16 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="relative py-24 sm:py-32 px-6 sm:px-8 lg:px-12 bg-[#0a0a0a]">
+    <section id="services" className="relative py-28 sm:py-36 px-6 sm:px-8 lg:px-12 bg-[#080808]">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           number="03"
-          tag="DISCIPLINES & EXPERTISE"
+          tag="DISCIPLINES & OFFERINGS"
           title="SERVICES & CREATIVE OFFERINGS"
-          description="From initial script concepts and on-set camera operation to final DaVinci Resolve color grading and next-generation AI cinema."
+          description="From initial script concepts and on-set camera operation to final DaVinci Resolve color timing, brand systems, and next-generation AI cinema."
         />
 
-        {/* Services Accordion List */}
+        {/* Services Accordion List with Minimal Swiss Layout */}
         <div className="border-t border-white/[0.08] divide-y divide-white/[0.08]">
           {siteConfig.services.map((service) => {
             const isExpanded = expandedId === service.id;
@@ -32,13 +32,13 @@ export default function Services() {
               <div
                 key={service.id}
                 className={`transition-colors duration-300 ${
-                  isExpanded ? "bg-white/[0.02]" : "hover:bg-white/[0.01]"
+                  isExpanded ? "bg-[#111111]/80" : "hover:bg-[#111111]/40"
                 }`}
               >
-                {/* Header row */}
+                {/* Header Row */}
                 <button
                   onClick={() => toggleService(service.id)}
-                  className="w-full py-7 px-4 sm:px-6 flex items-center justify-between text-left group"
+                  className="w-full py-8 px-4 sm:px-6 flex items-center justify-between text-left group"
                   aria-expanded={isExpanded}
                 >
                   <div className="flex items-baseline space-x-4 sm:space-x-8">
@@ -49,7 +49,7 @@ export default function Services() {
                       <h3 className="font-heading text-xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-accent transition-colors">
                         {service.title}
                       </h3>
-                      <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider block sm:inline sm:ml-4">
+                      <span className="text-[11px] font-mono text-muted uppercase tracking-wider block sm:inline sm:ml-4">
                         {service.shortTag}
                       </span>
                     </div>
@@ -77,7 +77,7 @@ export default function Services() {
                       <div className="pt-2">
                         <Link
                           href={`#contact?service=${encodeURIComponent(service.title)}`}
-                          className="inline-flex items-center space-x-2 text-xs font-mono tracking-wider text-accent hover:underline uppercase"
+                          className="inline-flex items-center space-x-2 text-xs font-mono tracking-wider text-accent hover:underline uppercase font-medium"
                         >
                           <span>INQUIRE FOR {service.title}</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />
@@ -87,23 +87,23 @@ export default function Services() {
 
                     {/* Middle: Deliverables */}
                     <div className="md:col-span-3 space-y-2">
-                      <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-500 block mb-2">
+                      <span className="text-[10px] font-mono uppercase tracking-ultra text-zinc-500 block mb-2">
                         KEY DELIVERABLES
                       </span>
-                      <ul className="space-y-1.5 font-mono text-xs text-zinc-400">
+                      <ul className="space-y-1.5 font-mono text-xs text-muted">
                         {service.deliverables.map((item) => (
                           <li key={item} className="flex items-center space-x-2">
                             <Check className="w-3.5 h-3.5 text-accent shrink-0" />
-                            <span>{item}</span>
+                            <span className="text-zinc-300">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    {/* Right: Tools & Environment */}
+                    {/* Right: Tools & Methodology */}
                     <div className="md:col-span-3 space-y-2">
-                      <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-500 block mb-2">
-                        TOOLS & METHODOLOGY
+                      <span className="text-[10px] font-mono uppercase tracking-ultra text-zinc-500 block mb-2">
+                        METHODOLOGY & SUITE
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {service.tools.map((tool) => (
@@ -124,19 +124,19 @@ export default function Services() {
         </div>
 
         {/* Custom Commission Prompt */}
-        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-white/[0.02] to-white/[0.04] border border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="mt-16 p-8 sm:p-10 rounded-2xl bg-[#111111] border border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
             <h4 className="font-heading text-lg sm:text-xl font-bold text-white">
-              Need a bespoke combination of services?
+              Need a bespoke directorial or post-production package?
             </h4>
-            <p className="text-zinc-400 text-xs sm:text-sm font-light mt-1">
+            <p className="text-muted text-xs sm:text-sm font-light mt-1">
               From end-to-end commercial production to dedicated color grading packages, projects can be tailored to your exact scope.
             </p>
           </div>
 
           <Link
             href="#contact"
-            className="px-6 py-3 rounded-full bg-white text-black font-mono text-xs font-semibold hover:bg-accent transition-colors shrink-0"
+            className="px-7 py-3.5 rounded-full bg-white text-black font-mono text-xs font-semibold hover:bg-accent transition-colors shrink-0 shadow-lg"
           >
             DISCUSS PROJECT SCOPE
           </Link>
