@@ -1,20 +1,23 @@
 import { ExperienceItem, ServiceItem, SocialLink } from "@/types";
+import rawData from "./portfolioData.json";
+
+const words = rawData.siteWords;
 
 export const siteConfig = {
   name: "ANJALSH®️",
   author: "Anjalsh V.S.",
-  title: "Anjalsh V.S. — Filmmaker & Visual Artist",
-  tagline: "I CREATE VISUALS THAT TELL STORIES.",
-  profession: "Filmmaker & Visual Artist",
-  location: "Kerala, India",
+  title: `Anjalsh V.S. — ${words.profession || "Filmmaker & Visual Artist"}`,
+  tagline: words.tagline || "I CREATE VISUALS THAT TELL STORIES.",
+  profession: words.profession || "Filmmaker & Visual Artist",
+  location: words.location || "Kerala, India",
   profileImage: "/images/photography/anjalsh-portrait.jpg",
   timezone: "Asia/Kolkata",
-  availabilityStatus: "Available for Select Commissions & Directorial Work",
+  availabilityStatus: words.availabilityStatus || "Available for Select Commissions & Directorial Work",
   bio: {
-    hero: "Filmmaker & Visual Artist based in Kerala, India. Crafting cinematic visual narratives with intentional light sculpting, editorial precision, and evocative atmosphere.",
-    positioning: "An independent creative professional working across filmmaking, cinematography, photography, graphic design, motion graphics and emerging visual technologies.",
-    full: "Rooted in high-end cinematography, post-production and contemporary digital direction, Anjalsh fuses disciplined visual craft with emerging storytelling tools. From commercial campaigns and brand films to documentary photography and experimental AI cinema, every frame is treated as an intentional emotional dialogue between light, movement, and human resonance.",
-    mission: "Rejecting generic visual noise in pursuit of enduring atmospheres, meticulous colour grading, and evocative audiovisual compositions.",
+    hero: words.heroDescription || "Filmmaker & Visual Artist based in Kerala, India. Crafting cinematic visual narratives with intentional light sculpting, editorial precision, and evocative atmosphere.",
+    positioning: words.bioPositioning || "An independent creative professional working across filmmaking, cinematography, photography, graphic design, motion graphics and emerging visual technologies.",
+    full: words.bioFull || "Rooted in high-end cinematography, post-production and contemporary digital direction, Anjalsh fuses disciplined visual craft with emerging storytelling tools. From commercial campaigns and brand films to documentary photography and experimental AI cinema, every frame is treated as an intentional emotional dialogue between light, movement, and human resonance.",
+    mission: words.bioMission || "Rejecting generic visual noise in pursuit of enduring atmospheres, meticulous colour grading, and evocative audiovisual compositions.",
   },
   creativeArsenal: {
     cameras: ["Blackmagic Cinema 6K / RAW", "Sony FX Cinema Line (FX3 / FX6)", "Arri / RED RAW Workflows"],
@@ -180,8 +183,8 @@ export const siteConfig = {
   ] as ServiceItem[],
 
   contact: {
-    email: "contact@anjalsh.com",
-    phone: "+91 (Kerala, India)",
+    email: words.contactEmail || "contact@anjalsh.com",
+    phone: words.contactPhone || "+91 (Kerala, India)",
     note: "Response within 24–48 hours for verified project inquiries.",
   },
 

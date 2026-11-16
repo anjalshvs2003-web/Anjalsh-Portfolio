@@ -75,3 +75,32 @@ export interface SocialLink {
   handle: string;
   featured?: boolean;
 }
+
+export interface SiteWords {
+  tagline: string;
+  profession: string;
+  location: string;
+  badge: string;
+  availabilityStatus: string;
+  heroDescription: string;
+  bioPositioning: string;
+  bioMission: string;
+  bioFull: string;
+  contactEmail: string;
+  contactPhone: string;
+}
+
+export interface ScrollingArcConfig {
+  title: string;
+  badge: string;
+  speed: "slow" | "normal" | "fast";
+  pauseOnHover: boolean;
+  direction?: "left" | "right";
+  selectedProjectIds: string[];
+}
+
+export interface PortfolioData {
+  siteWords: SiteWords;
+  scrollingArcConfig: ScrollingArcConfig;
+  projects: Project[];
+}

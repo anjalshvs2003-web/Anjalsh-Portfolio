@@ -1,0 +1,927 @@
+{
+  "siteWords": {
+    "tagline": "I CREATE VISUALS THAT TELL STORIES.",
+    "profession": "Filmmaker & Visual Artist",
+    "location": "Kerala, India",
+    "badge": "ANJALSH V.S. \u2022 PORTFOLIO",
+    "availabilityStatus": "Available for Select Commissions & Directorial Work",
+    "heroDescription": "Filmmaker & Visual Artist based in Kerala, India. Crafting cinematic visual narratives with intentional light sculpting, editorial precision, and evocative atmosphere.",
+    "bioPositioning": "An independent creative professional working across filmmaking, cinematography, photography, graphic design, motion graphics and emerging visual technologies. Crafting intentional lighting, disciplined Swiss typography, and high-fidelity colour grading for commercials, films, and brands.",
+    "bioMission": "Rejecting generic visual noise in pursuit of enduring atmospheres, meticulous colour grading, and evocative audiovisual compositions.",
+    "bioFull": "Rooted in high-end cinematography, post-production and contemporary digital direction, Anjalsh fuses disciplined visual craft with emerging storytelling tools. From commercial campaigns and brand films to documentary photography and experimental AI cinema, every frame is treated as an intentional emotional dialogue between light, movement, and human resonance.",
+    "contactEmail": "contact@anjalsh.com",
+    "contactPhone": "+91 (Kerala, India)"
+  },
+  "scrollingArcConfig": {
+    "title": "CURATED EXHIBITION ARC",
+    "badge": "INFINITE LOOP EXHIBITION",
+    "speed": "normal",
+    "pauseOnHover": true,
+    "direction": "left",
+    "selectedProjectIds": [
+      "proj-ai-01",
+      "proj-photo-anjalsh",
+      "proj-photo-01",
+      "proj-ai-02",
+      "proj-photo-02",
+      "proj-gd-01",
+      "proj-cine-01",
+      "proj-gd-05",
+      "proj-ai-03",
+      "proj-gd-04",
+      "proj-edit-01",
+      "proj-gd-02",
+      "proj-gd-07",
+      "proj-motion-01",
+      "proj-comm-02",
+      "proj-brand-01"
+    ]
+  },
+  "projects": [
+    {
+      "id": "proj-ai-01",
+      "slug": "the-forgotten-smile-ai-film",
+      "title": "The Forgotten Smile",
+      "category": "AI Films",
+      "year": "2024",
+      "client": "Original AI Short Film",
+      "role": "Director & AI Filmmaker",
+      "shortDescription": "A poignant emotional journey rendered through neural video synthesis, exploring memory, longing, and human expression.",
+      "fullDescription": "Conceived and directed by Anjalsh V.S., 'The Forgotten Smile' is a cinematic AI short exploring the fragile nostalgia of lost human connections. Created using state-of-the-art generative neural pipelines, precision motion guidance, and atmospheric sound design, then graded in DaVinci Resolve to evoke the tactile richness of 35mm film.",
+      "coverImage": "/images/ai-films/the-forgotten-smile.jpg",
+      "featured": true,
+      "aspectRatio": "16:9",
+      "tags": [
+        "AI Film",
+        "Runway Gen-3",
+        "Midjourney",
+        "Emotional Cinema",
+        "DaVinci Resolve"
+      ],
+      "gallery": [
+        {
+          "type": "video",
+          "url": "/videos/the-forgotten-smile.mp4",
+          "caption": "The Forgotten Smile \u2014 Full AI Short Film"
+        },
+        {
+          "type": "image",
+          "url": "/images/ai-films/the-forgotten-smile.jpg",
+          "caption": "High-resolution optical frame grab from The Forgotten Smile"
+        }
+      ],
+      "videoUrl": "/videos/the-forgotten-smile.mp4",
+      "technicalDetails": {
+        "camera": "Neural Video Generation & Optical Flow Synthesis",
+        "software": [
+          "Runway Gen-3",
+          "Midjourney",
+          "DaVinci Resolve Studio",
+          "Premiere Pro"
+        ],
+        "colourSpace": "Rec.709 D65",
+        "aspectRatio": "16:9",
+        "runtime": "00:37"
+      },
+      "credits": [
+        {
+          "role": "Director & AI Artist",
+          "name": "Anjalsh V.S."
+        },
+        {
+          "role": "Editing & Sound Design",
+          "name": "Anjalsh V.S."
+        },
+        {
+          "role": "Colorist",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-ai-02",
+      "slug": "the-last-letter-out-ai-film",
+      "title": "The Last Letter Out",
+      "category": "AI Films",
+      "year": "2024",
+      "client": "Original AI Short Film",
+      "role": "Director & AI Filmmaker",
+      "shortDescription": "An evocative wartime visual poem capturing the weight of farewells and solitude across cinematic painterly frames.",
+      "fullDescription": "Directed by Anjalsh V.S., 'The Last Letter Out' weaves melancholic historical atmosphere with next-generation AI diffusion models. Each scene was crafted with tailored prompt architectures and motion controls, followed by meticulous non-linear pacing and DaVinci Resolve color timing to maintain an immersive period aesthetic.",
+      "coverImage": "/images/ai-films/the-last-letter-out.jpg",
+      "featured": true,
+      "aspectRatio": "16:9",
+      "tags": [
+        "AI Cinema",
+        "Visual Poem",
+        "Period Drama",
+        "Sound Design",
+        "Neural Generation"
+      ],
+      "gallery": [
+        {
+          "type": "video",
+          "url": "/videos/the-last-letter-out.mp4",
+          "caption": "The Last Letter Out \u2014 Full AI Short Film"
+        },
+        {
+          "type": "image",
+          "url": "/images/ai-films/the-last-letter-out.jpg",
+          "caption": "Atmospheric portrait frame grab from The Last Letter Out"
+        }
+      ],
+      "videoUrl": "/videos/the-last-letter-out.mp4",
+      "technicalDetails": {
+        "camera": "Generative Neural Diffusion Engine",
+        "software": [
+          "Runway Gen-3",
+          "Midjourney",
+          "DaVinci Resolve",
+          "Sound Design Suite"
+        ],
+        "colourSpace": "Rec.709 Film Emulation",
+        "aspectRatio": "16:9",
+        "runtime": "00:36"
+      },
+      "credits": [
+        {
+          "role": "Director & AI Artist",
+          "name": "Anjalsh V.S."
+        },
+        {
+          "role": "Sound & Post-Production",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-ai-03",
+      "slug": "the-unseen-vision-ai-film",
+      "title": "The Unseen Vision",
+      "category": "AI Films",
+      "year": "2024",
+      "client": "Original AI Short Film",
+      "role": "Director & AI Filmmaker",
+      "shortDescription": "A surreal, transcendent visual odyssey examining unseen dimensions of consciousness and surreal world-building.",
+      "fullDescription": "Directed and designed by Anjalsh V.S., 'The Unseen Vision' pushes the boundaries of speculative AI filmmaking. Combining surreal spatial environments with hypnotic rhythmic cuts and intense sub-bass sound design, the piece showcases the bleeding edge of modern generative cinematic craft.",
+      "coverImage": "/images/ai-films/the-unseen-vision.jpg",
+      "featured": true,
+      "aspectRatio": "16:9",
+      "tags": [
+        "AI Films",
+        "Surrealism",
+        "World Building",
+        "Sound Design",
+        "ComfyUI"
+      ],
+      "gallery": [
+        {
+          "type": "video",
+          "url": "/videos/the-unseen-vision.mp4",
+          "caption": "The Unseen Vision \u2014 Full AI Short Film"
+        },
+        {
+          "type": "image",
+          "url": "/images/ai-films/the-unseen-vision.jpg",
+          "caption": "Cinematic keyframe from The Unseen Vision"
+        }
+      ],
+      "videoUrl": "/videos/the-unseen-vision.mp4",
+      "technicalDetails": {
+        "camera": "Neural Diffusion & Motion Interpolation Pipeline",
+        "software": [
+          "Runway Gen-3",
+          "ComfyUI",
+          "DaVinci Resolve Studio",
+          "After Effects"
+        ],
+        "colourSpace": "Wide Gamut DCI-P3 / Rec.709",
+        "aspectRatio": "16:9",
+        "runtime": "00:59"
+      },
+      "credits": [
+        {
+          "role": "Director & Concept Artist",
+          "name": "Anjalsh V.S."
+        },
+        {
+          "role": "AI Prompt Engineering",
+          "name": "Anjalsh V.S."
+        },
+        {
+          "role": "Editor & Colorist",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-photo-anjalsh",
+      "slug": "anjalsh-cinematic-self-portrait",
+      "title": "Anjalsh V.S. \u2014 Low-Key Cinematic Portrait",
+      "category": "Photography",
+      "year": "2024",
+      "client": "Creative Identity & Personal Archive",
+      "role": "Photographer & Subject",
+      "shortDescription": "A minimalist low-key self-portrait study captured in high-contrast monochrome with deep negative space.",
+      "fullDescription": "An authentic photographic study exploring focus, contemplation, and modern digital creative practice. Captured against an absolute black backdrop with directional softbox key lighting, emphasizing clean monochrome tones and character.",
+      "coverImage": "/images/photography/anjalsh-portrait.jpg",
+      "featured": true,
+      "aspectRatio": "4:5",
+      "tags": [
+        "Anjalsh V.S.",
+        "Portrait Photography",
+        "Monochrome",
+        "Low-Key",
+        "Self-Portrait",
+        "Identity"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/photography/anjalsh-portrait.jpg",
+          "caption": "Anjalsh V.S. in low-key chiaroscuro lighting against pitch black"
+        }
+      ],
+      "technicalDetails": {
+        "camera": "Prime Lens Optics & Directional Softbox",
+        "software": [
+          "Capture One Pro",
+          "Adobe Photoshop"
+        ],
+        "colourSpace": "Monochrome ACES Black & White",
+        "aspectRatio": "4:5"
+      },
+      "credits": [
+        {
+          "role": "Photographer & Retoucher",
+          "name": "Anjalsh V.S."
+        },
+        {
+          "role": "Subject",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-photo-01",
+      "slug": "im-vijayan-editorial-portrait",
+      "title": "I.M. Vijayan: The Legend in Chiaroscuro",
+      "category": "Photography",
+      "year": "2024",
+      "client": "Editorial Portrait Series",
+      "role": "Director of Photography & Lead Photographer",
+      "shortDescription": "An intimate black-and-white and low-key editorial portrait study of Indian football legend and actor I.M. Vijayan.",
+      "fullDescription": "Captured with striking chiaroscuro lighting and deep shadow falloff, this portrait series documents legendary Indian football captain and actor I.M. Vijayan. Focusing on character lines, intense gaze, and understated authority, the frames strip away excess to reveal raw gravitas and timeless presence.",
+      "coverImage": "/images/photography/im-vijayan-cover.jpg",
+      "featured": true,
+      "aspectRatio": "4:5",
+      "tags": [
+        "I.M. Vijayan",
+        "Portrait Photography",
+        "Black & White",
+        "Editorial",
+        "Low-Key Lighting"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/photography/im-vijayan-cover.jpg",
+          "caption": "Intimate portrait frame of I.M. Vijayan captured under directional key light"
+        },
+        {
+          "type": "image",
+          "url": "/images/photography/im-vijayan-01.jpg",
+          "caption": "Wide cinematic profile frame emphasizing character lines and presence"
+        },
+        {
+          "type": "image",
+          "url": "/images/photography/im-vijayan-02.jpg",
+          "caption": "Reflective gaze in low-key shadow gradient"
+        }
+      ],
+      "technicalDetails": {
+        "camera": "Sony Cinema Line & Fast Prime Optics",
+        "software": [
+          "Capture One Pro",
+          "Adobe Photoshop",
+          "DaVinci Resolve"
+        ],
+        "colourSpace": "Monochrome Chiaroscuro & Rec.709",
+        "aspectRatio": "4:5"
+      },
+      "credits": [
+        {
+          "role": "Photographer & Retoucher",
+          "name": "Anjalsh V.S."
+        },
+        {
+          "role": "Subject",
+          "name": "I.M. Vijayan (Legendary Footballer & Actor)"
+        }
+      ]
+    },
+    {
+      "id": "proj-photo-02",
+      "slug": "monochrome-contours-sony-fx3",
+      "title": "Monochrome Contours: Sony FX3 Stills",
+      "category": "Photography",
+      "year": "2024",
+      "client": "Independent Photographic Series",
+      "role": "Cinematographer & Photographer",
+      "shortDescription": "A high-contrast portrait study captured on the Sony FX3 Cinema camera, exploring natural shadow gradients and tactile skin texture.",
+      "fullDescription": "Shot using Sony's Cinema Line FX3 body at ISO 800 base sensitivity with ultra-fast wide aperture glass. The series treats still portraiture with the kinetic sensibilities of motion picture framing, preserving natural skin micro-contrast and rich filmic tonality.",
+      "coverImage": "/images/photography/editorial-portrait-cover.jpg",
+      "featured": true,
+      "aspectRatio": "4:5",
+      "tags": [
+        "Sony FX3",
+        "Cinema Lens",
+        "Monochrome",
+        "Portraiture",
+        "Natural Light"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/photography/editorial-portrait-cover.jpg",
+          "caption": "Primary editorial portrait frame with high-contrast chiaroscuro"
+        },
+        {
+          "type": "image",
+          "url": "/images/photography/editorial-portrait-02.jpg",
+          "caption": "Atmospheric shadow composition and low-key silhouette"
+        },
+        {
+          "type": "image",
+          "url": "/images/photography/editorial-portrait-03.jpg",
+          "caption": "Tactile highlight falloff captured on Sony FX3 Cinema sensor"
+        }
+      ],
+      "technicalDetails": {
+        "camera": "Sony ILME-FX3 Cinema Line",
+        "software": [
+          "Capture One Pro",
+          "Adobe Photoshop"
+        ],
+        "colourSpace": "ACEScc Monochromatic Print",
+        "aspectRatio": "4:5"
+      },
+      "credits": [
+        {
+          "role": "Photographer",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-gd-01",
+      "slug": "luxe-gold-and-diamonds-campaign",
+      "title": "Luxe Gold & Diamonds: Haute Joaillerie",
+      "category": "Graphic Design",
+      "year": "2024",
+      "client": "Luxe Gold and Diamonds",
+      "role": "Lead Graphic Designer & Art Director",
+      "shortDescription": "A luxurious commercial print and digital campaign showcasing high-end diamond collections with Swiss typography and gold leaf accents.",
+      "fullDescription": "Designed for premier luxury jeweller Luxe Gold & Diamonds, this campaign fuses editorial high-fashion aesthetics with immaculate typography. Every composition balances negative space, macro jewellery detail, and restrained luxury palettes to elevate brand equity across regional and digital print formats.",
+      "coverImage": "/images/graphic-design/luxe-gold-01.jpg",
+      "featured": true,
+      "aspectRatio": "4:5",
+      "tags": [
+        "Luxury Branding",
+        "Jewellery Campaign",
+        "Typography",
+        "Editorial Poster",
+        "Luxe Gold"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/luxe-gold-01.jpg",
+          "caption": "Main campaign visual \u2014 Diamond Necklace Suite in Editorial Balance"
+        },
+        {
+          "type": "image",
+          "url": "/images/graphic-design/luxe-gold-02.jpg",
+          "caption": "Campaign Variant II \u2014 Minimalist Product Framing"
+        },
+        {
+          "type": "image",
+          "url": "/images/graphic-design/luxe-gold-03.jpg",
+          "caption": "Campaign Variant III \u2014 Modern Gold Craftsmanship Layout"
+        },
+        {
+          "type": "image",
+          "url": "/images/graphic-design/luxe-gold-04.jpg",
+          "caption": "Campaign Variant IV \u2014 High-Fashion Bridal Collection Visual"
+        }
+      ],
+      "technicalDetails": {
+        "software": [
+          "Adobe Photoshop",
+          "Adobe Illustrator",
+          "InDesign"
+        ],
+        "colourSpace": "CMYK & RGB High-Fidelity",
+        "aspectRatio": "4:5"
+      },
+      "credits": [
+        {
+          "role": "Art Direction & Graphic Design",
+          "name": "Anjalsh V.S."
+        },
+        {
+          "role": "Client",
+          "name": "Luxe Gold and Diamonds"
+        }
+      ]
+    },
+    {
+      "id": "proj-gd-02",
+      "slug": "eid-poster-architectural-visual",
+      "title": "Eid Al-Adha: Celestial Architecture",
+      "category": "Graphic Design",
+      "year": "2024",
+      "client": "Cultural Celebration Initiative",
+      "role": "Visual Designer & Typographer",
+      "shortDescription": "An intricate celebration visual balancing geometric Islamic arches, nocturnal indigo gradients, and illuminated typography.",
+      "fullDescription": "Created to celebrate Eid, this key visual explores architectural light patterns within grand arches. Rich midnight indigo and warm ambient light create a spiritual, majestic atmosphere, accompanied by bespoke geometric layout design.",
+      "coverImage": "/images/graphic-design/eid-poster.jpg",
+      "featured": false,
+      "aspectRatio": "4:5",
+      "tags": [
+        "Key Visual",
+        "Editorial Layout",
+        "Festival Design",
+        "Typography"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/eid-poster.jpg",
+          "caption": "Full resolution architectural key visual for Eid"
+        }
+      ],
+      "technicalDetails": {
+        "software": [
+          "Adobe Photoshop",
+          "Illustrator"
+        ],
+        "colourSpace": "Ultra HD DCI-P3",
+        "aspectRatio": "4:5"
+      },
+      "credits": [
+        {
+          "role": "Graphic Art & Typography",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-gd-03",
+      "slug": "world-alzheimers-day-awareness",
+      "title": "Echoes of Memory: World Alzheimer's Day",
+      "category": "Graphic Design",
+      "year": "2024",
+      "client": "Public Health & Social Initiative",
+      "role": "Concept & Graphic Designer",
+      "shortDescription": "A minimalist awareness poster exploring fading memory, neurological contours, and compassionate visual messaging.",
+      "fullDescription": "A sensitive and powerful awareness visual for World Alzheimer's Day. The design symbolizes the gentle dissolution and emotional endurance of human memories using minimalist typography, delicate contours, and thoughtful negative space.",
+      "coverImage": "/images/graphic-design/alzheimers-day.jpg",
+      "featured": false,
+      "aspectRatio": "4:5",
+      "tags": [
+        "Social Impact",
+        "Awareness Campaign",
+        "Minimalism",
+        "Editorial"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/alzheimers-day.jpg",
+          "caption": "World Alzheimer's Day awareness poster layout"
+        }
+      ],
+      "technicalDetails": {
+        "software": [
+          "Adobe Illustrator",
+          "Photoshop"
+        ],
+        "colourSpace": "sRGB & Print CMYK",
+        "aspectRatio": "4:5"
+      },
+      "credits": [
+        {
+          "role": "Concept & Design",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-gd-04",
+      "slug": "ethnic-couturier-brand-visual",
+      "title": "Ethnic Couturier: Contemporary Heritage",
+      "category": "Graphic Design",
+      "year": "2024",
+      "client": "Ethnic Wear & Apparel Brand",
+      "role": "Brand Designer & Art Director",
+      "shortDescription": "A high-fashion promotional key visual combining traditional textile motifs with bold contemporary editorial type hierarchy.",
+      "fullDescription": "Crafted for an exclusive ethnic couture label, this visual highlights traditional embroidery textures framed with bold grotesque type and asymmetric editorial grids, bridging heritage crafts with Gen-Z fashion appetite.",
+      "coverImage": "/images/graphic-design/ethnic-post.jpg",
+      "featured": false,
+      "aspectRatio": "1:1",
+      "tags": [
+        "Fashion Branding",
+        "Textile Design",
+        "Editorial Poster",
+        "Social Campaign"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/ethnic-post.jpg",
+          "caption": "Square social key visual for Ethnic Couturier"
+        }
+      ],
+      "technicalDetails": {
+        "software": [
+          "Adobe Photoshop",
+          "Illustrator"
+        ],
+        "colourSpace": "sRGB",
+        "aspectRatio": "1:1"
+      },
+      "credits": [
+        {
+          "role": "Brand Visuals",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-gd-05",
+      "slug": "onam-heritage-visual-celebration",
+      "title": "Onam: Harvest of Light & Heritage",
+      "category": "Graphic Design",
+      "year": "2024",
+      "client": "Kerala Cultural Festival Visual",
+      "role": "Graphic Artist & Typographer",
+      "shortDescription": "A vibrant contemporary reinterpretation of Kerala's harvest festival through dynamic typography, floral geometry, and warm festive palettes.",
+      "fullDescription": "A celebratory tribute to Kerala's most cherished cultural festival. Designed with layered floral Athapookkalam motifs, golden festival typography, and sun-drenched festive tones.",
+      "coverImage": "/images/graphic-design/onam-visual.jpg",
+      "featured": false,
+      "aspectRatio": "4:5",
+      "tags": [
+        "Kerala Heritage",
+        "Festival Visual",
+        "Illustration",
+        "Typography"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/onam-visual.jpg",
+          "caption": "Onam celebratory festive visual poster"
+        }
+      ],
+      "technicalDetails": {
+        "software": [
+          "Adobe Photoshop",
+          "Illustrator"
+        ],
+        "colourSpace": "sRGB",
+        "aspectRatio": "4:5"
+      },
+      "credits": [
+        {
+          "role": "Graphic Artist",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-gd-06",
+      "slug": "janat-couture-winter-campaign",
+      "title": "Janat: Winter Editorial Lookbook",
+      "category": "Graphic Design",
+      "year": "2025",
+      "client": "Janat Apparel",
+      "role": "Art Director & Typographer",
+      "shortDescription": "Seasonal fashion lookbook layout fusing high-contrast editorial photography with minimal Swiss typographic margins.",
+      "fullDescription": "Developed for the winter seasonal drop of Janat apparel. Features an asymmetric 12-column grid, disciplined whitespace, and sharp editorial typography that places apparel textures front and center.",
+      "coverImage": "/images/graphic-design/janat-campaign.jpg",
+      "featured": false,
+      "aspectRatio": "4:5",
+      "tags": [
+        "Lookbook",
+        "Editorial Layout",
+        "Fashion Typography",
+        "Janat"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/janat-campaign.jpg",
+          "caption": "Janat editorial lookbook poster"
+        }
+      ],
+      "technicalDetails": {
+        "software": [
+          "InDesign",
+          "Photoshop"
+        ],
+        "colourSpace": "FOGRA39 CMYK",
+        "aspectRatio": "4:5"
+      },
+      "credits": [
+        {
+          "role": "Art Direction",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-gd-07",
+      "slug": "my-radio-broadcast-visual-identity",
+      "title": "My Radio: Acoustic Broadcast Identity",
+      "category": "Graphic Design",
+      "year": "2024",
+      "client": "Broadcast Media Station",
+      "role": "Brand & Graphic Designer",
+      "shortDescription": "Dynamic square brand visual combining audio waveform motifs with punchy modernist typography for digital streaming channels.",
+      "fullDescription": "Created for digital and radio broadcast promotion. Bold typography and acoustic wave patterns communicate immediacy and cultural rhythm across mobile listening apps and promotional out-of-home screens.",
+      "coverImage": "/images/graphic-design/my-radio.jpg",
+      "featured": false,
+      "aspectRatio": "1:1",
+      "tags": [
+        "Radio Identity",
+        "Audio Branding",
+        "Square Ad",
+        "Typography"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/my-radio.jpg",
+          "caption": "My Radio key visual composition"
+        }
+      ],
+      "technicalDetails": {
+        "software": [
+          "Illustrator",
+          "Photoshop"
+        ],
+        "colourSpace": "sRGB",
+        "aspectRatio": "1:1"
+      },
+      "credits": [
+        {
+          "role": "Brand Designer",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-comm-02",
+      "slug": "luxe-diamond-commercial-spot",
+      "title": "Luxe Gold: Radiant Solitaire Spot",
+      "category": "Commercial Advertising",
+      "year": "2024",
+      "client": "Luxe Gold & Diamonds",
+      "role": "Video Editor & Colourist",
+      "shortDescription": "Broadcast commercial ad crafted for regional television and high-conversion social media ads.",
+      "fullDescription": "Produced for regional television broadcast and mobile vertical feeds. Combines close-up hand movements, prismatic diamond flares, and delicate acoustic strings into a 30-second aspirational luxury film.",
+      "coverImage": "/images/graphic-design/luxe-gold-03.jpg",
+      "featured": false,
+      "aspectRatio": "16:9",
+      "tags": [
+        "Television Commercial",
+        "Jewellery Ad",
+        "Broadcast",
+        "DaVinci Resolve"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/luxe-gold-03.jpg",
+          "caption": "Broadcast master frame"
+        }
+      ],
+      "technicalDetails": {
+        "software": [
+          "DaVinci Resolve",
+          "Premiere Pro"
+        ],
+        "colourSpace": "Rec.709 Broadcast",
+        "aspectRatio": "16:9"
+      },
+      "credits": [
+        {
+          "role": "Editor & Colorist",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-brand-01",
+      "slug": "luxe-gold-brand-architecture",
+      "title": "Luxe Gold & Diamonds: Brand Identity Architecture",
+      "category": "Branding",
+      "year": "2024",
+      "client": "Luxe Gold and Diamonds",
+      "role": "Brand Identity Designer & Art Director",
+      "shortDescription": "Complete brand architecture, bespoke monogram emblem, typography guidelines, and luxury packaging suites.",
+      "fullDescription": "An end-to-end luxury identity system for Luxe Gold & Diamonds. Covers brand guidelines, premium foiled stationery, retail boutique signage, and unboxing packaging that cements prestige and trust.",
+      "coverImage": "/images/graphic-design/luxe-gold-02.jpg",
+      "featured": true,
+      "aspectRatio": "4:5",
+      "tags": [
+        "Brand Identity",
+        "Luxury Monogram",
+        "Packaging Design",
+        "Guidelines"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/luxe-gold-02.jpg",
+          "caption": "Brand identity stationery and embossed business suite"
+        },
+        {
+          "type": "image",
+          "url": "/images/graphic-design/luxe-gold-04.jpg",
+          "caption": "Brand retail campaign layout"
+        }
+      ],
+      "technicalDetails": {
+        "software": [
+          "Adobe Illustrator",
+          "InDesign",
+          "Photoshop"
+        ],
+        "colourSpace": "Pantone Metallic & CMYK",
+        "aspectRatio": "4:5"
+      },
+      "credits": [
+        {
+          "role": "Brand Identity Lead",
+          "name": "Anjalsh V.S."
+        },
+        {
+          "role": "Client",
+          "name": "Luxe Gold and Diamonds"
+        }
+      ]
+    },
+    {
+      "id": "proj-gd-08",
+      "slug": "luxe-gold-craft-and-symmetry",
+      "title": "Luxe Gold & Diamonds: Precision Craft",
+      "category": "Graphic Design",
+      "year": "2024",
+      "client": "Luxe Gold & Diamonds",
+      "role": "Graphic Designer & Art Director",
+      "shortDescription": "Symmetrical high-fashion jewellery poster highlighting artisanal craftsmanship and precision typographic layout.",
+      "fullDescription": "Art directed and composed for Luxe Gold & Diamonds' signature campaign. Highlighting luxury geometric balance, refined serif and grotesk typography, and warm tactile gold tones.",
+      "coverImage": "/images/graphic-design/luxe-gold-04.jpg",
+      "featured": false,
+      "aspectRatio": "4:5",
+      "tags": [
+        "Haute Joaillerie",
+        "Typography",
+        "Luxury Branding",
+        "Photoshop"
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/images/graphic-design/luxe-gold-04.jpg",
+          "caption": "Precision craft print campaign"
+        }
+      ],
+      "credits": [
+        {
+          "role": "Art Director & Designer",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-cine-01",
+      "slug": "anamorphic-scope-cinematic-reel",
+      "title": "Anamorphic Scope: Cinematic Directorial Reel",
+      "category": "Cinematography",
+      "year": "2024",
+      "client": "Directorial Showcase",
+      "role": "Director of Photography & Colorist",
+      "shortDescription": "Cinematic 2.39:1 widescreen narrative visual reel featuring atmospheric lighting sculpting and ACEScc film stock emulation.",
+      "fullDescription": "Directed, shot and graded by Anjalsh V.S. Capturing raw emotional intensity, deep shadow rolloff, and intentional camera pacing across dramatic Kerala landscapes and low-light urban environments.",
+      "coverImage": "/images/ai-films/the-last-letter-out.jpg",
+      "videoUrl": "/videos/the-last-letter-out.mp4",
+      "featured": true,
+      "aspectRatio": "2.39:1",
+      "tags": [
+        "Cinematography",
+        "2.39:1 Scope",
+        "DaVinci Resolve",
+        "Directorial"
+      ],
+      "gallery": [
+        {
+          "type": "video",
+          "url": "/videos/the-last-letter-out.mp4",
+          "caption": "Anamorphic Scope Reel"
+        },
+        {
+          "type": "image",
+          "url": "/images/ai-films/the-last-letter-out.jpg",
+          "caption": "Anamorphic frame grab"
+        }
+      ],
+      "credits": [
+        {
+          "role": "Director & DP",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-edit-01",
+      "slug": "narrative-tempo-editorial-reel",
+      "title": "Narrative Tempo: Commercial Video Editing Reel",
+      "category": "Video Editing",
+      "year": "2024",
+      "client": "Commercial & Studio Projects",
+      "role": "Lead Video Editor & Colorist",
+      "shortDescription": "Dynamic non-linear commercial edit featuring precise rhythmic audio pacing, match cuts, and mood-driven color timing.",
+      "fullDescription": "A curated master cut of video editing works by Anjalsh V.S. Showcasing seamless audio-visual sync, tension building, match cutting, and high-fidelity DaVinci Resolve color finishing.",
+      "coverImage": "/images/ai-films/the-forgotten-smile.jpg",
+      "videoUrl": "/videos/the-forgotten-smile.mp4",
+      "featured": true,
+      "aspectRatio": "16:9",
+      "tags": [
+        "Video Editing",
+        "DaVinci Resolve",
+        "Commercial Cut",
+        "Rhythm & Pacing"
+      ],
+      "gallery": [
+        {
+          "type": "video",
+          "url": "/videos/the-forgotten-smile.mp4",
+          "caption": "Narrative Tempo Editing Reel"
+        },
+        {
+          "type": "image",
+          "url": "/images/ai-films/the-forgotten-smile.jpg",
+          "caption": "Editorial timeline frame"
+        }
+      ],
+      "credits": [
+        {
+          "role": "Editor & Colorist",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    },
+    {
+      "id": "proj-motion-01",
+      "slug": "spatial-horizons-motion-visualizer",
+      "title": "Spatial Horizons: Motion Graphics & 3D Reel",
+      "category": "Motion Graphics",
+      "year": "2024",
+      "client": "Motion & Title Design",
+      "role": "Motion Graphics Designer",
+      "shortDescription": "Hypnotic motion graphics and abstract 3D visual exploration featuring kinetic Swiss typography and procedural lighting.",
+      "fullDescription": "Motion design by Anjalsh V.S. Combining After Effects expressions, Cinema 4D camera tracks, and sound-reactive visual dynamics for broadcast title sequences and digital campaigns.",
+      "coverImage": "/images/ai-films/the-unseen-vision.jpg",
+      "videoUrl": "/videos/the-unseen-vision.mp4",
+      "featured": true,
+      "aspectRatio": "16:9",
+      "tags": [
+        "Motion Graphics",
+        "Kinetic Typography",
+        "After Effects",
+        "Cinema 4D"
+      ],
+      "gallery": [
+        {
+          "type": "video",
+          "url": "/videos/the-unseen-vision.mp4",
+          "caption": "Spatial Horizons Motion Reel"
+        },
+        {
+          "type": "image",
+          "url": "/images/ai-films/the-unseen-vision.jpg",
+          "caption": "Abstract motion title frame"
+        }
+      ],
+      "credits": [
+        {
+          "role": "Motion Designer",
+          "name": "Anjalsh V.S."
+        }
+      ]
+    }
+  ]
+}

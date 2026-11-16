@@ -9,6 +9,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectModal from "@/components/ui/ProjectModal";
 import CurvedExhibitionArc from "@/components/ui/CurvedExhibitionArc";
+import { usePortfolio } from "@/context/PortfolioContext";
 import { Filter, ArrowDown, ArrowUpDown, Search, ArrowRight, Sparkles } from "lucide-react";
 
 type SortOption = "featured" | "newest" | "oldest";
@@ -18,6 +19,9 @@ interface SelectedWorkProps {
 }
 
 export default function SelectedWork({ isFullArchive = false }: SelectedWorkProps) {
+  const { projects: liveProjects, scrollingArcConfig } = usePortfolio();
+  const currentProjects = liveProjects && liveProjects.length > 0 ? liveProjects : projectsData;
+
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All Works");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<SortOption>("featured");
@@ -27,7 +31,7 @@ export default function SelectedWork({ isFullArchive = false }: SelectedWorkProp
 
   // Filter, Search & Sort Logic
   const filteredAndSortedProjects = useMemo(() => {
-    let result = [...projectsData];
+    let result = [...currentProjects];
 
     // Category filter
     if (activeCategory !== "All Works") {
@@ -118,7 +122,7 @@ export default function SelectedWork({ isFullArchive = false }: SelectedWorkProp
 
           <div className="text-right font-mono text-xs text-[#94A3B8] hidden lg:block pb-14">
             <span className="text-accent text-4xl font-black block tracking-tight">
-              {projectsData.length}+
+              {currentProjects.length}+
             </span>
             <span className="uppercase text-[10px] tracking-ultra text-[#94A3B8]">
               CURATED EXHIBITION PIECES
@@ -131,7 +135,8 @@ export default function SelectedWork({ isFullArchive = false }: SelectedWorkProp
         {/* ============================================================== */}
         <div className="mb-16 pb-12 border-b border-[#222C3D]">
           <CurvedExhibitionArc
-            projects={projectsData}
+            projects={currentProjects}
+            config={scrollingArcConfig}
             onSelectProject={handleOpenProject}
           />
         </div>
@@ -154,8 +159,8 @@ export default function SelectedWork({ isFullArchive = false }: SelectedWorkProp
               {projectCategories.map((category) => {
                 const count =
                   category === "All Works"
-                    ? projectsData.length
-                    : projectsData.filter((p) => p.category === category).length;
+                    ? currentProjects.length
+                    : currentProjects.filter((p) => p.category === category).length;
 
                 const isActive = activeCategory === category;
 
@@ -255,7 +260,7 @@ export default function SelectedWork({ isFullArchive = false }: SelectedWorkProp
               href="/work"
               className="inline-flex items-center space-x-3 px-10 py-4 rounded-full bg-accent text-white font-mono text-xs tracking-widest uppercase font-semibold hover:bg-accent-hover transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.35)] group"
             >
-              <span>EXPLORE COMPLETE ARCHIVE ({projectsData.length}+ WORKS)</span>
+              <span>EXPLORE COMPLETE ARCHIVE ({currentProjects.length}+ WORKS)</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </Link>
             <p className="text-xs font-mono text-[#94A3B8]">

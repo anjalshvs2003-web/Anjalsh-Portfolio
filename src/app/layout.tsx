@@ -5,6 +5,7 @@ import { siteConfig } from "@/data/siteConfig";
 import CustomCursor from "@/components/layout/CustomCursor";
 import Preloader from "@/components/layout/Preloader";
 import SmoothScroll from "@/components/layout/SmoothScroll";
+import { PortfolioProvider } from "@/context/PortfolioContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -179,9 +180,11 @@ export default function RootLayout({
         <Preloader />
 
         {/* Smooth Scrolling Container */}
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
+        <PortfolioProvider>
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
+        </PortfolioProvider>
       </body>
     </html>
   );

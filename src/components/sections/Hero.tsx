@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { siteConfig } from "@/data/siteConfig";
+import { usePortfolio } from "@/context/PortfolioContext";
 import { ArrowDown, ArrowUpRight, Sparkles, Camera, MapPin } from "lucide-react";
 
 // Dynamically import 3D canvas with ssr disabled for optimal performance
@@ -14,7 +15,14 @@ const Hero3DCanvas = dynamic(() => import("@/components/canvas/Hero3DCanvas"), {
 });
 
 export default function Hero() {
+  const { siteWords, projects } = usePortfolio();
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+
+  const profession = siteWords?.profession || siteConfig.profession;
+  const location = siteWords?.location || siteConfig.location;
+  const availabilityStatus = siteWords?.availabilityStatus || siteConfig.availabilityStatus;
+  const bioPositioning = siteWords?.bioPositioning || siteConfig.bio.positioning;
+  const projectCount = projects?.length || 19;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -89,14 +97,14 @@ export default function Hero() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
           </span>
           <span className="text-[#94A3B8] tracking-wider">
-            {siteConfig.availabilityStatus}
+            {availabilityStatus}
           </span>
         </div>
 
         <div className="text-[11px] font-mono tracking-wider text-[#94A3B8] uppercase flex items-center space-x-3 sm:space-x-4">
           <span className="flex items-center space-x-1.5 text-accent font-medium">
             <MapPin className="w-3 h-3 text-accent" />
-            <span>KERALA, INDIA &bull; WORLDWIDE</span>
+            <span>{location.toUpperCase()} &bull; WORLDWIDE</span>
           </span>
           <span className="text-[#222C3D]">/</span>
           <span>EST. 2020</span>
@@ -117,7 +125,7 @@ export default function Hero() {
             >
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span className="text-accent uppercase font-semibold">
-                ANJALSH V.S. &bull; PORTFOLIO
+                {siteWords?.badge || "ANJALSH V.S. • PORTFOLIO"}
               </span>
             </motion.div>
 
@@ -132,7 +140,7 @@ export default function Hero() {
                 I CREATE VISUALS THAT <span className="text-accent underline decoration-accent/40 decoration-wavy decoration-2 underline-offset-8">TELL STORIES.</span>
               </h1>
               <p className="font-heading text-lg sm:text-2xl font-semibold text-white/90 pt-1 tracking-normal">
-                {siteConfig.profession} based in {siteConfig.location}.
+                {profession} based in {location}.
               </p>
             </motion.div>
 
@@ -143,7 +151,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="text-[#94A3B8] text-sm sm:text-base font-normal leading-relaxed max-w-xl"
             >
-              {siteConfig.bio.positioning} Crafting intentional lighting, disciplined Swiss typography, and high-fidelity colour grading for commercials, films, and brands.
+              {bioPositioning}
             </motion.p>
 
             {/* CTAs */}
@@ -248,7 +256,7 @@ export default function Hero() {
         <div className="flex items-center space-x-4">
           <span className="flex items-center space-x-2">
             <Sparkles className="w-3.5 h-3.5 text-accent" />
-            <span className="text-[#F8FAFC]">52+ CURATED PROJECTS</span>
+            <span className="text-[#F8FAFC]">{projectCount}+ CURATED PROJECTS</span>
           </span>
           <span className="text-[#222C3D]">/</span>
           <span className="hidden sm:inline">4 CORE DISCIPLINES</span>

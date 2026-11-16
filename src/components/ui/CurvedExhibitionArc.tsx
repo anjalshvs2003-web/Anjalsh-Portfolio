@@ -2,29 +2,45 @@
 
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
-import { Project } from "@/types";
+import { Project, ScrollingArcConfig } from "@/types";
 import { ChevronLeft, ChevronRight, Play, ArrowRight, Pause, Sparkles } from "lucide-react";
 
 interface CurvedExhibitionArcProps {
   projects: Project[];
+  config?: ScrollingArcConfig;
   onSelectProject: (project: Project) => void;
 }
 
 export default function CurvedExhibitionArc({
   projects,
+  config,
   onSelectProject,
 }: CurvedExhibitionArcProps) {
-  // Use a rich pool of 16 projects across AI Films, Photography, Cinema, and Graphic Design
+  // Use curated project IDs from config if provided, otherwise default to all projects
   const arcProjects = useMemo(() => {
     if (!projects || projects.length === 0) return [];
-    if (projects.length >= 16) return projects.slice(0, 16);
-    // Duplicate if smaller to ensure smooth infinite wrap-around
-    let pool = [...projects];
-    while (pool.length < 16) {
-      pool = [...pool, ...projects];
+
+    let pool: Project[] = [];
+    if (config?.selectedProjectIds && config.selectedProjectIds.length > 0) {
+      const byId = new Map(projects.map((p) => [p.id, p]));
+      for (const id of config.selectedProjectIds) {
+        const found = byId.get(id);
+        if (found) pool.push(found);
+      }
     }
-    return pool.slice(0, 16);
-  }, [projects]);
+
+    if (pool.length === 0) {
+      pool = [...projects];
+    }
+
+    // Ensure smooth infinite wrap-around
+    if (pool.length >= 12) return pool;
+    let expanded = [...pool];
+    while (expanded.length < 12) {
+      expanded = [...expanded, ...pool];
+    }
+    return expanded;
+  }, [projects, config?.selectedProjectIds]);
 
   const total = arcProjects.length;
 
@@ -93,10 +109,13 @@ export default function CurvedExhibitionArc({
       const dt = Math.min((timestamp - lastTimeRef.current) / 1000, 0.1);
       lastTimeRef.current = timestamp;
 
+      const speedMultiplier = config?.speed === "slow" ? 0.07 : config?.speed === "fast" ? 0.24 : 0.14;
+      const directionMultiplier = config?.direction === "right" ? -1 : 1;
+      const shouldPause = (config?.pauseOnHover ?? true) && isHoveredRef.current;
+
       // Auto-glide continuous loop if not dragging, not hovered, and not manually paused
-      if (!isDraggingRef.current && !isHoveredRef.current && !isPausedUser) {
-        // Continuous gentle cinematic glide (~0.14 cards per second)
-        targetPosRef.current += 0.14 * dt;
+      if (!isDraggingRef.current && !shouldPause && !isPausedUser) {
+        targetPosRef.current += speedMultiplier * directionMultiplier * dt;
       }
 
       // Smooth lerp interpolation towards targetPos
@@ -276,7 +295,7 @@ export default function CurvedExhibitionArc({
         {/* Small Auto-scroll & Pause Indicator Pill */}
         <div className="absolute top-3 right-4 z-40 hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full bg-[#0A0D12]/80 backdrop-blur-md border border-[#222C3D] text-[10px] font-mono text-[#94A3B8]">
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          <span>INFINITE LOOP EXHIBITION</span>
+          <span>{config?.badge || "INFINITE LOOP EXHIBITION"}</span>
           <button
             onClick={(e) => {
               e.stopPropagation();

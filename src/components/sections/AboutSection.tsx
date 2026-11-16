@@ -2,10 +2,16 @@
 
 import Image from "next/image";
 import { siteConfig } from "@/data/siteConfig";
+import { usePortfolio } from "@/context/PortfolioContext";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { CheckCircle2, Film, Palette, Cpu, Sparkles, Sliders, Layers } from "lucide-react";
 
 export default function AboutSection() {
+  const { siteWords } = usePortfolio();
+  const mission = siteWords?.bioMission || siteConfig.bio.mission;
+  const fullBio = siteWords?.bioFull || siteConfig.bio.full;
+  const profession = siteWords?.profession || siteConfig.profession;
+  const location = siteWords?.location || siteConfig.location;
   const skillCategories = [
     {
       title: "01 — Film & Production",
@@ -84,10 +90,10 @@ export default function AboutSection() {
                   ANJALSH V.S.
                 </span>
                 <span className="font-heading text-xl font-bold text-white block mt-0.5">
-                  Filmmaker & Visual Artist
+                  {profession}
                 </span>
                 <span className="text-xs font-mono text-[#94A3B8] mt-1 block">
-                  Kerala, India &bull; Available Worldwide
+                  {location} &bull; Available Worldwide
                 </span>
               </div>
             </div>
@@ -96,7 +102,7 @@ export default function AboutSection() {
             <div className="p-6 rounded-xl bg-[#161D2A] border border-[#222C3D] relative">
               <div className="w-1 h-6 bg-accent absolute top-6 left-0 rounded-r" />
               <p className="text-[#F8FAFC]/90 text-sm font-light italic leading-relaxed pl-2 font-serif">
-                &ldquo;{siteConfig.bio.mission}&rdquo;
+                &ldquo;{mission}&rdquo;
               </p>
             </div>
           </div>
@@ -111,7 +117,7 @@ export default function AboutSection() {
                 Every frame must evoke an emotional echo long after the screen dims.
               </h3>
               <p className="text-[#94A3B8] text-base sm:text-lg font-light leading-relaxed">
-                {siteConfig.bio.full}
+                {fullBio}
               </p>
             </div>
 
