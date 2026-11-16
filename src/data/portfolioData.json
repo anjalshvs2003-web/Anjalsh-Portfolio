@@ -3,13 +3,13 @@
     "tagline": "I CREATE VISUALS THAT TELL STORIES.",
     "profession": "Filmmaker & Visual Artist",
     "location": "Kerala, India",
-    "badge": "ANJALSH V.S. \u2022 PORTFOLIO",
+    "badge": "ANJALSH V.S. • PORTFOLIO",
     "availabilityStatus": "Available for Select Commissions & Directorial Work",
     "heroDescription": "Filmmaker & Visual Artist based in Kerala, India. Crafting cinematic visual narratives with intentional light sculpting, editorial precision, and evocative atmosphere.",
     "bioPositioning": "An independent creative professional working across filmmaking, cinematography, photography, graphic design, motion graphics and emerging visual technologies. Crafting intentional lighting, disciplined Swiss typography, and high-fidelity colour grading for commercials, films, and brands.",
     "bioMission": "Rejecting generic visual noise in pursuit of enduring atmospheres, meticulous colour grading, and evocative audiovisual compositions.",
     "bioFull": "Rooted in high-end cinematography, post-production and contemporary digital direction, Anjalsh fuses disciplined visual craft with emerging storytelling tools. From commercial campaigns and brand films to documentary photography and experimental AI cinema, every frame is treated as an intentional emotional dialogue between light, movement, and human resonance.",
-    "contactEmail": "contact@anjalsh.com",
+    "contactEmail": "anjalsh.v.s@gmail.com",
     "contactPhone": "+91 (Kerala, India)"
   },
   "scrollingArcConfig": {
@@ -20,21 +20,16 @@
     "direction": "left",
     "selectedProjectIds": [
       "proj-ai-01",
-      "proj-photo-anjalsh",
       "proj-photo-01",
       "proj-ai-02",
       "proj-photo-02",
       "proj-gd-01",
-      "proj-cine-01",
       "proj-gd-05",
       "proj-ai-03",
       "proj-gd-04",
-      "proj-edit-01",
       "proj-gd-02",
       "proj-gd-07",
-      "proj-motion-01",
-      "proj-comm-02",
-      "proj-brand-01"
+      "proj-gd-08"
     ]
   },
   "projects": [
@@ -62,7 +57,7 @@
         {
           "type": "video",
           "url": "/videos/the-forgotten-smile.mp4",
-          "caption": "The Forgotten Smile \u2014 Full AI Short Film"
+          "caption": "The Forgotten Smile — Full AI Short Film"
         },
         {
           "type": "image",
@@ -122,7 +117,7 @@
         {
           "type": "video",
           "url": "/videos/the-last-letter-out.mp4",
-          "caption": "The Last Letter Out \u2014 Full AI Short Film"
+          "caption": "The Last Letter Out — Full AI Short Film"
         },
         {
           "type": "image",
@@ -178,7 +173,7 @@
         {
           "type": "video",
           "url": "/videos/the-unseen-vision.mp4",
-          "caption": "The Unseen Vision \u2014 Full AI Short Film"
+          "caption": "The Unseen Vision — Full AI Short Film"
         },
         {
           "type": "image",
@@ -210,54 +205,6 @@
         },
         {
           "role": "Editor & Colorist",
-          "name": "Anjalsh V.S."
-        }
-      ]
-    },
-    {
-      "id": "proj-photo-anjalsh",
-      "slug": "anjalsh-cinematic-self-portrait",
-      "title": "Anjalsh V.S. \u2014 Low-Key Cinematic Portrait",
-      "category": "Photography",
-      "year": "2024",
-      "client": "Creative Identity & Personal Archive",
-      "role": "Photographer & Subject",
-      "shortDescription": "A minimalist low-key self-portrait study captured in high-contrast monochrome with deep negative space.",
-      "fullDescription": "An authentic photographic study exploring focus, contemplation, and modern digital creative practice. Captured against an absolute black backdrop with directional softbox key lighting, emphasizing clean monochrome tones and character.",
-      "coverImage": "/images/photography/anjalsh-portrait.jpg",
-      "featured": true,
-      "aspectRatio": "4:5",
-      "tags": [
-        "Anjalsh V.S.",
-        "Portrait Photography",
-        "Monochrome",
-        "Low-Key",
-        "Self-Portrait",
-        "Identity"
-      ],
-      "gallery": [
-        {
-          "type": "image",
-          "url": "/images/photography/anjalsh-portrait.jpg",
-          "caption": "Anjalsh V.S. in low-key chiaroscuro lighting against pitch black"
-        }
-      ],
-      "technicalDetails": {
-        "camera": "Prime Lens Optics & Directional Softbox",
-        "software": [
-          "Capture One Pro",
-          "Adobe Photoshop"
-        ],
-        "colourSpace": "Monochrome ACES Black & White",
-        "aspectRatio": "4:5"
-      },
-      "credits": [
-        {
-          "role": "Photographer & Retoucher",
-          "name": "Anjalsh V.S."
-        },
-        {
-          "role": "Subject",
           "name": "Anjalsh V.S."
         }
       ]
@@ -397,22 +344,22 @@
         {
           "type": "image",
           "url": "/images/graphic-design/luxe-gold-01.jpg",
-          "caption": "Main campaign visual \u2014 Diamond Necklace Suite in Editorial Balance"
+          "caption": "Main campaign visual — Diamond Necklace Suite in Editorial Balance"
         },
         {
           "type": "image",
           "url": "/images/graphic-design/luxe-gold-02.jpg",
-          "caption": "Campaign Variant II \u2014 Minimalist Product Framing"
+          "caption": "Campaign Variant II — Minimalist Product Framing"
         },
         {
           "type": "image",
           "url": "/images/graphic-design/luxe-gold-03.jpg",
-          "caption": "Campaign Variant III \u2014 Modern Gold Craftsmanship Layout"
+          "caption": "Campaign Variant III — Modern Gold Craftsmanship Layout"
         },
         {
           "type": "image",
           "url": "/images/graphic-design/luxe-gold-04.jpg",
-          "caption": "Campaign Variant IV \u2014 High-Fashion Bridal Collection Visual"
+          "caption": "Campaign Variant IV — High-Fashion Bridal Collection Visual"
         }
       ],
       "technicalDetails": {
@@ -682,98 +629,6 @@
       ]
     },
     {
-      "id": "proj-comm-02",
-      "slug": "luxe-diamond-commercial-spot",
-      "title": "Luxe Gold: Radiant Solitaire Spot",
-      "category": "Commercial Advertising",
-      "year": "2024",
-      "client": "Luxe Gold & Diamonds",
-      "role": "Video Editor & Colourist",
-      "shortDescription": "Broadcast commercial ad crafted for regional television and high-conversion social media ads.",
-      "fullDescription": "Produced for regional television broadcast and mobile vertical feeds. Combines close-up hand movements, prismatic diamond flares, and delicate acoustic strings into a 30-second aspirational luxury film.",
-      "coverImage": "/images/graphic-design/luxe-gold-03.jpg",
-      "featured": false,
-      "aspectRatio": "16:9",
-      "tags": [
-        "Television Commercial",
-        "Jewellery Ad",
-        "Broadcast",
-        "DaVinci Resolve"
-      ],
-      "gallery": [
-        {
-          "type": "image",
-          "url": "/images/graphic-design/luxe-gold-03.jpg",
-          "caption": "Broadcast master frame"
-        }
-      ],
-      "technicalDetails": {
-        "software": [
-          "DaVinci Resolve",
-          "Premiere Pro"
-        ],
-        "colourSpace": "Rec.709 Broadcast",
-        "aspectRatio": "16:9"
-      },
-      "credits": [
-        {
-          "role": "Editor & Colorist",
-          "name": "Anjalsh V.S."
-        }
-      ]
-    },
-    {
-      "id": "proj-brand-01",
-      "slug": "luxe-gold-brand-architecture",
-      "title": "Luxe Gold & Diamonds: Brand Identity Architecture",
-      "category": "Branding",
-      "year": "2024",
-      "client": "Luxe Gold and Diamonds",
-      "role": "Brand Identity Designer & Art Director",
-      "shortDescription": "Complete brand architecture, bespoke monogram emblem, typography guidelines, and luxury packaging suites.",
-      "fullDescription": "An end-to-end luxury identity system for Luxe Gold & Diamonds. Covers brand guidelines, premium foiled stationery, retail boutique signage, and unboxing packaging that cements prestige and trust.",
-      "coverImage": "/images/graphic-design/luxe-gold-02.jpg",
-      "featured": true,
-      "aspectRatio": "4:5",
-      "tags": [
-        "Brand Identity",
-        "Luxury Monogram",
-        "Packaging Design",
-        "Guidelines"
-      ],
-      "gallery": [
-        {
-          "type": "image",
-          "url": "/images/graphic-design/luxe-gold-02.jpg",
-          "caption": "Brand identity stationery and embossed business suite"
-        },
-        {
-          "type": "image",
-          "url": "/images/graphic-design/luxe-gold-04.jpg",
-          "caption": "Brand retail campaign layout"
-        }
-      ],
-      "technicalDetails": {
-        "software": [
-          "Adobe Illustrator",
-          "InDesign",
-          "Photoshop"
-        ],
-        "colourSpace": "Pantone Metallic & CMYK",
-        "aspectRatio": "4:5"
-      },
-      "credits": [
-        {
-          "role": "Brand Identity Lead",
-          "name": "Anjalsh V.S."
-        },
-        {
-          "role": "Client",
-          "name": "Luxe Gold and Diamonds"
-        }
-      ]
-    },
-    {
       "id": "proj-gd-08",
       "slug": "luxe-gold-craft-and-symmetry",
       "title": "Luxe Gold & Diamonds: Precision Craft",
@@ -802,123 +657,6 @@
       "credits": [
         {
           "role": "Art Director & Designer",
-          "name": "Anjalsh V.S."
-        }
-      ]
-    },
-    {
-      "id": "proj-cine-01",
-      "slug": "anamorphic-scope-cinematic-reel",
-      "title": "Anamorphic Scope: Cinematic Directorial Reel",
-      "category": "Cinematography",
-      "year": "2024",
-      "client": "Directorial Showcase",
-      "role": "Director of Photography & Colorist",
-      "shortDescription": "Cinematic 2.39:1 widescreen narrative visual reel featuring atmospheric lighting sculpting and ACEScc film stock emulation.",
-      "fullDescription": "Directed, shot and graded by Anjalsh V.S. Capturing raw emotional intensity, deep shadow rolloff, and intentional camera pacing across dramatic Kerala landscapes and low-light urban environments.",
-      "coverImage": "/images/ai-films/the-last-letter-out.jpg",
-      "videoUrl": "/videos/the-last-letter-out.mp4",
-      "featured": true,
-      "aspectRatio": "2.39:1",
-      "tags": [
-        "Cinematography",
-        "2.39:1 Scope",
-        "DaVinci Resolve",
-        "Directorial"
-      ],
-      "gallery": [
-        {
-          "type": "video",
-          "url": "/videos/the-last-letter-out.mp4",
-          "caption": "Anamorphic Scope Reel"
-        },
-        {
-          "type": "image",
-          "url": "/images/ai-films/the-last-letter-out.jpg",
-          "caption": "Anamorphic frame grab"
-        }
-      ],
-      "credits": [
-        {
-          "role": "Director & DP",
-          "name": "Anjalsh V.S."
-        }
-      ]
-    },
-    {
-      "id": "proj-edit-01",
-      "slug": "narrative-tempo-editorial-reel",
-      "title": "Narrative Tempo: Commercial Video Editing Reel",
-      "category": "Video Editing",
-      "year": "2024",
-      "client": "Commercial & Studio Projects",
-      "role": "Lead Video Editor & Colorist",
-      "shortDescription": "Dynamic non-linear commercial edit featuring precise rhythmic audio pacing, match cuts, and mood-driven color timing.",
-      "fullDescription": "A curated master cut of video editing works by Anjalsh V.S. Showcasing seamless audio-visual sync, tension building, match cutting, and high-fidelity DaVinci Resolve color finishing.",
-      "coverImage": "/images/ai-films/the-forgotten-smile.jpg",
-      "videoUrl": "/videos/the-forgotten-smile.mp4",
-      "featured": true,
-      "aspectRatio": "16:9",
-      "tags": [
-        "Video Editing",
-        "DaVinci Resolve",
-        "Commercial Cut",
-        "Rhythm & Pacing"
-      ],
-      "gallery": [
-        {
-          "type": "video",
-          "url": "/videos/the-forgotten-smile.mp4",
-          "caption": "Narrative Tempo Editing Reel"
-        },
-        {
-          "type": "image",
-          "url": "/images/ai-films/the-forgotten-smile.jpg",
-          "caption": "Editorial timeline frame"
-        }
-      ],
-      "credits": [
-        {
-          "role": "Editor & Colorist",
-          "name": "Anjalsh V.S."
-        }
-      ]
-    },
-    {
-      "id": "proj-motion-01",
-      "slug": "spatial-horizons-motion-visualizer",
-      "title": "Spatial Horizons: Motion Graphics & 3D Reel",
-      "category": "Motion Graphics",
-      "year": "2024",
-      "client": "Motion & Title Design",
-      "role": "Motion Graphics Designer",
-      "shortDescription": "Hypnotic motion graphics and abstract 3D visual exploration featuring kinetic Swiss typography and procedural lighting.",
-      "fullDescription": "Motion design by Anjalsh V.S. Combining After Effects expressions, Cinema 4D camera tracks, and sound-reactive visual dynamics for broadcast title sequences and digital campaigns.",
-      "coverImage": "/images/ai-films/the-unseen-vision.jpg",
-      "videoUrl": "/videos/the-unseen-vision.mp4",
-      "featured": true,
-      "aspectRatio": "16:9",
-      "tags": [
-        "Motion Graphics",
-        "Kinetic Typography",
-        "After Effects",
-        "Cinema 4D"
-      ],
-      "gallery": [
-        {
-          "type": "video",
-          "url": "/videos/the-unseen-vision.mp4",
-          "caption": "Spatial Horizons Motion Reel"
-        },
-        {
-          "type": "image",
-          "url": "/images/ai-films/the-unseen-vision.jpg",
-          "caption": "Abstract motion title frame"
-        }
-      ],
-      "credits": [
-        {
-          "role": "Motion Designer",
           "name": "Anjalsh V.S."
         }
       ]

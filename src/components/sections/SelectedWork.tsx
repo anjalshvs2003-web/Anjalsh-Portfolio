@@ -115,7 +115,7 @@ export default function SelectedWork({ isFullArchive = false }: SelectedWorkProp
             title={isFullArchive ? "EXHIBITION ARCHIVE" : "CURATED PROJECTS & PORTFOLIO"}
             description={
               isFullArchive
-                ? "An expansive digital exhibition showcasing 52+ projects across cinematography, original AI filmmaking, editorial photography, Swiss typography, and high-stakes commercial direction."
+                ? `An expansive digital exhibition showcasing ${currentProjects.length}+ projects across cinematography, original AI filmmaking, editorial photography, Swiss typography, and high-stakes commercial direction.`
                 : "A curated selection of 8 flagship projects demonstrating directorial vision, DaVinci Resolve color grading, Swiss typography, and neural cinema pipelines."
             }
           />

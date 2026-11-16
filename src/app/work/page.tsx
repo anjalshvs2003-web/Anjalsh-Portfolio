@@ -5,7 +5,7 @@ import SelectedWork from "@/components/sections/SelectedWork";
 
 export const metadata: Metadata = {
   title: "Complete Exhibition Archive — ANJALSH®️",
-  description: "Browse 52+ projects across cinematography, DaVinci Resolve color grading, Swiss editorial design, AI films, and commercial advertising by Anjalsh V.S.",
+  description: "Browse curated projects across cinematography, DaVinci Resolve color grading, Swiss editorial design, AI films, and commercial advertising by Anjalsh V.S.",
 };
 
 export default function WorkPage() {

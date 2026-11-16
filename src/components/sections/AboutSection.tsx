@@ -7,7 +7,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { CheckCircle2, Film, Palette, Cpu, Sparkles, Sliders, Layers } from "lucide-react";
 
 export default function AboutSection() {
-  const { siteWords } = usePortfolio();
+  const { siteWords, projects } = usePortfolio();
   const mission = siteWords?.bioMission || siteConfig.bio.mission;
   const fullBio = siteWords?.bioFull || siteConfig.bio.full;
   const profession = siteWords?.profession || siteConfig.profession;
@@ -146,7 +146,9 @@ export default function AboutSection() {
                 <span className="text-[#94A3B8] text-xs font-mono uppercase mt-1 block">Active Practice</span>
               </div>
               <div className="p-4 rounded-xl bg-[#161D2A] border border-[#222C3D]">
-                <span className="text-accent text-3xl font-bold font-mono block">52+</span>
+                <span className="text-accent text-3xl font-bold font-mono block">
+                  {projects?.length || 19}+
+                </span>
                 <span className="text-[#94A3B8] text-xs font-mono uppercase mt-1 block">Curated Works</span>
               </div>
               <div className="p-4 rounded-xl bg-[#161D2A] border border-[#222C3D] col-span-2 sm:col-span-1">

@@ -241,7 +241,7 @@ export default function CurvedExhibitionArc({
             className="inline-flex items-center space-x-3 px-6 py-2.5 rounded-full bg-[#161D2A] border border-[#222C3D] text-[#F8FAFC] hover:border-accent hover:text-white transition-all duration-300 group shadow-lg"
           >
             <span className="text-xs font-mono font-medium tracking-wide">
-              See All 52+ Projects Below
+              See All Projects Below
             </span>
             <span className="w-7 h-7 rounded-full bg-accent flex items-center justify-center text-white group-hover:scale-110 transition-transform">
               <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
