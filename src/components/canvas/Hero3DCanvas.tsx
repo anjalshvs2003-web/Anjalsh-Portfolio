@@ -7,13 +7,13 @@ interface Hero3DCanvasProps {
   onLoaded?: () => void;
 }
 
-interface FloatingMediaItem {
-  type: "video" | "image";
-  src: string;
-  fallbackImage?: string;
-  pos: [number, number, number];
-  rot: [number, number, number];
-  baseHeight: number;
+interface ShapeItem {
+  mesh: THREE.Mesh | THREE.Group;
+  basePos: [number, number, number];
+  rotSpeed: [number, number, number];
+  floatSpeed: number;
+  floatAmplitude: number;
+  phase: number;
 }
 
 export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
@@ -44,13 +44,13 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
 
     // Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x0A0D12, 0.038);
+    scene.fog = new THREE.FogExp2(0x0a0d12, 0.04);
 
     const width = container.clientWidth || window.innerWidth;
     const height = container.clientHeight || window.innerHeight;
 
-    const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-    camera.position.set(0, 0, 10);
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    camera.position.set(0, 0, 11);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -60,266 +60,261 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
+    renderer.toneMappingExposure = 1.25;
 
     container.appendChild(renderer.domElement);
 
-    // Lights
-    const ambientLight = new THREE.AmbientLight(0xf5f2f0, 0.7);
-    scene.add(ambientLight);
-
-    const dirLight = new THREE.DirectionalLight(0xffeedd, 1.1);
-    dirLight.position.set(5, 8, 7);
-    scene.add(dirLight);
-
-    // Signature Accent Blue Point Light moving with mouse
-    const bluePointLight = new THREE.PointLight(0x3b82f6, 3.2, 22);
-    bluePointLight.position.set(0, 0, 5);
-    scene.add(bluePointLight);
-
-    const textureLoader = new THREE.TextureLoader();
-    const planesGroup = new THREE.Group();
-    scene.add(planesGroup);
-
-    // Floating Media configuration combining REAL Videos & Photography
-    // Each item's geometry will dynamically adapt to its ORIGINAL aspect ratio!
-    const mediaItems: FloatingMediaItem[] = [
-      {
-        type: "video",
-        src: "/videos/the-forgotten-smile.mp4",
-        fallbackImage: "/images/ai-films/the-forgotten-smile.jpg",
-        pos: [-4.4, 1.8, 0.8],
-        rot: [0.06, 0.22, -0.04],
-        baseHeight: 1.35,
-      },
-      {
-        type: "image",
-        src: "/images/photography/im-vijayan-cover.jpg",
-        pos: [4.4, 2.0, -0.5],
-        rot: [-0.05, -0.22, 0.03],
-        baseHeight: 1.8,
-      },
-      {
-        type: "image",
-        src: "/images/photography/editorial-portrait-cover.jpg",
-        pos: [-4.6, -1.8, -0.8],
-        rot: [0.10, 0.25, -0.06],
-        baseHeight: 2.1,
-      },
-      {
-        type: "video",
-        src: "/videos/the-last-letter-out.mp4",
-        fallbackImage: "/images/ai-films/the-last-letter-out.jpg",
-        pos: [4.2, -2.2, 1.2],
-        rot: [-0.07, -0.24, 0.05],
-        baseHeight: 1.35,
-      },
-      {
-        type: "image",
-        src: "/images/ai-films/the-unseen-vision.jpg",
-        pos: [0.2, -3.2, -3.5],
-        rot: [0.14, 0.04, -0.02],
-        baseHeight: 1.5,
-      },
-      {
-        type: "image",
-        src: "/images/graphic-design/luxe-gold-01.jpg",
-        pos: [-0.4, 3.4, -4.5],
-        rot: [-0.12, -0.04, 0.02],
-        baseHeight: 2.0,
-      },
-    ];
-
-    const meshes: THREE.Mesh[] = [];
-    const videosToCleanup: HTMLVideoElement[] = [];
-
-    // Helper to create edge wireframe border
-    const addWireframeBorder = (geom: THREE.PlaneGeometry, mesh: THREE.Mesh, index: number) => {
-      const borderGeom = new THREE.EdgesGeometry(geom);
-      const borderMat = new THREE.LineBasicMaterial({
-        color: index % 2 === 0 ? 0xf0783d : 0x483a3f,
-        transparent: true,
-        opacity: index % 2 === 0 ? 0.45 : 0.35,
-      });
-      const border = new THREE.LineSegments(borderGeom, borderMat);
-      mesh.add(border);
+    // ==========================================
+    // PROCEDURAL GRADIENT TEXTURES
+    // ==========================================
+    const createLinearGradientTexture = (colors: string[]): THREE.CanvasTexture => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 512;
+      canvas.height = 512;
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+        colors.forEach((c, idx) => {
+          gradient.addColorStop(idx / (colors.length - 1), c);
+        });
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 512, 512);
+      }
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      return texture;
     };
 
-    mediaItems.forEach((item, index) => {
-      if (item.type === "video") {
-        // Create HTML5 Video Element for high-performance looping texture
-        const video = document.createElement("video");
-        video.src = item.src;
-        video.crossOrigin = "anonymous";
-        video.loop = true;
-        video.muted = true;
-        video.playsInline = true;
-        video.autoplay = true;
+    const gradientTexPrimary = createLinearGradientTexture([
+      "#1E3A8A", // Deep Cobalt
+      "#2563EB", // Rich Blue
+      "#3B82F6", // Electric Blue
+      "#06B6D4", // Bright Cyan
+      "#818CF8", // Soft Indigo
+    ]);
 
-        videosToCleanup.push(video);
+    const gradientTexSecondary = createLinearGradientTexture([
+      "#0E7490", // Deep Cyan
+      "#06B6D4", // Cyan
+      "#3B82F6", // Electric Blue
+      "#6366F1", // Indigo
+      "#A855F7", // Purple Sheen
+    ]);
 
-        let meshCreated = false;
+    const gradientTexTertiary = createLinearGradientTexture([
+      "#1D4ED8", // Blue
+      "#38BDF8", // Sky
+      "#22D3EE", // Aqua
+      "#4F46E5", // Deep Violet
+    ]);
 
-        const buildVideoMesh = () => {
-          if (meshCreated) return;
-          meshCreated = true;
+    // ==========================================
+    // DYNAMIC INTERACTIVE LIGHTING
+    // ==========================================
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
+    scene.add(ambientLight);
 
-          // Preserve exact original video aspect ratio (no stretch)
-          const naturalAspect =
-            video.videoWidth && video.videoHeight
-              ? video.videoWidth / video.videoHeight
-              : 16 / 9;
+    const dirLight = new THREE.DirectionalLight(0xe0f2fe, 1.2);
+    dirLight.position.set(6, 8, 8);
+    scene.add(dirLight);
 
-          const height = item.baseHeight;
-          const width = height * naturalAspect;
+    // Mouse-tracking dynamic point lights (Electric Blue, Cyan & Violet)
+    const bluePointLight = new THREE.PointLight(0x3b82f6, 4.5, 24);
+    bluePointLight.position.set(0, 0, 6);
+    scene.add(bluePointLight);
 
-          const geom = new THREE.PlaneGeometry(width, height, 16, 16);
+    const cyanPointLight = new THREE.PointLight(0x06b6d4, 3.8, 20);
+    cyanPointLight.position.set(-3, 2, 4);
+    scene.add(cyanPointLight);
 
-          const videoTexture = new THREE.VideoTexture(video);
-          videoTexture.minFilter = THREE.LinearFilter;
-          videoTexture.magFilter = THREE.LinearFilter;
-          videoTexture.format = THREE.RGBAFormat;
+    const violetPointLight = new THREE.PointLight(0x8b5cf6, 3.2, 18);
+    violetPointLight.position.set(4, -3, 3);
+    scene.add(violetPointLight);
 
-          const mat = new THREE.MeshStandardMaterial({
-            map: videoTexture,
-            roughness: 0.25,
-            metalness: 0.1,
-            side: THREE.DoubleSide,
-          });
+    // ==========================================
+    // 3D GRADIENT SHAPES GROUP
+    // ==========================================
+    const shapesGroup = new THREE.Group();
+    scene.add(shapesGroup);
 
-          const mesh = new THREE.Mesh(geom, mat);
-          mesh.position.set(...item.pos);
-          mesh.rotation.set(...item.rot);
+    const shapeItems: ShapeItem[] = [];
 
-          addWireframeBorder(geom, mesh, index);
+    // Helper to create glossy gradient physical material
+    const createGradientMaterial = (texture: THREE.CanvasTexture, wireframe = false) => {
+      return new THREE.MeshPhysicalMaterial({
+        map: texture,
+        roughness: 0.18,
+        metalness: 0.65,
+        clearcoat: 0.85,
+        clearcoatRoughness: 0.15,
+        reflectivity: 0.9,
+        wireframe: wireframe,
+        transparent: true,
+        opacity: wireframe ? 0.35 : 0.88,
+      });
+    };
 
-          planesGroup.add(mesh);
-          meshes.push(mesh);
-        };
-
-        video.addEventListener("loadedmetadata", buildVideoMesh);
-        video.addEventListener("canplay", buildVideoMesh);
-
-        // Fallback timeout in case video loading is slow
-        setTimeout(() => {
-          if (!meshCreated && item.fallbackImage) {
-            textureLoader.load(item.fallbackImage, (texture) => {
-              if (meshCreated) return;
-              meshCreated = true;
-
-              const naturalAspect =
-                texture.image.width && texture.image.height
-                  ? texture.image.width / texture.image.height
-                  : 16 / 9;
-
-              const height = item.baseHeight;
-              const width = height * naturalAspect;
-
-              const geom = new THREE.PlaneGeometry(width, height, 16, 16);
-              const mat = new THREE.MeshStandardMaterial({
-                map: texture,
-                roughness: 0.25,
-                metalness: 0.1,
-                side: THREE.DoubleSide,
-              });
-
-              const mesh = new THREE.Mesh(geom, mat);
-              mesh.position.set(...item.pos);
-              mesh.rotation.set(...item.rot);
-              addWireframeBorder(geom, mesh, index);
-              planesGroup.add(mesh);
-              meshes.push(mesh);
-            });
-          }
-        }, 1200);
-
-        video.play().catch(() => {});
-      } else {
-        // Image Texture: Read natural image dimensions upon load and preserve aspect ratio
-        textureLoader.load(
-          item.src,
-          (texture) => {
-            texture.generateMipmaps = true;
-            texture.minFilter = THREE.LinearMipmapLinearFilter;
-
-            // Preserve EXACT original image aspect ratio (no stretch)
-            const naturalAspect =
-              texture.image && texture.image.width && texture.image.height
-                ? texture.image.width / texture.image.height
-                : 1.0;
-
-            const height = item.baseHeight;
-            const width = height * naturalAspect;
-
-            const geom = new THREE.PlaneGeometry(width, height, 16, 16);
-
-            const mat = new THREE.MeshStandardMaterial({
-              map: texture,
-              roughness: 0.25,
-              metalness: 0.1,
-              side: THREE.DoubleSide,
-            });
-
-            const mesh = new THREE.Mesh(geom, mat);
-            mesh.position.set(...item.pos);
-            mesh.rotation.set(...item.rot);
-
-            addWireframeBorder(geom, mesh, index);
-
-            planesGroup.add(mesh);
-            meshes.push(mesh);
-          },
-          undefined,
-          () => {
-            // Graceful fallback
-            const height = item.baseHeight;
-            const geom = new THREE.PlaneGeometry(height * 1.5, height, 16, 16);
-            const fallbackMat = new THREE.MeshStandardMaterial({
-              color: 0x211a1d,
-              roughness: 0.4,
-            });
-            const mesh = new THREE.Mesh(geom, fallbackMat);
-            mesh.position.set(...item.pos);
-            mesh.rotation.set(...item.rot);
-            planesGroup.add(mesh);
-            meshes.push(mesh);
-          }
-        );
-      }
+    // 1. Torus Knot — Smooth flowing procedural twisted ribbon (Left upper area)
+    const knotGeom = new THREE.TorusKnotGeometry(1.0, 0.28, 128, 32, 2, 3);
+    const knotMat = createGradientMaterial(gradientTexPrimary);
+    const knotMesh = new THREE.Mesh(knotGeom, knotMat);
+    shapesGroup.add(knotMesh);
+    shapeItems.push({
+      mesh: knotMesh,
+      basePos: [-4.6, 1.5, -0.5],
+      rotSpeed: [0.006, 0.008, 0.003],
+      floatSpeed: 0.9,
+      floatAmplitude: 0.18,
+      phase: 0,
     });
 
-    // Floating cinematic particles in 3D
+    // 2. Icosahedron Crystal with Dual-Layer Wireframe (Right upper background)
+    const icoGroup = new THREE.Group();
+    const icoGeom = new THREE.IcosahedronGeometry(1.2, 0);
+    const icoMatSolid = createGradientMaterial(gradientTexSecondary);
+    const icoMeshSolid = new THREE.Mesh(icoGeom, icoMatSolid);
+    icoGroup.add(icoMeshSolid);
+
+    const icoWireMat = new THREE.MeshBasicMaterial({
+      color: 0x38bdf8,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.45,
+    });
+    const icoMeshWire = new THREE.Mesh(new THREE.IcosahedronGeometry(1.24, 0), icoWireMat);
+    icoGroup.add(icoMeshWire);
+
+    shapesGroup.add(icoGroup);
+    shapeItems.push({
+      mesh: icoGroup,
+      basePos: [4.6, 2.2, -1.2],
+      rotSpeed: [0.005, 0.009, 0.004],
+      floatSpeed: 0.8,
+      floatAmplitude: 0.22,
+      phase: 1.2,
+    });
+
+    // 3. Smooth Gradient Sphere / Liquid Orb (Bottom-left area)
+    const sphereGeom = new THREE.SphereGeometry(1.05, 64, 64);
+    const sphereMat = createGradientMaterial(gradientTexTertiary);
+    const sphereMesh = new THREE.Mesh(sphereGeom, sphereMat);
+    shapesGroup.add(sphereMesh);
+    shapeItems.push({
+      mesh: sphereMesh,
+      basePos: [-3.2, -2.4, 0.5],
+      rotSpeed: [0.004, 0.006, 0.002],
+      floatSpeed: 1.1,
+      floatAmplitude: 0.24,
+      phase: 2.4,
+    });
+
+    // 4. Orbital Torus Ring Encircling Area (Right lower area)
+    const torusRingGroup = new THREE.Group();
+    const ringGeom = new THREE.TorusGeometry(1.4, 0.07, 24, 100);
+    const ringMat = new THREE.MeshStandardMaterial({
+      color: 0x3b82f6,
+      roughness: 0.2,
+      metalness: 0.8,
+      emissive: 0x1d4ed8,
+      emissiveIntensity: 0.35,
+    });
+    const ringMesh = new THREE.Mesh(ringGeom, ringMat);
+    torusRingGroup.add(ringMesh);
+
+    // Inner small floating gemstone
+    const innerGemGeom = new THREE.OctahedronGeometry(0.55, 0);
+    const innerGemMat = createGradientMaterial(gradientTexPrimary);
+    const innerGem = new THREE.Mesh(innerGemGeom, innerGemMat);
+    torusRingGroup.add(innerGem);
+
+    shapesGroup.add(torusRingGroup);
+    shapeItems.push({
+      mesh: torusRingGroup,
+      basePos: [3.8, -1.8, 0.2],
+      rotSpeed: [0.008, 0.012, 0.005],
+      floatSpeed: 1.0,
+      floatAmplitude: 0.2,
+      phase: 3.5,
+    });
+
+    // 5. Octahedron Diamond Prism (Top center-right background)
+    const octaGeom = new THREE.OctahedronGeometry(0.85, 0);
+    const octaMat = createGradientMaterial(gradientTexSecondary);
+    const octaMesh = new THREE.Mesh(octaGeom, octaMat);
+    shapesGroup.add(octaMesh);
+    shapeItems.push({
+      mesh: octaMesh,
+      basePos: [1.2, 3.4, -2.2],
+      rotSpeed: [0.007, 0.005, 0.009],
+      floatSpeed: 0.75,
+      floatAmplitude: 0.16,
+      phase: 4.2,
+    });
+
+    // 6. Dodecahedron Polyhedron (Deep left background)
+    const dodecaGeom = new THREE.DodecahedronGeometry(0.75, 0);
+    const dodecaMat = createGradientMaterial(gradientTexTertiary);
+    const dodecaMesh = new THREE.Mesh(dodecaGeom, dodecaMat);
+    shapesGroup.add(dodecaMesh);
+    shapeItems.push({
+      mesh: dodecaMesh,
+      basePos: [-5.6, -1.2, -1.8],
+      rotSpeed: [0.005, 0.007, 0.006],
+      floatSpeed: 0.85,
+      floatAmplitude: 0.18,
+      phase: 5.1,
+    });
+
+    // 7. Minimalist Cylinder / Disc (Right center-bottom background)
+    const discGeom = new THREE.CylinderGeometry(0.85, 0.85, 0.08, 48);
+    const discMat = createGradientMaterial(gradientTexPrimary);
+    const discMesh = new THREE.Mesh(discGeom, discMat);
+    shapesGroup.add(discMesh);
+    shapeItems.push({
+      mesh: discMesh,
+      basePos: [5.2, -0.2, -1.5],
+      rotSpeed: [0.009, 0.004, 0.008],
+      floatSpeed: 0.95,
+      floatAmplitude: 0.15,
+      phase: 1.8,
+    });
+
+    // ==========================================
+    // FLOATING ATMOSPHERIC PARTICLES
+    // ==========================================
     const particleCount = 180;
     const particleGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
     for (let i = 0; i < particleCount * 3; i += 3) {
-      positions[i] = (Math.random() - 0.5) * 20;
+      positions[i] = (Math.random() - 0.5) * 22;
       positions[i + 1] = (Math.random() - 0.5) * 16;
       positions[i + 2] = (Math.random() - 0.5) * 14;
 
-      // Color alternating between warm white and signature electric blue (#3B82F6)
-      const isBlue = Math.random() > 0.75;
-      colors[i] = isBlue ? 0.23 : 0.85;
-      colors[i + 1] = isBlue ? 0.51 : 0.82;
-      colors[i + 2] = isBlue ? 0.96 : 0.8;
+      const isCyan = Math.random() > 0.6;
+      colors[i] = isCyan ? 0.02 : 0.23;
+      colors[i + 1] = isCyan ? 0.71 : 0.51;
+      colors[i + 2] = isCyan ? 0.83 : 0.96;
     }
 
     particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     particleGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const particleMaterial = new THREE.PointsMaterial({
-      size: 0.045,
+      size: 0.05,
       vertexColors: true,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.65,
     });
 
     const particles = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particles);
 
-    // Mouse and scroll tracking
+    // ==========================================
+    // MOUSE & SCROLL TRACKING
+    // ==========================================
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
     let scrollY = 0;
 
@@ -347,7 +342,9 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
 
     onLoaded?.();
 
-    // Animation Loop
+    // ==========================================
+    // ANIMATION & INTERACTION LOOP
+    // ==========================================
     let animationFrameId: number;
     const clock = new THREE.Clock();
 
@@ -356,30 +353,47 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
 
       const elapsedTime = clock.getElapsedTime();
 
-      // Smooth mouse interpolation (cinematic inertia)
-      mouse.x += (mouse.targetX - mouse.x) * 0.04;
-      mouse.y += (mouse.targetY - mouse.y) * 0.04;
+      // Smooth mouse interpolation (spring inertia)
+      mouse.x += (mouse.targetX - mouse.x) * 0.045;
+      mouse.y += (mouse.targetY - mouse.y) * 0.045;
 
-      // Camera parallax
+      // Parallax camera movement
       const scrollFactor = Math.min(scrollY / 800, 1.2);
-      camera.position.x = mouse.x * 1.5;
-      camera.position.y = mouse.y * 1.0 - scrollFactor * 3.5;
-      camera.position.z = 10 - scrollFactor * 4.0;
+      camera.position.x = mouse.x * 1.8;
+      camera.position.y = mouse.y * 1.2 - scrollFactor * 3.5;
+      camera.position.z = 11 - scrollFactor * 4.0;
       camera.lookAt(0, -scrollFactor * 1.5, 0);
 
-      // Move orange point light with mouse
-      bluePointLight.position.x = mouse.x * 5;
-      bluePointLight.position.y = mouse.y * 4;
+      // Interactive Point Lights glide with mouse
+      bluePointLight.position.x = mouse.x * 6.5;
+      bluePointLight.position.y = mouse.y * 5.0;
 
-      // Floating gentle motion for planes
-      meshes.forEach((mesh, idx) => {
-        mesh.position.y += Math.sin(elapsedTime * 1.2 + idx * 1.5) * 0.002;
-        mesh.rotation.y += Math.cos(elapsedTime * 0.8 + idx) * 0.0008;
+      cyanPointLight.position.x = -mouse.x * 5.5 + Math.sin(elapsedTime * 0.8) * 2;
+      cyanPointLight.position.y = -mouse.y * 4.0 + Math.cos(elapsedTime * 0.8) * 1.5;
+
+      violetPointLight.position.x = Math.cos(elapsedTime * 0.6) * 5.0;
+      violetPointLight.position.y = Math.sin(elapsedTime * 0.6) * 4.0;
+
+      // Update 3D shapes: floating oscillation + rotation + mouse tilt
+      shapeItems.forEach(({ mesh, basePos, rotSpeed, floatSpeed, floatAmplitude, phase }) => {
+        // Natural floating sinusoidal breathing
+        const floatY = Math.sin(elapsedTime * floatSpeed + phase) * floatAmplitude;
+        const floatX = Math.cos(elapsedTime * floatSpeed * 0.7 + phase) * (floatAmplitude * 0.4);
+
+        // Position with base + float + subtle mouse parallax
+        mesh.position.x = basePos[0] + floatX + mouse.x * 0.35;
+        mesh.position.y = basePos[1] + floatY + mouse.y * 0.35;
+        mesh.position.z = basePos[2];
+
+        // Continuous rotation enhanced by mouse velocity
+        mesh.rotation.x += rotSpeed[0] + mouse.y * 0.003;
+        mesh.rotation.y += rotSpeed[1] + mouse.x * 0.003;
+        mesh.rotation.z += rotSpeed[2];
       });
 
       // Slowly rotate particle field
-      particles.rotation.y = elapsedTime * 0.02;
-      particles.rotation.x = elapsedTime * 0.01;
+      particles.rotation.y = elapsedTime * 0.025;
+      particles.rotation.x = elapsedTime * 0.012;
 
       renderer.render(scene, camera);
     };
@@ -392,29 +406,34 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
 
-      // Stop and cleanup active background videos
-      videosToCleanup.forEach((vid) => {
-        vid.pause();
-        vid.removeAttribute("src");
-        vid.load();
-      });
-
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
 
       // Dispose resources
       renderer.dispose();
+      gradientTexPrimary.dispose();
+      gradientTexSecondary.dispose();
+      gradientTexTertiary.dispose();
       particleGeometry.dispose();
       particleMaterial.dispose();
-      meshes.forEach((mesh) => {
-        mesh.geometry.dispose();
-        if (Array.isArray(mesh.material)) {
-          mesh.material.forEach((m) => m.dispose());
-        } else {
-          mesh.material.dispose();
-        }
-      });
+      knotGeom.dispose();
+      knotMat.dispose();
+      icoGeom.dispose();
+      icoMatSolid.dispose();
+      icoWireMat.dispose();
+      sphereGeom.dispose();
+      sphereMat.dispose();
+      ringGeom.dispose();
+      ringMat.dispose();
+      innerGemGeom.dispose();
+      innerGemMat.dispose();
+      octaGeom.dispose();
+      octaMat.dispose();
+      dodecaGeom.dispose();
+      dodecaMat.dispose();
+      discGeom.dispose();
+      discMat.dispose();
     };
   }, [onLoaded]);
 
@@ -424,7 +443,7 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
     <div
       ref={mountRef}
       className="webgl-canvas-container absolute inset-0 z-0 pointer-events-none overflow-hidden"
-      style={{ opacity: 0.88 }}
+      style={{ opacity: 0.95 }}
     />
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,17 +14,72 @@ const Hero3DCanvas = dynamic(() => import("@/components/canvas/Hero3DCanvas"), {
 });
 
 export default function Hero() {
+  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setMouseOffset({ x: x * 45, y: y * 45 });
+  };
+
   return (
     <section
       id="home"
+      onMouseMove={handleMouseMove}
       className="relative min-h-screen w-full flex flex-col justify-between pt-28 pb-12 px-6 sm:px-8 lg:px-14 overflow-hidden bg-[#0A0D12]"
     >
-      {/* 3D WebGL Canvas Layer */}
+      {/* 3D WebGL Canvas Layer (Interactive 3D Gradient Shapes: Torus Knot, Icosahedron, Orb, Ring) */}
       <Hero3DCanvas />
 
+      {/* Interactive 2D Ambient Gradient Orbs & Meshes */}
+      <motion.div
+        animate={{
+          x: mouseOffset.x * 1.4,
+          y: mouseOffset.y * 1.4,
+        }}
+        transition={{ type: "spring", damping: 35, stiffness: 180 }}
+        className="absolute top-1/4 -left-20 w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-blue-600/20 via-cyan-500/15 to-transparent blur-[120px] pointer-events-none z-[1]"
+      />
+
+      <motion.div
+        animate={{
+          x: -mouseOffset.x * 1.2,
+          y: -mouseOffset.y * 1.2,
+        }}
+        transition={{ type: "spring", damping: 35, stiffness: 180 }}
+        className="absolute bottom-1/4 right-0 w-[520px] h-[520px] rounded-full bg-gradient-to-bl from-indigo-600/18 via-blue-500/12 to-transparent blur-[130px] pointer-events-none z-[1]"
+      />
+
+      {/* Interactive 2D Geometric Vector Accents */}
+      <div className="absolute inset-0 pointer-events-none z-[2] overflow-hidden">
+        {/* Subtle 2D dashed orbital ring */}
+        <motion.div
+          animate={{
+            x: mouseOffset.x * 0.4,
+            y: mouseOffset.y * 0.4,
+            rotate: 360,
+          }}
+          transition={{
+            x: { type: "spring", damping: 40, stiffness: 150 },
+            y: { type: "spring", damping: 40, stiffness: 150 },
+            rotate: { repeat: Infinity, duration: 60, ease: "linear" },
+          }}
+          className="absolute top-1/3 left-1/4 w-[360px] h-[360px] rounded-full border border-dashed border-accent/15 opacity-40 hidden lg:block"
+        />
+
+        {/* Technical Corner Crosshairs */}
+        <div className="absolute top-32 left-10 text-[10px] font-mono text-[#94A3B8]/30 hidden xl:block select-none">
+          <span>+ 01.3D_GEO_FIELD</span>
+        </div>
+        <div className="absolute top-32 right-10 text-[10px] font-mono text-[#94A3B8]/30 hidden xl:block select-none text-right">
+          <span>LAT 10.8505° N &bull; 76.2711° E +</span>
+        </div>
+      </div>
+
       {/* Atmospheric Vignette & Depth Gradients */}
-      <div className="absolute inset-0 pointer-events-none z-[1] bg-gradient-to-b from-[#0A0D12]/90 via-transparent to-[#0A0D12]" />
-      <div className="absolute inset-0 pointer-events-none z-[1] bg-[radial-gradient(circle_at_center,transparent_30%,#0A0D12_95%)]" />
+      <div className="absolute inset-0 pointer-events-none z-[2] bg-gradient-to-b from-[#0A0D12]/85 via-transparent to-[#0A0D12]" />
+      <div className="absolute inset-0 pointer-events-none z-[2] bg-[radial-gradient(circle_at_center,transparent_35%,#0A0D12_92%)]" />
 
       {/* Top Meta Header: Location, Availability & Profession */}
       <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#222C3D] pb-5">
