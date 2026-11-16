@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.seo.siteUrl),
   title: {
-    default: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
+    default: "Anjalsh V.S. — Filmmaker & Visual Artist",
     template: `%s | ${siteConfig.name}`,
   },
   description: "Explore the creative portfolio of Anjalsh V.S., featuring filmmaking, cinematography, photography, graphic design, motion graphics and AI visual production.",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.seo.siteUrl,
-    title: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
+    title: "Anjalsh V.S. — Filmmaker & Visual Artist",
     description: "Explore the creative portfolio of Anjalsh V.S., featuring filmmaking, cinematography, photography, graphic design, motion graphics and AI visual production.",
     siteName: siteConfig.name,
     images: [
@@ -60,13 +60,13 @@ export const metadata: Metadata = {
         url: "/images/photography/anjalsh-portrait.jpg",
         width: 1200,
         height: 630,
-        alt: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
+        alt: "Anjalsh V.S. — Filmmaker & Visual Artist",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
+    title: "Anjalsh V.S. — Filmmaker & Visual Artist",
     description: "Explore the creative portfolio of Anjalsh V.S., featuring filmmaking, cinematography, photography, graphic design, motion graphics and AI visual production.",
     images: ["/images/photography/anjalsh-portrait.jpg"],
   },
@@ -91,7 +91,7 @@ export default function RootLayout({
         "@id": `${siteConfig.seo.siteUrl}/#person`,
         "name": siteConfig.author,
         "alternateName": "ANJALSH®️",
-        "jobTitle": "Creative Director, Filmmaker & Visual Artist",
+        "jobTitle": "Filmmaker & Visual Artist",
         "url": siteConfig.seo.siteUrl,
         "sameAs": [
           siteConfig.socialLinks.find((s) => s.platform === "Instagram")?.url || "https://www.instagram.com/anjalsh_/",

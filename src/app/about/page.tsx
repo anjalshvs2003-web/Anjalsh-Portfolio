@@ -5,8 +5,8 @@ import AboutSection from "@/components/sections/AboutSection";
 import Experience from "@/components/sections/Experience";
 
 export const metadata: Metadata = {
-  title: "About Anjalsh V.S. — Creative Director & Filmmaker",
-  description: "Biography, creative journey, verified career timeline, and professional skillsets of Anjalsh V.S., Creative Director, Filmmaker & Visual Artist.",
+  title: "About Anjalsh V.S. — Filmmaker & Visual Artist",
+  description: "Biography, creative journey, verified career timeline, and professional skillsets of Anjalsh V.S., Filmmaker & Visual Artist.",
 };
 
 export default function AboutPage() {

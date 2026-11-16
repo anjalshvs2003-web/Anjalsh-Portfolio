@@ -58,7 +58,7 @@ export default function SocialSection() {
                 <div className="relative aspect-square rounded-xl overflow-hidden border border-[#222C3D] bg-[#0A0D12] group">
                   <Image
                     src="/images/photography/anjalsh-portrait.jpg"
-                    alt="Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist"
+                    alt="Anjalsh V.S. — Filmmaker & Visual Artist"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="250px"

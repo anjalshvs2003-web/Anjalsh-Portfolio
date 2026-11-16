@@ -3,15 +3,15 @@ import { ExperienceItem, ServiceItem, SocialLink } from "@/types";
 export const siteConfig = {
   name: "ANJALSH®️",
   author: "Anjalsh V.S.",
-  title: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
+  title: "Anjalsh V.S. — Filmmaker & Visual Artist",
   tagline: "I CREATE VISUALS THAT TELL STORIES.",
-  profession: "Creative Director, Filmmaker & Visual Artist",
+  profession: "Filmmaker & Visual Artist",
   location: "Kerala, India",
   profileImage: "/images/photography/anjalsh-portrait.jpg",
   timezone: "Asia/Kolkata",
   availabilityStatus: "Available for Select Commissions & Directorial Work",
   bio: {
-    hero: "Creative Director, Filmmaker & Visual Artist based in Kerala, India. Crafting cinematic visual narratives with intentional light sculpting, editorial precision, and evocative atmosphere.",
+    hero: "Filmmaker & Visual Artist based in Kerala, India. Crafting cinematic visual narratives with intentional light sculpting, editorial precision, and evocative atmosphere.",
     positioning: "An independent creative professional working across filmmaking, cinematography, photography, graphic design, motion graphics and emerging visual technologies.",
     full: "Rooted in high-end cinematography, post-production and contemporary digital direction, Anjalsh fuses disciplined visual craft with emerging storytelling tools. From commercial campaigns and brand films to documentary photography and experimental AI cinema, every frame is treated as an intentional emotional dialogue between light, movement, and human resonance.",
     mission: "Rejecting generic visual noise in pursuit of enduring atmospheres, meticulous colour grading, and evocative audiovisual compositions.",
@@ -187,7 +187,7 @@ export const siteConfig = {
 
   seo: {
     siteUrl: "https://anjalsh-portfolio.vercel.app",
-    title: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
+    title: "Anjalsh V.S. — Filmmaker & Visual Artist",
     description: "Explore the creative portfolio of Anjalsh V.S., featuring filmmaking, cinematography, photography, graphic design, motion graphics and AI visual production.",
     keywords: [
       "Anjalsh",

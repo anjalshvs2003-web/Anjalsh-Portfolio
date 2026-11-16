@@ -70,7 +70,7 @@ export default function AboutSection() {
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-[#222C3D] bg-[#161D2A] group shadow-2xl hover:border-accent/60 transition-colors duration-500">
               <Image
                 src="/images/photography/anjalsh-portrait.jpg"
-                alt="Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist"
+                alt="Anjalsh V.S. — Filmmaker & Visual Artist"
                 fill
                 priority
                 className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -84,7 +84,7 @@ export default function AboutSection() {
                   ANJALSH V.S.
                 </span>
                 <span className="font-heading text-xl font-bold text-white block mt-0.5">
-                  Creative Director & Filmmaker
+                  Filmmaker & Visual Artist
                 </span>
                 <span className="text-xs font-mono text-[#94A3B8] mt-1 block">
                   Kerala, India &bull; Available Worldwide
