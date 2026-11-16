@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { siteConfig } from "@/data/siteConfig";
-import { ArrowDown, ArrowUpRight, Sparkles, Film, Camera, MapPin } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Sparkles, Camera, MapPin } from "lucide-react";
 
 // Dynamically import 3D canvas with ssr disabled for optimal performance
 const Hero3DCanvas = dynamic(() => import("@/components/canvas/Hero3DCanvas"), {
@@ -170,7 +170,7 @@ export default function Hero() {
                 </div>
 
                 {/* Bottom Frame Label */}
-                <div className="absolute bottom-5 left-5 right-20 sm:right-24">
+                <div className="absolute bottom-5 left-5 right-5">
                   <span className="text-[10px] font-mono tracking-widest text-accent uppercase block font-semibold">
                     ANJALSH V.S.
                   </span>
@@ -179,30 +179,6 @@ export default function Hero() {
                   </span>
                 </div>
               </div>
-
-              {/* Overlapping Secondary Frame (Cinema Frame Grab) */}
-              <motion.div
-                initial={{ opacity: 0, x: 20, y: 20 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute -bottom-6 -right-5 sm:-right-7 w-40 sm:w-48 aspect-[16/9] rounded-xl overflow-hidden bg-[#111620] border border-accent/40 shadow-2xl hidden sm:block group"
-              >
-                <Image
-                  src="/images/ai-films/the-forgotten-smile.jpg"
-                  alt="AI Short Film Cinema Frame"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="220px"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors" />
-                <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[9px] font-mono text-white bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm">
-                  <span className="flex items-center space-x-1">
-                    <Film className="w-2.5 h-2.5 text-accent" />
-                    <span>NEURAL CINEMA</span>
-                  </span>
-                  <span className="text-accent">2.39:1</span>
-                </div>
-              </motion.div>
 
               {/* Decorative Accent Blue Corner Marker */}
               <div className="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-accent pointer-events-none" />
