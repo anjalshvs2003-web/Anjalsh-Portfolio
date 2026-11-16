@@ -17,7 +17,7 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
   const [scrollProgress, setScrollProgress] = useState(0);
   const [localTime, setLocalTime] = useState("");
 
-  // Update time indicator
+  // Update time indicator (IST)
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -68,11 +68,10 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
   }, []);
 
   const navLinks = [
-    { label: "HOME", href: "#home", id: "home" },
-    { label: "WORKS", href: "#work", id: "work" },
-    { label: "ABOUT", href: "#about", id: "about" },
-    { label: "SERVICES", href: "#services", id: "services" },
-    { label: "CONTACT", href: "#contact", id: "contact" },
+    { label: "WORK", href: "/#work", id: "work" },
+    { label: "ABOUT", href: "/#about", id: "about" },
+    { label: "SERVICES", href: "/#services", id: "services" },
+    { label: "CONTACT", href: "/#contact", id: "contact" },
   ];
 
   return (
@@ -80,7 +79,7 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
       {/* Scroll Progress Reading Line */}
       <div className="fixed top-0 left-0 w-full h-[2px] z-[60] bg-transparent">
         <div
-          className="h-full bg-accent transition-all duration-150 ease-out shadow-[0_0_10px_rgba(240,120,61,0.7)]"
+          className="h-full bg-accent transition-all duration-150 ease-out shadow-[0_0_10px_rgba(59,130,246,0.7)]"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -88,7 +87,7 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#100D0F]/90 backdrop-blur-xl border-b border-[#33292C] py-3.5"
+            ? "bg-[#0A0D12]/92 backdrop-blur-xl border-b border-[#222C3D] py-3.5"
             : "bg-transparent py-6"
         }`}
       >
@@ -96,17 +95,17 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
           {/* Brand Identity on Left */}
           <Link href="/" className="group flex items-center space-x-3">
             <div className="flex flex-col">
-              <span className="font-heading font-black text-lg md:text-xl tracking-tight text-white group-hover:text-accent transition-colors duration-300">
+              <span className="font-heading font-black text-lg md:text-xl tracking-tight text-[#F8FAFC] group-hover:text-accent transition-colors duration-300">
                 ANJALSH<span className="text-accent text-sm ml-0.5">®️</span>
               </span>
-              <span className="text-[9px] font-mono tracking-ultra text-muted uppercase -mt-0.5 hidden sm:block">
+              <span className="text-[9px] font-mono tracking-ultra text-[#94A3B8] uppercase -mt-0.5 hidden sm:block">
                 {siteConfig.profession}
               </span>
             </div>
           </Link>
 
           {/* Minimal Center Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-7 text-xs font-mono tracking-widest text-muted">
+          <nav className="hidden md:flex items-center space-x-8 text-xs font-mono tracking-widest text-[#94A3B8]">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -122,7 +121,7 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
                   )}
                   <span>{link.label}</span>
                   <span
-                    className={`absolute bottom-0 left-0 h-[1px] bg-accent transition-all duration-300 ${
+                    className={`absolute bottom-0 left-0 h-[1.5px] bg-accent transition-all duration-300 ${
                       isActive ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
@@ -134,11 +133,11 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
           {/* Right Controls: IST Time, Audio, CTA */}
           <div className="flex items-center space-x-4 sm:space-x-6">
             {/* Live IST Time */}
-            <div className="hidden xl:flex items-center space-x-2 text-[10px] font-mono text-zinc-500">
+            <div className="hidden xl:flex items-center space-x-2 text-[10px] font-mono text-[#94A3B8]">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               <span>KERALA, IN</span>
-              <span className="text-zinc-700">/</span>
-              <span className="text-zinc-300">{localTime} IST</span>
+              <span className="text-[#222C3D]">/</span>
+              <span className="text-[#F8FAFC]">{localTime} IST</span>
             </div>
 
             {/* Custom Sound Controller */}
@@ -146,7 +145,7 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
 
             {/* Contact CTA */}
             <Link
-              href="#contact"
+              href="/#contact"
               className="hidden sm:inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-white/20 text-xs font-mono tracking-wider text-white hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-300"
             >
               <span>START A PROJECT</span>
@@ -157,7 +156,7 @@ export default function Navbar({ onOpenMobileMenu, isMobileMenuOpen }: NavbarPro
             <button
               onClick={onOpenMobileMenu}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open navigation menu"}
-              className="md:hidden p-2 text-zinc-300 hover:text-white focus:outline-none"
+              className="md:hidden p-2 text-[#94A3B8] hover:text-white focus:outline-none"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

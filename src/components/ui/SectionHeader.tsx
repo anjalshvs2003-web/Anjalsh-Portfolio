@@ -25,16 +25,16 @@ export default function SectionHeader({
         }`}
       >
         <span className="text-accent font-bold">{number}</span>
-        <span className="text-[#33292C]">/</span>
-        <span className="text-[#F5F2F0] font-medium">{tag}</span>
+        <span className="text-[#222C3D]">/</span>
+        <span className="text-[#F8FAFC] font-medium">{tag}</span>
       </div>
 
-      <h2 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#F5F2F0] leading-[1.05]">
+      <h2 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#F8FAFC] leading-[1.05]">
         {title}
       </h2>
 
       {description && (
-        <p className="text-[#999194] text-sm sm:text-base md:text-lg font-light leading-relaxed">
+        <p className="text-[#94A3B8] text-sm sm:text-base md:text-lg font-normal leading-relaxed">
           {description}
         </p>
       )}

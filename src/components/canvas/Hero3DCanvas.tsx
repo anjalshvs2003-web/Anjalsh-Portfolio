@@ -44,7 +44,7 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
 
     // Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x100D0F, 0.038);
+    scene.fog = new THREE.FogExp2(0x0A0D12, 0.038);
 
     const width = container.clientWidth || window.innerWidth;
     const height = container.clientHeight || window.innerHeight;
@@ -72,10 +72,10 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
     dirLight.position.set(5, 8, 7);
     scene.add(dirLight);
 
-    // Signature Accent Orange Point Light moving with mouse
-    const orangePointLight = new THREE.PointLight(0xf0783d, 3.2, 22);
-    orangePointLight.position.set(0, 0, 5);
-    scene.add(orangePointLight);
+    // Signature Accent Blue Point Light moving with mouse
+    const bluePointLight = new THREE.PointLight(0x3b82f6, 3.2, 22);
+    bluePointLight.position.set(0, 0, 5);
+    scene.add(bluePointLight);
 
     const textureLoader = new THREE.TextureLoader();
     const planesGroup = new THREE.Group();
@@ -299,11 +299,11 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
       positions[i + 1] = (Math.random() - 0.5) * 16;
       positions[i + 2] = (Math.random() - 0.5) * 14;
 
-      // Color alternating between warm white and signature orange (#F0783D)
-      const isOrange = Math.random() > 0.75;
-      colors[i] = isOrange ? 0.94 : 0.85;
-      colors[i + 1] = isOrange ? 0.47 : 0.82;
-      colors[i + 2] = isOrange ? 0.24 : 0.8;
+      // Color alternating between warm white and signature electric blue (#3B82F6)
+      const isBlue = Math.random() > 0.75;
+      colors[i] = isBlue ? 0.23 : 0.85;
+      colors[i + 1] = isBlue ? 0.51 : 0.82;
+      colors[i + 2] = isBlue ? 0.96 : 0.8;
     }
 
     particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
@@ -368,8 +368,8 @@ export default function Hero3DCanvas({ onLoaded }: Hero3DCanvasProps) {
       camera.lookAt(0, -scrollFactor * 1.5, 0);
 
       // Move orange point light with mouse
-      orangePointLight.position.x = mouse.x * 5;
-      orangePointLight.position.y = mouse.y * 4;
+      bluePointLight.position.x = mouse.x * 5;
+      bluePointLight.position.y = mouse.y * 4;
 
       // Floating gentle motion for planes
       meshes.forEach((mesh, idx) => {

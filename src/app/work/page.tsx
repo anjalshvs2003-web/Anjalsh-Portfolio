@@ -4,15 +4,15 @@ import Footer from "@/components/layout/Footer";
 import SelectedWork from "@/components/sections/SelectedWork";
 
 export const metadata: Metadata = {
-  title: "Selected Work — ANJALSH®️",
-  description: "Curated portfolio gallery of cinematography, video editing, DaVinci Resolve color grading, AI films, and commercial advertising.",
+  title: "Complete Exhibition Archive — ANJALSH®️",
+  description: "Browse 52+ projects across cinematography, DaVinci Resolve color grading, Swiss editorial design, AI films, and commercial advertising by Anjalsh V.S.",
 };
 
 export default function WorkPage() {
   return (
-    <div className="bg-[#100D0F] min-h-screen text-[#F5F2F0] pt-16">
+    <div className="bg-[#0A0D12] min-h-screen text-[#F8FAFC] pt-16">
       <Navbar />
-      <SelectedWork />
+      <SelectedWork isFullArchive={true} />
       <Footer />
     </div>
   );

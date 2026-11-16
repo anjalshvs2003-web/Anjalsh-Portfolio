@@ -42,12 +42,12 @@ export default function Preloader() {
             y: "-100%",
             transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] },
           }}
-          className="fixed inset-0 z-[10000] flex flex-col justify-between bg-[#100D0F] p-8 md:p-14 text-white"
+          className="fixed inset-0 z-[10000] flex flex-col justify-between bg-[#0A0D12] p-8 md:p-14 text-white"
         >
           {/* Top metadata */}
           <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 uppercase tracking-ultra">
             <span>ANJALSH®️</span>
-            <span>3D DIGITAL EXHIBITION / 2024–2025</span>
+            <span>CREATIVE PORTFOLIO & ARCHIVE</span>
           </div>
 
           {/* Center Brand Identity */}
@@ -68,10 +68,10 @@ export default function Preloader() {
               className="space-y-1.5"
             >
               <p className="text-xs sm:text-sm tracking-cinema font-mono text-zinc-400 uppercase">
-                SHAPING VISUAL STORIES.
+                I CREATE VISUALS THAT TELL STORIES.
               </p>
               <p className="text-[11px] font-mono tracking-widest text-accent uppercase font-medium">
-                VISUAL CREATOR / FILMMAKER / DESIGNER
+                CREATIVE DIRECTOR / FILMMAKER / VISUAL ARTIST
               </p>
             </motion.div>
           </div>
@@ -79,7 +79,7 @@ export default function Preloader() {
           {/* Bottom Progress Bar & Counter */}
           <div className="space-y-3">
             <div className="flex justify-between items-end font-mono text-xs text-zinc-500">
-              <span className="tracking-widest text-[10px]">INITIALIZING 3D ENVIRONMENT</span>
+              <span className="tracking-widest text-[10px]">INITIALIZING PORTFOLIO EXPERIENCE</span>
               <span className="text-accent font-mono text-sm font-semibold">
                 {String(progress).padStart(3, "0")}%
               </span>

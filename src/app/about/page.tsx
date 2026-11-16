@@ -5,13 +5,13 @@ import AboutSection from "@/components/sections/AboutSection";
 import Experience from "@/components/sections/Experience";
 
 export const metadata: Metadata = {
-  title: "About Anjalsh V.S. — ANJALSH®️",
-  description: "Biography, creative journey, verified career timeline, and professional skillsets of Anjalsh V.S., Creative Multimedia Professional.",
+  title: "About Anjalsh V.S. — Creative Director & Filmmaker",
+  description: "Biography, creative journey, verified career timeline, and professional skillsets of Anjalsh V.S., Creative Director, Filmmaker & Visual Artist.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#100D0F] min-h-screen text-[#F5F2F0] pt-16">
+    <div className="bg-[#0A0D12] min-h-screen text-[#F8FAFC] pt-16">
       <Navbar />
       <AboutSection />
       <Experience />

@@ -52,21 +52,21 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-5xl bg-[#191417] border border-[#33292C] rounded-2xl overflow-hidden shadow-2xl my-auto text-[#F5F2F0] max-h-[92vh] flex flex-col"
+              className="relative w-full max-w-5xl bg-[#111620] border border-[#222C3D] rounded-2xl overflow-hidden shadow-2xl my-auto text-[#F8FAFC] max-h-[92vh] flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-[#33292C] bg-[#191417]/95 sticky top-0 z-20">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-[#222C3D] bg-[#111620]/95 sticky top-0 z-20">
                 <div className="flex items-center space-x-3 text-xs font-mono">
                   <span className="text-accent uppercase font-semibold">{project.category}</span>
-                  <span className="text-[#33292C]">/</span>
-                  <span className="text-[#999194]">{project.year}</span>
+                  <span className="text-[#222C3D]">/</span>
+                  <span className="text-[#94A3B8]">{project.year}</span>
                 </div>
 
                 <div className="flex items-center space-x-3">
                   <Link
                     href={`/work/${project.slug}`}
-                    className="text-xs font-mono text-[#999194] hover:text-[#F5F2F0] flex items-center space-x-1 border border-[#33292C] px-3 py-1.5 rounded-full hover:border-accent hover:text-accent transition-colors"
+                    className="text-xs font-mono text-[#94A3B8] hover:text-[#F8FAFC] flex items-center space-x-1 border border-[#222C3D] px-3 py-1.5 rounded-full hover:border-accent hover:text-accent transition-colors"
                   >
                     <span>FULL CASE STUDY</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -74,7 +74,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
 
                   <button
                     onClick={onClose}
-                    className="p-1.5 rounded-full bg-white/5 hover:bg-white/10 text-[#999194] hover:text-white transition-colors"
+                    className="p-1.5 rounded-full bg-white/5 hover:bg-white/10 text-[#94A3B8] hover:text-white transition-colors"
                     aria-label="Close modal"
                   >
                     <X className="w-5 h-5" />
@@ -85,7 +85,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
               {/* Scrollable Content */}
               <div className="overflow-y-auto p-6 sm:p-8 space-y-8">
                 {/* Hero Media / Video */}
-                <div className="relative w-full aspect-video sm:aspect-[2.39/1] rounded-xl overflow-hidden bg-black border border-[#33292C] group">
+                <div className="relative w-full aspect-video sm:aspect-[2.39/1] rounded-xl overflow-hidden bg-black border border-[#222C3D] group">
                   {isPlayingVideo && project.videoUrl ? (
                     <video
                       src={project.videoUrl}
@@ -103,7 +103,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                         sizes="(max-width: 1200px) 100vw, 1200px"
                         priority
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#100D0F]/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0D12]/80 via-transparent to-transparent" />
 
                       {project.videoUrl && (
                         <button
@@ -111,8 +111,8 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                           className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform"
                           aria-label="Play video trailer"
                         >
-                          <div className="p-4 rounded-full bg-accent text-black shadow-lg shadow-accent/30 flex items-center justify-center">
-                            <Play className="w-6 h-6 fill-black ml-1" />
+                          <div className="p-4 rounded-full bg-accent text-white shadow-lg shadow-accent/40 flex items-center justify-center">
+                            <Play className="w-6 h-6 fill-white ml-1" />
                           </div>
                         </button>
                       )}
@@ -121,34 +121,34 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                 </div>
 
                 {/* Title & Metadata Bar */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start pb-8 border-b border-[#33292C]">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start pb-8 border-b border-[#222C3D]">
                   <div className="md:col-span-8 space-y-3">
-                    <h2 className="font-heading text-2xl sm:text-4xl font-bold tracking-tight text-[#F5F2F0]">
+                    <h2 className="font-heading text-2xl sm:text-4xl font-bold tracking-tight text-[#F8FAFC]">
                       {project.title}
                     </h2>
-                    <p className="text-[#999194] text-sm sm:text-base leading-relaxed">
+                    <p className="text-[#94A3B8] text-sm sm:text-base leading-relaxed">
                       {project.fullDescription}
                     </p>
                   </div>
 
-                  <div className="md:col-span-4 bg-[#211A1D] border border-[#33292C] rounded-xl p-5 space-y-3 font-mono text-xs">
-                    <div className="flex justify-between py-1 border-b border-[#33292C]">
-                      <span className="text-[#999194]">ROLE</span>
-                      <span className="text-[#F5F2F0] text-right font-medium">{project.role}</span>
+                  <div className="md:col-span-4 bg-[#161D2A] border border-[#222C3D] rounded-xl p-5 space-y-3 font-mono text-xs">
+                    <div className="flex justify-between py-1 border-b border-[#222C3D]">
+                      <span className="text-[#94A3B8]">ROLE</span>
+                      <span className="text-[#F8FAFC] text-right font-medium">{project.role}</span>
                     </div>
                     {project.client && (
-                      <div className="flex justify-between py-1 border-b border-[#33292C]">
-                        <span className="text-[#999194]">CLIENT</span>
-                        <span className="text-[#F5F2F0] text-right">{project.client}</span>
+                      <div className="flex justify-between py-1 border-b border-[#222C3D]">
+                        <span className="text-[#94A3B8]">CLIENT</span>
+                        <span className="text-[#F8FAFC] text-right">{project.client}</span>
                       </div>
                     )}
-                    <div className="flex justify-between py-1 border-b border-[#33292C]">
-                      <span className="text-[#999194]">YEAR</span>
-                      <span className="text-[#F5F2F0]">{project.year}</span>
+                    <div className="flex justify-between py-1 border-b border-[#222C3D]">
+                      <span className="text-[#94A3B8]">YEAR</span>
+                      <span className="text-[#F8FAFC]">{project.year}</span>
                     </div>
                     {project.technicalDetails?.aspectRatio && (
-                      <div className="flex justify-between py-1 border-b border-[#33292C]">
-                        <span className="text-[#999194]">ASPECT RATIO</span>
+                      <div className="flex justify-between py-1 border-b border-[#222C3D]">
+                        <span className="text-[#94A3B8]">ASPECT RATIO</span>
                         <span className="text-accent">{project.technicalDetails.aspectRatio}</span>
                       </div>
                     )}
@@ -158,34 +158,34 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                 {/* Technical Specifications */}
                 {project.technicalDetails && (
                   <div className="space-y-3">
-                    <h3 className="text-xs font-mono tracking-widest text-[#999194] uppercase">
+                    <h3 className="text-xs font-mono tracking-widest text-[#94A3B8] uppercase">
                       TECHNICAL SPECIFICATIONS
                     </h3>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
                       {project.technicalDetails.camera && (
-                        <div className="p-3 bg-[#211A1D] border border-[#33292C] rounded-lg">
-                          <span className="text-[#999194] block text-[10px]">CAPTURE SYSTEM</span>
-                          <span className="text-[#F5F2F0] mt-1 block">{project.technicalDetails.camera}</span>
+                        <div className="p-3 bg-[#161D2A] border border-[#222C3D] rounded-lg">
+                          <span className="text-[#94A3B8] block text-[10px]">CAPTURE SYSTEM</span>
+                          <span className="text-[#F8FAFC] mt-1 block">{project.technicalDetails.camera}</span>
                         </div>
                       )}
                       {project.technicalDetails.software && (
-                        <div className="p-3 bg-[#211A1D] border border-[#33292C] rounded-lg">
-                          <span className="text-[#999194] block text-[10px]">SOFTWARE & PIPELINE</span>
-                          <span className="text-[#F5F2F0] mt-1 block">
+                        <div className="p-3 bg-[#161D2A] border border-[#222C3D] rounded-lg">
+                          <span className="text-[#94A3B8] block text-[10px]">SOFTWARE & PIPELINE</span>
+                          <span className="text-[#F8FAFC] mt-1 block">
                             {project.technicalDetails.software.join(", ")}
                           </span>
                         </div>
                       )}
                       {project.technicalDetails.colourSpace && (
-                        <div className="p-3 bg-[#211A1D] border border-[#33292C] rounded-lg">
-                          <span className="text-[#999194] block text-[10px]">COLOUR SPACE</span>
+                        <div className="p-3 bg-[#161D2A] border border-[#222C3D] rounded-lg">
+                          <span className="text-[#94A3B8] block text-[10px]">COLOUR SPACE</span>
                           <span className="text-accent mt-1 block">{project.technicalDetails.colourSpace}</span>
                         </div>
                       )}
                       {project.technicalDetails.runtime && (
-                        <div className="p-3 bg-[#211A1D] border border-[#33292C] rounded-lg">
-                          <span className="text-[#999194] block text-[10px]">RUNTIME</span>
-                          <span className="text-[#F5F2F0] mt-1 block">{project.technicalDetails.runtime}</span>
+                        <div className="p-3 bg-[#161D2A] border border-[#222C3D] rounded-lg">
+                          <span className="text-[#94A3B8] block text-[10px]">RUNTIME</span>
+                          <span className="text-[#F8FAFC] mt-1 block">{project.technicalDetails.runtime}</span>
                         </div>
                       )}
                     </div>
@@ -196,7 +196,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                 {project.gallery && project.gallery.length > 0 && (
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-xs font-mono tracking-widest text-[#999194] uppercase">
+                      <h3 className="text-xs font-mono tracking-widest text-[#94A3B8] uppercase">
                         STILLS & VISUAL FRAMES ({project.gallery.length})
                       </h3>
                       <span className="text-[11px] font-mono text-accent">CLICK FOR LIGHTBOX</span>
@@ -210,7 +210,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                             setLightboxIndex(idx);
                             setLightboxOpen(true);
                           }}
-                          className="group/still relative aspect-video rounded-xl overflow-hidden bg-[#211A1D] border border-[#33292C] cursor-pointer hover:border-accent transition-colors"
+                          className="group/still relative aspect-video rounded-xl overflow-hidden bg-[#161D2A] border border-[#222C3D] cursor-pointer hover:border-accent transition-colors"
                         >
                           <Image
                             src={item.url}
@@ -223,7 +223,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                             <Maximize2 className="w-5 h-5 text-accent" />
                           </div>
                           {item.caption && (
-                            <div className="absolute bottom-0 inset-x-0 p-2.5 bg-gradient-to-t from-black/80 to-transparent text-[11px] font-mono text-[#F5F2F0] truncate">
+                            <div className="absolute bottom-0 inset-x-0 p-2.5 bg-gradient-to-t from-black/80 to-transparent text-[11px] font-mono text-[#F8FAFC] truncate">
                               {item.caption}
                             </div>
                           )}

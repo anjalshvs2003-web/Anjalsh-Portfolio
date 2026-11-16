@@ -1,28 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
+import { Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/siteConfig";
 import CustomCursor from "@/components/layout/CustomCursor";
 import Preloader from "@/components/layout/Preloader";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 
-const spaceGrotesk = Space_Grotesk({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-space",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
   display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-  style: ["normal", "italic"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -32,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#100D0F",
+  themeColor: "#0A0D12",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -41,10 +29,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.seo.siteUrl),
   title: {
-    default: siteConfig.title,
+    default: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.seo.description,
+  description: "Explore the creative portfolio of Anjalsh V.S., featuring filmmaking, cinematography, photography, graphic design, motion graphics and AI visual production.",
   keywords: siteConfig.seo.keywords,
   authors: [{ name: siteConfig.author, url: siteConfig.seo.siteUrl }],
   creator: siteConfig.author,
@@ -64,25 +52,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.seo.siteUrl,
-    title: siteConfig.title,
-    description: siteConfig.seo.description,
+    title: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
+    description: "Explore the creative portfolio of Anjalsh V.S., featuring filmmaking, cinematography, photography, graphic design, motion graphics and AI visual production.",
     siteName: siteConfig.name,
     images: [
       {
-        url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop",
+        url: "/images/photography/anjalsh-portrait.jpg",
         width: 1200,
         height: 630,
-        alt: siteConfig.title,
+        alt: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.seo.description,
-    images: [
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop",
-    ],
+    title: "Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist",
+    description: "Explore the creative portfolio of Anjalsh V.S., featuring filmmaking, cinematography, photography, graphic design, motion graphics and AI visual production.",
+    images: ["/images/photography/anjalsh-portrait.jpg"],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
@@ -105,7 +91,7 @@ export default function RootLayout({
         "@id": `${siteConfig.seo.siteUrl}/#person`,
         "name": siteConfig.author,
         "alternateName": "ANJALSH®️",
-        "jobTitle": siteConfig.profession,
+        "jobTitle": "Creative Director, Filmmaker & Visual Artist",
         "url": siteConfig.seo.siteUrl,
         "sameAs": [
           siteConfig.socialLinks.find((s) => s.platform === "Instagram")?.url || "https://www.instagram.com/anjalsh_/",
@@ -151,7 +137,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} dark`}
+      className={`${poppins.variable} ${jetbrainsMono.variable} dark`}
     >
       <head>
         {/* Structured Data JSON-LD */}
@@ -182,7 +168,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className="font-body bg-[#100D0F] text-[#F5F2F0] selection:bg-accent/30 selection:text-white antialiased overflow-x-hidden">
+      <body className="font-body bg-[#0A0D12] text-[#F8FAFC] selection:bg-accent/30 selection:text-white antialiased overflow-x-hidden">
         {/* Subtle Film Grain */}
         <div className="film-grain" />
 

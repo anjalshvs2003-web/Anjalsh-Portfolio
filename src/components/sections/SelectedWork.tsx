@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { projectsData, projectCategories } from "@/data/projects";
 import { Project, ProjectCategory } from "@/types";
@@ -8,24 +9,42 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectModal from "@/components/ui/ProjectModal";
 import CurvedExhibitionArc from "@/components/ui/CurvedExhibitionArc";
-import { Filter, ArrowDown, ArrowUpDown } from "lucide-react";
+import { Filter, ArrowDown, ArrowUpDown, Search, ArrowRight, Sparkles } from "lucide-react";
 
 type SortOption = "featured" | "newest" | "oldest";
 
-export default function SelectedWork() {
+interface SelectedWorkProps {
+  isFullArchive?: boolean;
+}
+
+export default function SelectedWork({ isFullArchive = false }: SelectedWorkProps) {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All Works");
+  const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<SortOption>("featured");
-  const [visibleCount, setVisibleCount] = useState<number>(18);
+  const [visibleCount, setVisibleCount] = useState<number>(isFullArchive ? 18 : 8);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Filter & Sort Logic
+  // Filter, Search & Sort Logic
   const filteredAndSortedProjects = useMemo(() => {
     let result = [...projectsData];
 
     // Category filter
     if (activeCategory !== "All Works") {
       result = result.filter((p) => p.category === activeCategory);
+    }
+
+    // Search query filter
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      result = result.filter(
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q) ||
+          p.role.toLowerCase().includes(q) ||
+          (p.client && p.client.toLowerCase().includes(q)) ||
+          p.tags.some((t) => t.toLowerCase().includes(q))
+      );
     }
 
     // Sorting
@@ -43,12 +62,17 @@ export default function SelectedWork() {
     }
 
     return result;
-  }, [activeCategory, sortBy]);
+  }, [activeCategory, searchQuery, sortBy]);
 
-  // Paginated visible items
-  const visibleProjects = useMemo(() => {
+  // For homepage: Take the top 8 curated featured projects
+  // For full archive: Take paginated visible items
+  const displayProjects = useMemo(() => {
+    if (!isFullArchive) {
+      // Pick 8 diverse, high-impact projects representing cinematography, AI films, photography, and design
+      return filteredAndSortedProjects.slice(0, 8);
+    }
     return filteredAndSortedProjects.slice(0, visibleCount);
-  }, [filteredAndSortedProjects, visibleCount]);
+  }, [isFullArchive, filteredAndSortedProjects, visibleCount]);
 
   const handleOpenProject = (project: Project) => {
     setSelectedProject(project);
@@ -61,7 +85,7 @@ export default function SelectedWork() {
 
   const handleCategoryChange = (category: ProjectCategory) => {
     setActiveCategory(category);
-    setVisibleCount(18); // Reset page count on filter switch
+    setVisibleCount(18);
   };
 
   // Discipline description mapping for editorial context
@@ -77,31 +101,35 @@ export default function SelectedWork() {
   };
 
   return (
-    <section id="work" className="relative py-28 sm:py-36 px-6 sm:px-8 lg:px-12 bg-[#100D0F] text-[#F5F2F0]">
+    <section id="work" className="relative py-24 sm:py-32 px-6 sm:px-8 lg:px-12 bg-[#0A0D12] text-[#F8FAFC]">
       <div className="max-w-7xl mx-auto">
         {/* Section Header with live project count */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
           <SectionHeader
             number="01"
-            tag="EXHIBITION ARCHIVE"
-            title="SELECTED WORKS & PORTFOLIO"
-            description="An expansive digital exhibition showcasing 52+ projects across cinematography, original AI filmmaking, editorial photography, Swiss typography, and high-stakes commercial direction."
+            tag={isFullArchive ? "COMPLETE ARCHIVE" : "SELECTED WORKS"}
+            title={isFullArchive ? "EXHIBITION ARCHIVE" : "CURATED PROJECTS & PORTFOLIO"}
+            description={
+              isFullArchive
+                ? "An expansive digital exhibition showcasing 52+ projects across cinematography, original AI filmmaking, editorial photography, Swiss typography, and high-stakes commercial direction."
+                : "A curated selection of 8 flagship projects demonstrating directorial vision, DaVinci Resolve color grading, Swiss typography, and neural cinema pipelines."
+            }
           />
 
-          <div className="text-right font-mono text-xs text-[#999194] hidden lg:block pb-14">
+          <div className="text-right font-mono text-xs text-[#94A3B8] hidden lg:block pb-14">
             <span className="text-accent text-4xl font-black block tracking-tight">
               {projectsData.length}+
             </span>
-            <span className="uppercase text-[10px] tracking-ultra text-[#999194]">
+            <span className="uppercase text-[10px] tracking-ultra text-[#94A3B8]">
               CURATED EXHIBITION PIECES
             </span>
           </div>
         </div>
 
         {/* ============================================================== */}
-        {/* 3D CURVED CONCAVE EXHIBITION ARC (Reference Image Matched) */}
+        {/* 3D CURVED CONCAVE EXHIBITION ARC */}
         {/* ============================================================== */}
-        <div className="mb-16 pb-12 border-b border-[#33292C]">
+        <div className="mb-16 pb-12 border-b border-[#222C3D]">
           <CurvedExhibitionArc
             projects={projectsData}
             onSelectProject={handleOpenProject}
@@ -109,16 +137,16 @@ export default function SelectedWork() {
         </div>
 
         {/* ============================================================== */}
-        {/* FILTER PILLS & SORTING BAR */}
+        {/* FILTER PILLS, SEARCH & SORT BAR (Full archive or category filter) */}
         {/* ============================================================== */}
         <div
           id="gallery-grid"
-          className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-[#33292C]"
+          className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-[#222C3D]"
         >
           {/* Category Filter Pills (Horizontal scroll on mobile) */}
           <div className="overflow-x-auto pb-2 -mx-2 px-2 scrollbar-none">
             <div className="flex items-center space-x-2 min-w-max">
-              <div className="flex items-center space-x-1.5 text-[#999194] text-xs font-mono pr-2">
+              <div className="flex items-center space-x-1.5 text-[#94A3B8] text-xs font-mono pr-2">
                 <Filter className="w-3.5 h-3.5 text-accent" />
                 <span>FILTER:</span>
               </div>
@@ -137,14 +165,14 @@ export default function SelectedWork() {
                     onClick={() => handleCategoryChange(category)}
                     className={`relative px-4 py-2 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
                       isActive
-                        ? "text-black bg-accent font-semibold shadow-[0_0_20px_rgba(240,120,61,0.4)]"
-                        : "text-[#999194] bg-[#211A1D] hover:text-white hover:bg-[#292024] border border-[#33292C]"
+                        ? "text-white bg-accent font-semibold shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                        : "text-[#94A3B8] bg-[#161D2A] hover:text-white hover:bg-[#1E2638] border border-[#222C3D]"
                     }`}
                   >
                     <span>{category}</span>
                     <span
                       className={`ml-1.5 text-[10px] ${
-                        isActive ? "text-black/85 font-bold" : "text-[#999194]/70"
+                        isActive ? "text-white/90 font-bold" : "text-[#94A3B8]/70"
                       }`}
                     >
                       ({count})
@@ -155,37 +183,46 @@ export default function SelectedWork() {
             </div>
           </div>
 
-          {/* Sorting Dropdown & Progress */}
-          <div className="flex items-center justify-between md:justify-end space-x-4 shrink-0 font-mono text-xs">
-            <div className="flex items-center space-x-2 text-[#999194]">
+          {/* Search Bar & Sorting Dropdown */}
+          <div className="flex items-center justify-between md:justify-end space-x-3 shrink-0 font-mono text-xs">
+            {isFullArchive && (
+              <div className="relative">
+                <Search className="w-3.5 h-3.5 text-[#94A3B8] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <input
+                  type="text"
+                  placeholder="Search works..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-8 pr-3 py-1.5 rounded-lg bg-[#161D2A] border border-[#222C3D] text-[#F8FAFC] placeholder-[#94A3B8]/50 focus:outline-none focus:border-accent font-mono text-xs w-36 sm:w-48 transition-colors"
+                />
+              </div>
+            )}
+
+            <div className="flex items-center space-x-2 text-[#94A3B8]">
               <ArrowUpDown className="w-3.5 h-3.5 text-accent" />
-              <span className="text-[10px] uppercase tracking-wider text-[#999194]">SORT:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="bg-[#211A1D] border border-[#33292C] text-[#F5F2F0] rounded-lg px-3 py-1.5 focus:outline-none focus:border-accent text-xs font-mono"
+                aria-label="Sort projects"
+                className="bg-[#161D2A] border border-[#222C3D] text-[#F8FAFC] rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-accent text-xs font-mono"
               >
-                <option value="featured">Featured First</option>
-                <option value="newest">Newest (2025–2020)</option>
-                <option value="oldest">Oldest (2020–2025)</option>
+                <option value="featured">Featured</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
               </select>
             </div>
-
-            <span className="text-[#999194] text-[11px] hidden sm:inline">
-              Showing {visibleProjects.length} of {filteredAndSortedProjects.length}
-            </span>
           </div>
         </div>
 
-        {/* Discipline Context Explainer (when a specific category is active) */}
+        {/* Discipline Context Explainer */}
         {activeCategory !== "All Works" && disciplineDescriptions[activeCategory] && (
-          <div className="mb-10 p-5 rounded-xl bg-[#211A1D] border border-[#33292C] flex items-start space-x-3 text-xs font-mono">
+          <div className="mb-10 p-5 rounded-xl bg-[#161D2A] border border-[#222C3D] flex items-start space-x-3 text-xs font-mono">
             <span className="text-accent font-bold mt-0.5">•</span>
             <div>
               <span className="text-accent uppercase font-semibold mr-2">
                 {activeCategory} ARCHIVE:
               </span>
-              <span className="text-[#999194]">
+              <span className="text-[#94A3B8]">
                 {disciplineDescriptions[activeCategory]}
               </span>
             </div>
@@ -193,14 +230,14 @@ export default function SelectedWork() {
         )}
 
         {/* ============================================================== */}
-        {/* DYNAMIC ASYMMETRICAL MASONRY GRID */}
+        {/* DYNAMIC ASYMMETRICAL EDITORIAL GRID */}
         {/* ============================================================== */}
         <motion.div
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-9"
         >
           <AnimatePresence mode="popLayout">
-            {visibleProjects.map((project, idx) => (
+            {displayProjects.map((project, idx) => (
               <ProjectCard
                 key={project.id}
                 project={project}
@@ -211,33 +248,52 @@ export default function SelectedWork() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Scalable Load More Pagination */}
-        {visibleCount < filteredAndSortedProjects.length && (
-          <div className="flex flex-col items-center justify-center mt-16 pt-8 border-t border-[#33292C] space-y-3">
+        {/* HOMEPAGE CTA: VIEW COMPLETE ARCHIVE */}
+        {!isFullArchive && (
+          <div className="flex flex-col items-center justify-center mt-20 pt-10 border-t border-[#222C3D] space-y-4">
+            <Link
+              href="/work"
+              className="inline-flex items-center space-x-3 px-10 py-4 rounded-full bg-accent text-white font-mono text-xs tracking-widest uppercase font-semibold hover:bg-accent-hover transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.35)] group"
+            >
+              <span>EXPLORE COMPLETE ARCHIVE ({projectsData.length}+ WORKS)</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+            </Link>
+            <p className="text-xs font-mono text-[#94A3B8]">
+              Browse complete case studies across all 9 creative categories
+            </p>
+          </div>
+        )}
+
+        {/* Scalable Load More Pagination for Full Archive */}
+        {isFullArchive && visibleCount < filteredAndSortedProjects.length && (
+          <div className="flex flex-col items-center justify-center mt-16 pt-8 border-t border-[#222C3D] space-y-3">
             <button
               onClick={handleLoadMore}
-              className="inline-flex items-center space-x-3 px-10 py-4 rounded-full bg-[#211A1D] border border-[#33292C] text-[#F5F2F0] hover:border-accent hover:text-accent hover:bg-accent/5 font-mono text-xs tracking-widest uppercase transition-all duration-300 shadow-xl group"
+              className="inline-flex items-center space-x-3 px-10 py-4 rounded-full bg-[#161D2A] border border-[#222C3D] text-[#F8FAFC] hover:border-accent hover:text-accent hover:bg-accent/5 font-mono text-xs tracking-widest uppercase transition-all duration-300 shadow-xl group"
             >
               <span>LOAD MORE WORKS ({filteredAndSortedProjects.length - visibleCount} REMAINING)</span>
               <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
             </button>
-            <p className="text-[11px] font-mono text-[#999194]">
-              Displaying {visibleProjects.length} of {filteredAndSortedProjects.length} curated works
+            <p className="text-[11px] font-mono text-[#94A3B8]">
+              Displaying {displayProjects.length} of {filteredAndSortedProjects.length} curated works
             </p>
           </div>
         )}
 
         {/* Empty State */}
         {filteredAndSortedProjects.length === 0 && (
-          <div className="text-center py-24 border border-[#33292C] rounded-2xl bg-[#211A1D]/50">
-            <p className="font-mono text-sm text-[#999194]">
-              No projects found in this category.
+          <div className="text-center py-24 border border-[#222C3D] rounded-2xl bg-[#161D2A]/50">
+            <p className="font-mono text-sm text-[#94A3B8]">
+              No projects found matching your criteria.
             </p>
             <button
-              onClick={() => handleCategoryChange("All Works")}
-              className="mt-4 px-5 py-2.5 rounded-full bg-accent text-black font-mono text-xs font-semibold shadow-lg"
+              onClick={() => {
+                setActiveCategory("All Works");
+                setSearchQuery("");
+              }}
+              className="mt-4 px-5 py-2.5 rounded-full bg-accent text-white font-mono text-xs font-semibold shadow-lg"
             >
-              Reset to All Works
+              Reset Filters
             </button>
           </div>
         )}

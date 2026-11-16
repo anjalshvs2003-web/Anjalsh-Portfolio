@@ -11,44 +11,44 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          DEFAULT: "#100D0F",
-          secondary: "#191417",
-          card: "#211A1D",
-          elevated: "#211A1D",
-          tertiary: "#2A2125",
+          DEFAULT: "#0A0D12", // Deep cinematic charcoal / near-black
+          secondary: "#111620", // Dark slate grey
+          card: "#161D2A", // Elevated surface
+          elevated: "#161D2A",
+          tertiary: "#1E2638",
         },
         surface: {
-          50: "#2A2125",
-          100: "#211A1D",
-          200: "#191417",
-          300: "#100D0F",
-          DEFAULT: "#211A1D",
+          50: "#1E2638",
+          100: "#161D2A",
+          200: "#111620",
+          300: "#0A0D12",
+          DEFAULT: "#161D2A",
         },
         border: {
-          subtle: "#33292C",
-          medium: "#483A3F",
-          bold: "#604E55",
-          orange: "rgba(240, 120, 61, 0.4)",
+          subtle: "#222C3D",
+          medium: "#2D394E",
+          bold: "#3D4D68",
+          accent: "rgba(59, 130, 246, 0.4)",
         },
         accent: {
-          DEFAULT: "#F0783D", // Signature Accent Orange
-          hover: "#FF9157",
-          dim: "#D4642C",
-          muted: "rgba(240, 120, 61, 0.12)",
-          glow: "rgba(240, 120, 61, 0.25)",
+          DEFAULT: "#3B82F6", // Signature Editorial Blue
+          hover: "#60A5FA",
+          dim: "#1D4ED8",
+          muted: "rgba(59, 130, 246, 0.12)",
+          glow: "rgba(59, 130, 246, 0.25)",
         },
         primary: {
-          DEFAULT: "#F5F2F0",
+          DEFAULT: "#F8FAFC",
         },
         muted: {
-          DEFAULT: "#999194",
-          light: "#B8B1B4",
-          dark: "#6B6366",
+          DEFAULT: "#94A3B8",
+          light: "#CBD5E1",
+          dark: "#64748B",
         },
       },
       fontFamily: {
-        heading: ["var(--font-space)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-poppins)", "sans-serif"],
+        body: ["var(--font-poppins)", "sans-serif"],
         serif: ["var(--font-serif)", "Playfair Display", "Georgia", "serif"],
         mono: ["var(--font-mono)", "monospace"],
       },

@@ -4,13 +4,13 @@ import Footer from "@/components/layout/Footer";
 import Services from "@/components/sections/Services";
 
 export const metadata: Metadata = {
-  title: "Services & Disciplines — ANJALSH®️",
-  description: "Comprehensive creative disciplines: Cinematography, DaVinci Resolve Colour Grading, Video Editing, AI Film Production, Motion Graphics, and Commercial Advertising.",
+  title: "Creative Disciplines & Services — ANJALSH®️",
+  description: "Comprehensive creative disciplines: Film & Production, Post Production & Colour Grading, Design & Branding, and AI Visual Production.",
 };
 
 export default function ServicesPage() {
   return (
-    <div className="bg-[#100D0F] min-h-screen text-[#F5F2F0] pt-16">
+    <div className="bg-[#0A0D12] min-h-screen text-[#F8FAFC] pt-16">
       <Navbar />
       <Services />
       <Footer />

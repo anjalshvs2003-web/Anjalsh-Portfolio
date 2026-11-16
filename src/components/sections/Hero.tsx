@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { siteConfig } from "@/data/siteConfig";
-import { ArrowDown, ArrowUpRight, Sparkles, Film, Camera } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Sparkles, Film, Camera, MapPin } from "lucide-react";
 
 // Dynamically import 3D canvas with ssr disabled for optimal performance
 const Hero3DCanvas = dynamic(() => import("@/components/canvas/Hero3DCanvas"), {
@@ -16,95 +16,98 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex flex-col justify-between pt-28 pb-12 px-6 sm:px-8 lg:px-14 overflow-hidden bg-[#100D0F]"
+      className="relative min-h-screen w-full flex flex-col justify-between pt-28 pb-12 px-6 sm:px-8 lg:px-14 overflow-hidden bg-[#0A0D12]"
     >
       {/* 3D WebGL Canvas Layer */}
       <Hero3DCanvas />
 
       {/* Atmospheric Vignette & Depth Gradients */}
-      <div className="absolute inset-0 pointer-events-none z-[1] bg-gradient-to-b from-[#100D0F]/90 via-transparent to-[#100D0F]" />
-      <div className="absolute inset-0 pointer-events-none z-[1] bg-[radial-gradient(circle_at_center,transparent_30%,#100D0F_95%)]" />
+      <div className="absolute inset-0 pointer-events-none z-[1] bg-gradient-to-b from-[#0A0D12]/90 via-transparent to-[#0A0D12]" />
+      <div className="absolute inset-0 pointer-events-none z-[1] bg-[radial-gradient(circle_at_center,transparent_30%,#0A0D12_95%)]" />
 
-      {/* Top Meta Header: Status & Disciplines */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#33292C] pb-5">
+      {/* Top Meta Header: Location, Availability & Profession */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#222C3D] pb-5">
         <div className="flex items-center space-x-3 text-xs font-mono">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
           </span>
-          <span className="text-zinc-400 tracking-wider">
+          <span className="text-[#94A3B8] tracking-wider">
             {siteConfig.availabilityStatus}
           </span>
         </div>
 
-        <div className="text-[11px] font-mono tracking-ultra text-[#999194] uppercase flex items-center space-x-3 sm:space-x-4">
-          <span className="text-accent font-medium">INDEPENDENT CREATIVE PROFESSIONAL</span>
-          <span className="text-[#33292C]">/</span>
+        <div className="text-[11px] font-mono tracking-wider text-[#94A3B8] uppercase flex items-center space-x-3 sm:space-x-4">
+          <span className="flex items-center space-x-1.5 text-accent font-medium">
+            <MapPin className="w-3 h-3 text-accent" />
+            <span>KERALA, INDIA &bull; WORLDWIDE</span>
+          </span>
+          <span className="text-[#222C3D]">/</span>
           <span>EST. 2020</span>
         </div>
       </div>
 
-      {/* Main Asymmetrical Editorial Composition (Reference 01 Inspired) */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto py-8 lg:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      {/* Main Asymmetrical Editorial Composition */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto py-8 lg:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Typographic Monument */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Small Label */}
+            {/* Small Label Pill */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#211A1D] border border-[#33292C] text-[11px] font-mono text-[#F5F2F0]"
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#161D2A] border border-[#222C3D] text-[11px] font-mono text-[#F8FAFC]"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span className="text-accent uppercase font-semibold">
-                CREATIVE MULTIMEDIA PROFESSIONAL
+                ANJALSH V.S. &bull; PORTFOLIO
               </span>
             </motion.div>
 
-            {/* Oversized Brand Typography */}
+            {/* Main Headline: I CREATE VISUALS THAT TELL STORIES */}
             <motion.div
-              initial={{ opacity: 0, y: 35 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-1"
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-3"
             >
-              <h1 className="font-heading font-black tracking-tighter text-[#F5F2F0] text-[15vw] sm:text-[12vw] lg:text-[7.5rem] leading-[0.85] select-none">
-                ANJALSH<sup className="text-accent text-3xl sm:text-5xl lg:text-7xl ml-1 font-mono font-bold">®️</sup>
+              <h1 className="font-heading font-extrabold tracking-tight text-[#F8FAFC] text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] leading-[1.02]">
+                I CREATE VISUALS THAT <span className="text-accent underline decoration-accent/40 decoration-wavy decoration-2 underline-offset-8">TELL STORIES.</span>
               </h1>
-              <p className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white pt-2">
-                {siteConfig.tagline}
+              <p className="font-heading text-lg sm:text-2xl font-semibold text-white/90 pt-1 tracking-normal">
+                {siteConfig.profession} based in {siteConfig.location}.
               </p>
             </motion.div>
 
-            {/* Personal Statement */}
+            {/* Professional Statement */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[#999194] text-base sm:text-lg font-light leading-relaxed max-w-xl"
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[#94A3B8] text-sm sm:text-base font-normal leading-relaxed max-w-xl"
             >
-              {siteConfig.bio.hero}
+              {siteConfig.bio.positioning} Crafting intentional lighting, disciplined Swiss typography, and high-fidelity colour grading for commercials, films, and brands.
             </motion.p>
 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-wrap items-center gap-4 pt-2"
             >
               <Link
                 href="#work"
-                className="inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-accent text-black font-semibold text-xs font-mono tracking-widest hover:bg-accent-hover transition-all duration-300 shadow-[0_0_30px_rgba(240,120,61,0.35)] group"
+                className="inline-flex items-center space-x-3 px-8 py-3.5 rounded-full bg-accent text-white font-semibold text-xs font-mono tracking-widest hover:bg-accent-hover transition-all duration-300 shadow-[0_0_25px_rgba(59,130,246,0.35)] group"
               >
-                <span>VIEW SELECTED WORKS</span>
+                <span>VIEW SELECTED WORK</span>
                 <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
               </Link>
 
               <Link
                 href="#contact"
-                className="inline-flex items-center space-x-2 px-8 py-4 rounded-full bg-[#211A1D] border border-[#33292C] text-xs font-mono tracking-widest text-[#F5F2F0] hover:border-accent hover:text-accent transition-all duration-300 group"
+                className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-full bg-[#161D2A] border border-[#222C3D] text-xs font-mono tracking-widest text-[#F8FAFC] hover:border-accent hover:text-accent transition-all duration-300 group"
               >
                 <span>LET&apos;S COLLABORATE</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -116,19 +119,19 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="pt-4 flex flex-wrap gap-2 text-[11px] font-mono text-[#999194]"
+              className="pt-2 flex flex-wrap gap-2 text-[11px] font-mono text-[#94A3B8]"
             >
               {[
                 "Cinematography",
                 "Color Grading",
-                "Photography",
+                "Video Editing",
                 "Graphic Design",
                 "AI Films",
                 "Motion Graphics",
-              ].map((item, i) => (
+              ].map((item) => (
                 <span
                   key={item}
-                  className="px-2.5 py-1 rounded bg-[#211A1D]/80 border border-[#33292C] text-xs"
+                  className="px-2.5 py-1 rounded bg-[#161D2A]/80 border border-[#222C3D] text-xs"
                 >
                   <span className="text-accent mr-1.5">•</span>
                   {item}
@@ -143,22 +146,22 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.95, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-[380px] sm:max-w-[420px]"
+              className="relative w-full max-w-[360px] sm:max-w-[400px]"
             >
               {/* Primary Frame: Authentic Studio Portrait */}
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#211A1D] border border-[#33292C] shadow-2xl group hover:border-accent/60 transition-colors duration-500">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#161D2A] border border-[#222C3D] shadow-2xl group hover:border-accent/60 transition-colors duration-500">
                 <Image
                   src="/images/photography/anjalsh-portrait.jpg"
-                  alt="Anjalsh V.S. — Creative Multimedia Professional"
+                  alt="Anjalsh V.S. — Creative Director, Filmmaker & Visual Artist"
                   fill
                   priority
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  sizes="(max-width: 768px) 100vw, 420px"
+                  sizes="(max-width: 768px) 100vw, 400px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#100D0F] via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0D12] via-transparent to-transparent opacity-85" />
 
                 {/* Film Data Tag in Primary Frame */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-[10px] font-mono text-[#F5F2F0] bg-[#100D0F]/70 px-3 py-1.5 rounded-lg border border-[#33292C] backdrop-blur-md">
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-[10px] font-mono text-[#F8FAFC] bg-[#0A0D12]/75 px-3 py-1.5 rounded-lg border border-[#222C3D] backdrop-blur-md">
                   <span className="flex items-center space-x-1.5">
                     <Camera className="w-3 h-3 text-accent" />
                     <span>PORTRAIT ARCHIVE</span>
@@ -167,7 +170,7 @@ export default function Hero() {
                 </div>
 
                 {/* Bottom Frame Label */}
-                <div className="absolute bottom-5 left-5 right-24 sm:right-28">
+                <div className="absolute bottom-5 left-5 right-20 sm:right-24">
                   <span className="text-[10px] font-mono tracking-widest text-accent uppercase block font-semibold">
                     ANJALSH V.S.
                   </span>
@@ -177,19 +180,19 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Overlapping Secondary Frame (Cinema Frame Grab) positioned to avoid blocking label */}
+              {/* Overlapping Secondary Frame (Cinema Frame Grab) */}
               <motion.div
                 initial={{ opacity: 0, x: 20, y: 20 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute -bottom-7 -right-6 sm:-right-8 w-44 sm:w-52 aspect-[16/9] rounded-xl overflow-hidden bg-[#191417] border border-accent/40 shadow-2xl hidden sm:block group"
+                className="absolute -bottom-6 -right-5 sm:-right-7 w-40 sm:w-48 aspect-[16/9] rounded-xl overflow-hidden bg-[#111620] border border-accent/40 shadow-2xl hidden sm:block group"
               >
                 <Image
                   src="/images/ai-films/the-forgotten-smile.jpg"
                   alt="AI Short Film Cinema Frame"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="240px"
+                  sizes="220px"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors" />
                 <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[9px] font-mono text-white bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm">
@@ -201,31 +204,31 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Decorative Accent Orange Corner Marker */}
+              {/* Decorative Accent Blue Corner Marker */}
               <div className="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-accent pointer-events-none" />
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Editorial Indicator & Camera Strip */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#33292C] text-xs font-mono text-[#999194]">
+      {/* Bottom Editorial Indicator & Archive Stats */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#222C3D] text-xs font-mono text-[#94A3B8]">
         <div className="flex items-center space-x-4">
           <span className="flex items-center space-x-2">
             <Sparkles className="w-3.5 h-3.5 text-accent" />
-            <span className="text-[#F5F2F0]">52+ CURATED PROJECTS</span>
+            <span className="text-[#F8FAFC]">52+ CURATED PROJECTS</span>
           </span>
-          <span className="text-[#33292C]">/</span>
-          <span className="hidden sm:inline">8 CREATIVE DISCIPLINES</span>
+          <span className="text-[#222C3D]">/</span>
+          <span className="hidden sm:inline">4 CORE DISCIPLINES</span>
         </div>
 
-        {/* Small Orange Animated Indicator showing that user can explore the website */}
+        {/* Small Blue Animated Indicator showing that user can explore the website */}
         <Link
           href="#work"
           className="group flex items-center space-x-3 text-accent hover:text-accent-hover transition-colors"
         >
           <span className="text-[11px] tracking-widest uppercase font-semibold">
-            EXPLORE EXHIBITION
+            EXPLORE SELECTED WORKS
           </span>
           <div className="w-8 h-8 rounded-full border border-accent/40 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/10 transition-colors">
             <motion.div

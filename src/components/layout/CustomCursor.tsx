@@ -79,15 +79,15 @@ export default function CustomCursor() {
           width: cursorText ? 88 : isPointer ? 48 : 28,
           height: cursorText ? 88 : isPointer ? 48 : 28,
           backgroundColor: cursorText
-            ? "rgba(16, 13, 15, 0.94)"
+            ? "rgba(10, 13, 18, 0.94)"
             : isPointer
-            ? "rgba(240, 120, 61, 0.14)"
+            ? "rgba(59, 130, 246, 0.14)"
             : "transparent",
           borderColor: cursorText
-            ? "rgba(240, 120, 61, 0.9)"
+            ? "rgba(59, 130, 246, 0.9)"
             : isPointer
-            ? "rgba(240, 120, 61, 0.7)"
-            : "rgba(245, 242, 240, 0.25)",
+            ? "rgba(59, 130, 246, 0.7)"
+            : "rgba(248, 250, 252, 0.25)",
           borderWidth: "1px",
         }}
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
@@ -99,9 +99,9 @@ export default function CustomCursor() {
         ) : null}
       </motion.div>
 
-      {/* Inner Dot */}
+      {/* Center Precise Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-accent pointer-events-none shadow-[0_0_10px_rgba(240,120,61,0.85)]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-accent pointer-events-none"
         style={{
           x: mouseX,
           y: mouseY,
@@ -109,8 +109,8 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          scale: cursorText ? 0 : isPointer ? 1.4 : 1,
-          opacity: isVisible ? 1 : 0,
+          scale: cursorText ? 0 : isPointer ? 0.5 : 1,
+          opacity: cursorText ? 0 : 1,
         }}
         transition={{ duration: 0.15 }}
       />

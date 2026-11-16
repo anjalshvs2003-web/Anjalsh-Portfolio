@@ -166,12 +166,12 @@ export default function CurvedExhibitionArc({
     }
   };
 
-  // Bottom pillars matching Reference 02
+  // 4 Primary Creative Disciplines
   const pillars = [
-    { num: "#01", title: "Strategy & Concept", desc: "Scriptwriting & Creative Direction" },
-    { num: "#02", title: "Cinematography & Lighting", desc: "Sony Cinema Line & Anamorphic" },
-    { num: "#03", title: "Post & Color Grading", desc: "DaVinci Resolve ACEScc Workflows" },
-    { num: "#04", title: "AI Cinema & Synthesis", desc: "Runway Gen-3 & Neural Stills" },
+    { num: "#01", title: "Film & Production", desc: "Cinematography, Videography & Directing" },
+    { num: "#02", title: "Post Production", desc: "DaVinci Resolve ACEScc & Non-Linear Editing" },
+    { num: "#03", title: "Design & Branding", desc: "Swiss Editorial Typography & Brand Systems" },
+    { num: "#04", title: "AI Visual Production", desc: "Neural Video Synthesis & Concept Design" },
   ];
 
   // Calculate infinite looping slots visible on stage
@@ -201,30 +201,30 @@ export default function CurvedExhibitionArc({
 
   return (
     <div className="relative w-full py-12 md:py-16 overflow-hidden select-none">
-      {/* Top Editorial Header Section (Exact match to Reference) */}
+      {/* Top Editorial Header Section */}
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-10 sm:mb-14 px-4">
         <span className="text-xs sm:text-sm font-mono tracking-widest text-accent uppercase font-semibold block">
           Behind the Lens & Archive
         </span>
 
-        <h3 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#F5F2F0] leading-tight">
+        <h3 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#F8FAFC] leading-tight">
           Curious What Else I’ve <br className="hidden sm:inline" /> Created?
         </h3>
 
-        <p className="text-[#999194] text-xs sm:text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed">
+        <p className="text-[#94A3B8] text-xs sm:text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed">
           Explore an expansive collection of commercial campaigns, original AI short films, editorial portraits, and graphic design systems in my extended portfolio.
         </p>
 
-        {/* Action Pill Button with Orange Arrow (Reference Match) */}
+        {/* Action Pill Button with Blue Arrow */}
         <div className="pt-2">
           <button
             onClick={scrollToGrid}
-            className="inline-flex items-center space-x-3 px-6 py-2.5 rounded-full bg-[#211A1D] border border-[#33292C] text-[#F5F2F0] hover:border-accent hover:text-white transition-all duration-300 group shadow-lg"
+            className="inline-flex items-center space-x-3 px-6 py-2.5 rounded-full bg-[#161D2A] border border-[#222C3D] text-[#F8FAFC] hover:border-accent hover:text-white transition-all duration-300 group shadow-lg"
           >
             <span className="text-xs font-mono font-medium tracking-wide">
-              See All 52+ Projects
+              See All 52+ Projects Below
             </span>
-            <span className="w-7 h-7 rounded-full bg-accent flex items-center justify-center text-black group-hover:scale-110 transition-transform">
+            <span className="w-7 h-7 rounded-full bg-accent flex items-center justify-center text-white group-hover:scale-110 transition-transform">
               <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </span>
           </button>
@@ -256,7 +256,7 @@ export default function CurvedExhibitionArc({
             e.stopPropagation();
             handlePrev();
           }}
-          className="absolute left-3 sm:left-6 z-40 p-3 sm:p-3.5 rounded-full bg-[#211A1D]/90 backdrop-blur-md border border-[#33292C] text-[#999194] hover:text-white hover:border-accent hover:bg-accent/15 transition-all shadow-2xl"
+          className="absolute left-3 sm:left-6 z-40 p-3 sm:p-3.5 rounded-full bg-[#161D2A]/90 backdrop-blur-md border border-[#222C3D] text-[#94A3B8] hover:text-white hover:border-accent hover:bg-accent/15 transition-all shadow-2xl"
           aria-label="Previous project"
         >
           <ChevronLeft className="w-5 h-5" />
@@ -267,14 +267,14 @@ export default function CurvedExhibitionArc({
             e.stopPropagation();
             handleNext();
           }}
-          className="absolute right-3 sm:right-6 z-40 p-3 sm:p-3.5 rounded-full bg-[#211A1D]/90 backdrop-blur-md border border-[#33292C] text-[#999194] hover:text-white hover:border-accent hover:bg-accent/15 transition-all shadow-2xl"
+          className="absolute right-3 sm:right-6 z-40 p-3 sm:p-3.5 rounded-full bg-[#161D2A]/90 backdrop-blur-md border border-[#222C3D] text-[#94A3B8] hover:text-white hover:border-accent hover:bg-accent/15 transition-all shadow-2xl"
           aria-label="Next project"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
 
         {/* Small Auto-scroll & Pause Indicator Pill */}
-        <div className="absolute top-3 right-4 z-40 hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full bg-[#100D0F]/80 backdrop-blur-md border border-[#33292C] text-[10px] font-mono text-[#999194]">
+        <div className="absolute top-3 right-4 z-40 hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full bg-[#0A0D12]/80 backdrop-blur-md border border-[#222C3D] text-[10px] font-mono text-[#94A3B8]">
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
           <span>INFINITE LOOP EXHIBITION</span>
           <button
@@ -300,8 +300,6 @@ export default function CurvedExhibitionArc({
             const theta = d * dimensions.theta0;
 
             // 2. Exact X position with analytical constant-gap formula:
-            // Derivative dX/dd = W * cos(theta) + gap guarantees the physical gap
-            // between any adjacent card edges is STRICTLY EQUAL everywhere!
             const x =
               (dimensions.cardWidth / dimensions.theta0) * Math.sin(theta) +
               d * dimensions.gap;
@@ -317,13 +315,12 @@ export default function CurvedExhibitionArc({
 
             // 5. Full Opacity:
             // 100% full opacity on all 7 visible cards across the arc!
-            // Only a gentle soft dissolve at the very distant boundary (|d| > 3.4) to eliminate pop-in
             const opacity =
               Math.abs(d) <= 3.4
                 ? 1.0
                 : Math.max(0, 1 - (Math.abs(d) - 3.4) / 0.8);
 
-            // 6. Natural Concave Z-Index (outer cards closer in perspective have higher z-index)
+            // 6. Natural Concave Z-Index
             const zIndex = Math.round(30 + Math.abs(d) * 2);
 
             const isCenterCard = Math.abs(d) < 0.45;
@@ -342,8 +339,8 @@ export default function CurvedExhibitionArc({
                 }}
                 className={`absolute top-1/2 left-1/2 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group shadow-2xl pointer-events-auto transition-shadow duration-300 ${
                   isCenterCard
-                    ? "ring-2 ring-accent shadow-[0_0_35px_rgba(240,120,61,0.4)]"
-                    : "border border-[#33292C] hover:border-accent/70"
+                    ? "ring-2 ring-accent shadow-[0_0_35px_rgba(59,130,246,0.4)]"
+                    : "border border-[#222C3D] hover:border-accent/70"
                 }`}
                 style={{
                   width: `${dimensions.cardWidth}px`,
@@ -352,7 +349,7 @@ export default function CurvedExhibitionArc({
                   zIndex: zIndex,
                   transform: `translate3d(calc(-50% + ${x}px), -50%, ${z}px) rotateY(${rotateY}deg)`,
                   transformStyle: "preserve-3d",
-                  backgroundColor: "#211A1D",
+                  backgroundColor: "#161D2A",
                   willChange: "transform, opacity",
                 }}
               >
@@ -367,16 +364,16 @@ export default function CurvedExhibitionArc({
                 />
 
                 {/* Dark Vignette Overlay for Readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#100D0F]/95 via-[#100D0F]/25 to-transparent opacity-75 group-hover:opacity-45 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0D12]/95 via-[#0A0D12]/25 to-transparent opacity-75 group-hover:opacity-45 transition-opacity" />
 
                 {/* Top Badge: Category & Reel indicator */}
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono">
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#100D0F]/85 backdrop-blur-md border border-[#33292C] text-[#F5F2F0] uppercase tracking-wider">
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#0A0D12]/85 backdrop-blur-md border border-[#222C3D] text-[#F8FAFC] uppercase tracking-wider">
                     {project.category}
                   </span>
                   {project.videoUrl && (
-                    <span className="px-2 py-0.5 rounded-full bg-accent text-black font-bold flex items-center space-x-1 shadow-sm">
-                      <Play className="w-2.5 h-2.5 fill-black" />
+                    <span className="px-2 py-0.5 rounded-full bg-accent text-white font-bold flex items-center space-x-1 shadow-sm">
+                      <Play className="w-2.5 h-2.5 fill-white" />
                       <span>REEL</span>
                     </span>
                   )}
@@ -384,7 +381,7 @@ export default function CurvedExhibitionArc({
 
                 {/* Center Hover Action Indicator */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <span className="px-3.5 py-1.5 rounded-full bg-[#100D0F]/90 backdrop-blur-md border border-accent text-accent text-xs font-mono font-medium flex items-center space-x-1.5 shadow-xl">
+                  <span className="px-3.5 py-1.5 rounded-full bg-[#0A0D12]/90 backdrop-blur-md border border-accent text-accent text-xs font-mono font-medium flex items-center space-x-1.5 shadow-xl">
                     <span>{isCenterCard ? "View Details" : "Inspect"}</span>
                     <ArrowRight className="w-3 h-3" />
                   </span>
@@ -405,18 +402,18 @@ export default function CurvedExhibitionArc({
         </div>
       </div>
 
-      {/* Bottom Numbered Pillars Section (Exact match to Reference 02) */}
+      {/* Bottom Numbered Pillars Section */}
       <div className="max-w-5xl mx-auto mt-8 sm:mt-12 px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-[#33292C]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-[#222C3D]">
           {pillars.map((pillar) => (
             <div key={pillar.num} className="space-y-1 text-center sm:text-left">
               <span className="font-mono text-xs font-bold text-accent block">
                 {pillar.num}
               </span>
-              <h5 className="font-heading text-sm sm:text-base font-bold text-[#F5F2F0]">
+              <h5 className="font-heading text-sm sm:text-base font-bold text-[#F8FAFC]">
                 {pillar.title}
               </h5>
-              <p className="text-[11px] font-mono text-[#999194] hidden sm:block">
+              <p className="text-[11px] font-mono text-[#94A3B8] hidden sm:block">
                 {pillar.desc}
               </p>
             </div>
